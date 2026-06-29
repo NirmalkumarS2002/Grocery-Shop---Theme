@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - Grocery Shop</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        overflow: hidden;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    .header-section {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        font-family: "DM Sans", sans-serif;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 5%;
+        background: #629D23;
+    }
+
+    .header-container p,
+    .header-container a {
+        text-decoration: none;
+        font-size: 16px;
+        color: white;
+    }
+
+    .header-link a:first-child {
+        margin-right: 20px;
+    }
+
+    @media (max-width:600px) {
+        .header-container {
+            flex-direction: column;
+            align-items: center;
+                 padding: 12px 5%;
+        }
+
+        .header-container p,
+        .header-container a {
+            font-size: 13px;
+        }
+    }
+</style>
+
+<body>
+
+    <header class="header-section">
+
+        <div class="header-container">
+            <p>Welcome to our Stackly Grocery Store!</p>
+            <div class="header-link">
+                <a href="404.html">Need help</a>
+                <a href="404.html">order-tracking</a>
+            </div>
+        </div>
+
+        <div class="header-container2">
+            <div class="">
+                <a href="">My accout</a>
+                <a href="">wishlist</a>
+            </div>
+
+            <div>
+                <p>We deliver to Your Order Everyday form 7:00 to 22:00 </p>
+            </div>
+
+            <div>
+                <a href="">English</a>
+                <a href="">USD</a>
+                <a href="">Track Order</a>
+            </div>
+        </div>
+
+        <div class="header-container3">
+
+            <div class="header-logo-contianer">
+                <img src="./src/logo.webp" alt="Company logo">
+            </div>
+
+            <div>
+                <div>
+                    <span class="material-symbols-outlined">menu_open</span>
+                    <a href="404.html">Categories</a>
+                </div>
+
+                <div>
+                    <span class="material-symbols-outlined">search</span>
+                    <input type="search">
+                    <button>Search</button>
+                </div>
+
+                <div>
+
+                    <div>
+                        <span class="material-symbols-outlined">person</span>
+                        <P>accout</P>
+                    </div>
+
+                    <div>
+                        <span class="material-symbols-outlined">favorite</span>
+                        <p>Wishlist</p>
+
+                    </div>
+
+                    <div>
+                        <span class="material-symbols-outlined">add_shopping_cart</span>
+                        <p>Cart</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="header-container4">
+            <div class="navbar">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="fresh.html">Fresh Grocery</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+
+                <div class="login-btn">
+                    <a href="login.html">Login</a>
+                </div>
+            </div>
+
+            <div class="trinding-container">
+                <div class="trend-container">
+                    <a href="">Trending Products</a>
+                </div>
+
+                <div class="offer-container">
+                    <p>Get 30% Discont Now</p><a href="404.html">Sale</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+</body>
+
+</html>
