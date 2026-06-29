@@ -25,6 +25,10 @@
         box-sizing: border-box;
     }
 
+    :root {
+        --border-color: 1px solid rgba(128, 128, 128, 0.425);
+    }
+
     html,
     body {
         overflow: hidden;
@@ -33,6 +37,8 @@
     html {
         scroll-behavior: smooth;
     }
+
+    /* header 1*/
 
     .header-section {
         display: flex;
@@ -51,7 +57,7 @@
     .header-container p,
     .header-container a {
         text-decoration: none;
-        font-size: 16px;
+        font-size: 15px;
         color: white;
     }
 
@@ -63,13 +69,243 @@
         .header-container {
             flex-direction: column;
             align-items: center;
-                 padding: 12px 5%;
+            padding: 12px 5%;
         }
 
         .header-container p,
         .header-container a {
             font-size: 13px;
         }
+    }
+
+    /* header 2*/
+
+    .header-container2 {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 5%;
+        border-bottom: var(--border-color);
+    }
+
+    .accout-contaner {
+        border-right: var(--border-color);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-right: 20px;
+    }
+
+    .accout-contaner a {
+        text-decoration: none;
+        font-size: 14px;
+        color: gray;
+        padding-block: 15px;
+
+    }
+
+    .deliver-container {
+        display: flex;
+        align-items: center;
+        color: gray;
+        font-size: 14px;
+    }
+
+    .track-container {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .track-container a {
+        text-decoration: none;
+        color: gray;
+        font-size: 14px;
+        padding-block: 15px;
+        padding-inline: 20px;
+    }
+
+    .track-container a:first-child {
+        border-inline: var(--border-color);
+    }
+
+    .track-container a:nth-child(2) {
+        border-right: var(--border-color);
+    }
+
+    @media (max-width:950px) {
+        .header-container2 {
+            display: none;
+        }
+
+    }
+
+
+
+
+    /* header 3*/
+
+    .header-container3 {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 5%;
+        padding-block: 20px;
+        gap: 20px;
+    }
+
+    .header-logo-container img {
+        width: 200px;
+    }
+
+    .header-menu-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        width: 50%;
+    }
+
+    .category-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 14px 22px;
+          border-radius: 7px;
+           background: rgba(128, 128, 128, 0.13);
+           padding-right: 5%;
+    }
+
+        .category-container span{
+            font-size: 20px;
+        }
+        .category-container a{
+            color: black;
+            font-size: 15px;
+            text-decoration: none;
+        }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: center;
+    
+    }
+
+    .search-container input{
+        padding: 15px 40px;
+        border: 1px solid green;
+        border-radius: 7px;
+        font-size: 15px;
+        background: rgba(128, 128, 128, 0.13);
+        width: clamp(200px,30vw,400px);
+    }
+
+       .search-container input:focus{
+        box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.507);
+          border: 1px solid green;
+          outline: none;
+       }
+
+
+    .search-menu {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .search-btn {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        padding: 12px 20px;
+        transform: translateY(-50%);
+        border: none;
+        background: #629D23;
+        color: white;
+        border-radius: 7px;
+    }
+
+    .header-icons-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-icons-container div {
+        display: flex; 
+        align-items: center;
+        gap: 10px;
+        padding: 13px 20px;
+        border: var(--border-color);
+        border-radius: 7px;
+           box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.247);
+    }
+
+        .header-icons-container div span{
+                 font-size: 20px;
+        }
+
+          .header-icons-container div p{
+                 font-size: 15px;
+        }
+
+
+    @media (max-width:1385px) {
+        .category-container{
+            display: none;
+        }
+
+        .header-icons-container div:nth-child(2){
+            display: none;
+        }
+    }
+
+    @media (max-width:950px) {
+        .header-menu-container{
+            display: none;
+        }
+    }
+
+    @media (max-width:600px) {
+
+        
+    .header-container3 {
+
+        padding-block: 10px;
+    }
+
+        .header-logo-container img{
+            width: 150px;
+        }
+
+        
+        .header-icons-container div span{
+                 font-size: 17px;
+        }
+
+          .header-icons-container div p{
+                 font-size: 13px;
+        }
+
+            .header-icons-container div {
+        padding: 10px 15px;
+
+    }
+
+    }
+
+    @media (max-width:450px) {
+                   .header-icons-container div {
+        padding: 5px 5px;
+
+    }
+             .header-icons-container div p{
+                display: none;
+        }
+        
     }
 </style>
 
@@ -86,16 +322,17 @@
         </div>
 
         <div class="header-container2">
-            <div class="">
+            <div class="accout-contaner">
+                <a href="">About</a>
                 <a href="">My accout</a>
                 <a href="">wishlist</a>
             </div>
 
-            <div>
+            <div class="deliver-container">
                 <p>We deliver to Your Order Everyday form 7:00 to 22:00 </p>
             </div>
 
-            <div>
+            <div class="track-container">
                 <a href="">English</a>
                 <a href="">USD</a>
                 <a href="">Track Order</a>
@@ -104,42 +341,47 @@
 
         <div class="header-container3">
 
-            <div class="header-logo-contianer">
+
+            <div class="header-logo-container">
                 <img src="./src/logo.webp" alt="Company logo">
             </div>
 
-            <div>
-                <div>
-                    <span class="material-symbols-outlined">menu_open</span>
+
+            <div class="header-menu-container">
+
+                <div class="category-container">
+                    <span class="material-symbols-outlined">filter_list</span>
                     <a href="404.html">Categories</a>
                 </div>
 
-                <div>
-                    <span class="material-symbols-outlined">search</span>
-                    <input type="search">
-                    <button>Search</button>
+                <div class="search-container">
+                    <span class="material-symbols-outlined search-menu">search</span>
+                    <input type="search" placeholder="Search For Products">
+                    <button class="search-btn">Search</button>
                 </div>
 
-                <div>
-
-                    <div>
-                        <span class="material-symbols-outlined">person</span>
-                        <P>accout</P>
-                    </div>
-
-                    <div>
-                        <span class="material-symbols-outlined">favorite</span>
-                        <p>Wishlist</p>
-
-                    </div>
-
-                    <div>
-                        <span class="material-symbols-outlined">add_shopping_cart</span>
-                        <p>Cart</p>
-                    </div>
-
-                </div>
             </div>
+
+            <div class="header-icons-container">
+
+                <div>
+                    <span class="material-symbols-outlined">person</span>
+                    <P>Accout</P>
+                </div>
+
+                <div>
+                    <span class="material-symbols-outlined">favorite</span>
+                    <p>Wishlist</p>
+
+                </div>
+
+                <div>
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                    <p>Cart</p>
+                </div>
+
+            </div>
+
 
         </div>
 
