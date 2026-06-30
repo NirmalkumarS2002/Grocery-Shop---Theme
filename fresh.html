@@ -1091,7 +1091,7 @@
       background: var(--green-dark);
     }
 
-    
+
     @media (max-width:700px) {
       .showcase-header {
         flex-direction: column;
@@ -1209,7 +1209,7 @@
         grid-template-rows: 200px 200px;
       }
 
-       .farm-stat strong {
+      .farm-stat strong {
         font-size: 25px;
       }
     }
@@ -1456,7 +1456,7 @@
 
     /*newly added*/
 
-     /* ════════════════════════════════════════════
+    /* ════════════════════════════════════════════
        SECTION 1 — HERO BANNER
     ════════════════════════════════════════════ */
     .contact-hero {
@@ -1531,7 +1531,6 @@
     .hero-scroll-cta:hover {
       transform: translateY(3px);
     }
-
   </style>
 </head>
 
@@ -1645,27 +1644,27 @@
   </header>
 
 
-  
-      <!-- ════════════════════════════════════════════
+
+  <!-- ════════════════════════════════════════════
      SECTION 1 — HERO BANNER
 ════════════════════════════════════════════ -->
-<section class="contact-hero">
-  <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1400&h=600&fit=crop"
-    alt="Fresh grocery store" />
+  <section class="contact-hero">
+    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1400&h=600&fit=crop"
+      alt="Fresh grocery store" />
 
-  <div class="hero-overlay">
+    <div class="hero-overlay">
 
-    <p class="eyebrow">Fresh Stackly Grocery</p>
+      <p class="eyebrow">Fresh Stackly Grocery</p>
 
-    <h1>Fresh Groceries,<br>Trusted Every Day</h1>
+      <h1>Fresh Groceries,<br>Trusted Every Day</h1>
 
-    <p>
-      At Stackly Grocery, we bring farm-fresh fruits, vegetables,
-      dairy, and everyday essentials straight to your doorstep.
-    </p>
+      <p>
+        At Stackly Grocery, we bring farm-fresh fruits, vegetables,
+        dairy, and everyday essentials straight to your doorstep.
+      </p>
 
-  </div>
-</section>
+    </div>
+  </section>
 
   <!-- ════════════════════════════════════════════
      SECTION 2 — FRESHNESS PROMISE BAND
@@ -2347,6 +2346,17 @@
       el.innerHTML = on ? '&#9829;' : '&#9825;';
       el.style.color = on ? '#ef4444' : '';
     }
+
+    //add btn
+
+    const padd = document.querySelectorAll(".p-add")
+    padd.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        btn.textContent = '✓';
+        btn.style.background = '#2d7f0a';
+      })
+    })
+
   </script>
 </body>
 

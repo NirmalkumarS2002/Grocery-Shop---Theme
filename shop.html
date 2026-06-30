@@ -1827,6 +1827,15 @@
       btn.style.color = btn.textContent === '♥' ? '#ef4444' : '';
     });
   });
+
+  //add
+  document.querySelectorAll('.add-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.textContent = '✓';
+                btn.style.background = '#2d7f0a';
+             
+            });
+        });
 </script>
 </body>
 </html>
