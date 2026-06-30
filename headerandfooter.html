@@ -28,11 +28,13 @@
     :root {
         --border-color: 1px solid rgba(128, 128, 128, 0.425);
         --header-bg-color: #F3F4F6;
+        --primariy-color: #629D24;
     }
 
     html,
     body {
         overflow-x: hidden;
+        font-family: "DM Sans", sans-serif;
     }
 
     html {
@@ -45,7 +47,6 @@
         display: flex;
         width: 100%;
         flex-direction: column;
-        font-family: "DM Sans", sans-serif;
     }
 
     .header-container {
@@ -104,6 +105,10 @@
 
     }
 
+    .accout-contaner a:hover {
+        color: var(--primariy-color);
+    }
+
     .deliver-container {
         display: flex;
         align-items: center;
@@ -123,6 +128,10 @@
         font-size: 14px;
         padding-block: 15px;
         padding-inline: 20px;
+    }
+
+    .track-container a:hover {
+        color: var(--primariy-color);
     }
 
     .track-container a:first-child {
@@ -175,8 +184,13 @@
         padding-right: 5%;
     }
 
+    .category-container:hover {
+        box-shadow: 0 0 10px rgba(19, 19, 19, 0.226);
+    }
+
     .category-container span {
         font-size: 20px;
+        color: var(--primariy-color);
     }
 
     .category-container a {
@@ -230,6 +244,11 @@
         border-radius: 7px;
     }
 
+    .search-btn:hover {
+        background: #63bd04;
+        box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
     .header-icons-container {
         display: flex;
         align-items: center;
@@ -250,8 +269,13 @@
         box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.247);
     }
 
+    .header-icons-container div:hover {
+        box-shadow: 0 0 10px rgba(19, 19, 19, 0.226);
+    }
+
     .header-icons-container div span {
         font-size: 20px;
+        color: var(--primariy-color);
     }
 
     .header-icons-container div p {
@@ -365,7 +389,23 @@
         text-decoration: none;
         font-size: 16px;
         color: black;
+        padding: 5px 10px;
+        transition: 0.5s ease;
     }
+
+    .nav-links li a:hover {
+        background: var(--primariy-color);
+        color: white;
+        border-radius: 7px;
+    }
+
+    .nav-links .active {
+        background: var(--primariy-color);
+        color: white;
+        border-radius: 7px;
+
+    }
+
 
     .trinding-container {
         display: flex;
@@ -402,6 +442,10 @@
         color: black;
     }
 
+    .trend-container a:hover {
+        color: var(--primariy-color);
+    }
+
     .offer-container {
         display: flex;
         gap: 10px;
@@ -422,9 +466,15 @@
         border-radius: 20px;
         font-size: 14px;
         color: green;
+        transition: 0.5s ease;
     }
 
-    @media (max-width:1050px) {
+    .offer-container a:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgb(0, 255, 0);
+    }
+
+    @media (max-width:1150px) {
 
         .nav-links {
             display: none;
@@ -486,126 +536,227 @@
         }
     }
 
-    /*Hero section*/
+    /*footer*/
 
-    .hero-section {
+    .footer-section {
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        height: 75vh;
-        background: linear-gradient(125deg, rgba(0, 128, 0, 0.384), rgba(0, 128, 0, 0.144)), url("./src/hero1.webp");
-        background-position: top center;
-        background-repeat: no-repeat;
-        background-size: cover;
+        flex-direction: column;
+        gap: 10px;
+        background: #1A1A1A;
+
+    }
+
+    .footer-section-top {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 60px 30px;
+        gap: 20px;
+    }
+
+    .footer1 {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .footer-logo img {
+        width: 200px;
+    }
+
+    .footer1 .footer-logo {
+        margin-bottom: 20px;
+    }
+
+    .footer1 p {
+        font-size: 15px;
+        line-height: 1.5;
+        max-width: 300px;
+        margin-bottom: 20px;
+        color: rgb(133, 133, 133);
+        ;
+    }
+
+    .subscribe-container {
         position: relative;
-    }
-
-    .hero-content {
-        font-family: "DM Sans", sans-serif;
-        padding-right: 150px;
-
-    }
-
-
-    .hero-content p {
-        font-size: 17px;
         margin-bottom: 20px;
-        line-height: 1.8;
+    }
+
+    .subscribe-container input {
+        padding: 15px 20px;
+        width: 100%;
+        border-radius: 6px;
+        border: none;
+        background: #639d2436;
         color: white;
+        transition: 0.5s ease;
     }
 
-    .hero-content p:first-child {
-        color: green;
+    .subscribe-container input:focus {
+        border: 1px solid var(--primariy-color);
+        outline: none;
+        box-shadow: 0 0 20px rgba(0, 252, 0, 0.185);
     }
 
-    .hero-content h1 {
-        font-size: clamp(30px, 4vw, 50px);
-        line-height: 1.3;
-        margin-bottom: 20px;
+    .subscribe-container input::placeholder {
+        color: gray;
     }
 
-    .hero-btn {
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-        font-weight: bold;
+    .subscribe {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
         padding: 10px 20px;
-        border-radius: 25px;
+        border-radius: 5px;
         background: #629D24;
         border: none;
-        gap: 5px;
-        color: white;
+        color: #fff;
+        cursor: pointer;
+        transition: all .35s ease;
     }
 
-    .side-btns button {
-        height: clamp(30px, 5vw, 70px);
-        width: clamp(30px, 5vw, 70px);
-        border-radius: 50%;
-        color: white;
-        background: rgba(128, 128, 128, 0.281);
-        border: none;
-        backdrop-filter: blur(50px);
-        position: absolute;
+    /* Hover */
+    .subscribe:hover {
+        background: #78be2c;
+        transform: translateY(-50%) translateY(-3px);
+        box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
+    .sotial-icons {
         display: flex;
-        justify-content: center;
+        gap: 20px;
+    }
+
+    .sotial-icons a {
+        width: 50px;
+        height: 50px;
+        display: flex;
         align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(98, 157, 36, .25);
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all .4s ease;
+    }
+
+    .sotial-icons a i {
+        font-size: 26px;
+        color: #629D24;
+        transition: all .4s ease;
+    }
+
+    /* Hover */
+    .sotial-icons a:hover {
+        background: #629D24;
+        border-color: #629D24;
+        transform: translateY(-8px) scale(1.08);
+        box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
+    .sotial-icons a:hover i {
+        color: #fff;
+        transform: rotate(360deg);
+    }
+
+    .footer2 h2,
+    .footer3 h2,
+    .footer4 h2 {
+        margin-bottom: 20px;
+        font-size: 25px;
+        color: white;
 
     }
 
-    .side-btns button:first-child {
-        top: 50%;
-        left: 2%;
-        transform: translateY(-50%);
+    .store-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .store-links a {
+        text-decoration: none;
+        font-size: 15px;
+        color: rgb(133, 133, 133);
+    }
+
+    .store-links a:hover {
+        color: var(--primariy-color);
+    }
+
+    .footer-details {
+        display: flex;
+        gap: 15px;
+    }
+
+    .footer-details span {
+        font-size: 30px;
+        color: var(--primariy-color);
+    }
+
+    .footer-details div p {
+        font-size: 15px;
+        margin-bottom: 4px;
+        color: rgb(133, 133, 133);
+        ;
+    }
+
+    .footer-details div p:last-child:hover {
+        color: var(--primariy-color);
+    }
+
+    .footer-section-bottom {
+        display: flex;
+        justify-content: space-around;
+        border-top: var(--border-color);
+        padding: 30px 30px;
+        align-items: center;
+    }
+
+    .footer-section-bottom p {
+        font-size: 15px;
+        color: rgb(133, 133, 133);
+        ;
+    }
+
+    .footer-section-bottom div {
+        display: flex;
+        gap: 10px;
     }
 
 
-    .side-btns button:last-child {
-        top: 50%;
-        right: 2%;
-        transform: translateY(-50%);
+    .footer-section-bottom div a {
+        text-decoration: none;
+        font-size: 15px;
+        color: rgb(133, 133, 133);
     }
 
-    @media (max-width:800px) {
-        .hero-section {
-            justify-content: center;
+    .footer-section-bottom div a:hover {
+        color: var(--primariy-color);
+    }
+
+    @media (max-width:1100px) {
+        .footer-section-top {
+            grid-template-columns: repeat(2, minmax(200px, 1fr));
         }
 
-        .hero-content {
-            padding-right: 0;
-            text-align: center;
-            padding: 15px;
+    }
+
+    @media (max-width:575px) {
+        .footer-section-top {
+            grid-template-columns: repeat(1, minmax(200px, 1fr));
+        }
+
+        .footer1 {
+            width: 100%;
+        }
+
+        .footer-section-bottom {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            gap: 10px;
         }
 
 
-        .hero-content p {
-            font-size: 15px;
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .hero-content p:first-child {
-            font-size: 15px;
-        }
-
-        .hero-content h1 {
-            font-size: 30px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .side-btns button span {
-            font-size: 18px;
-        }
-
-        .hero-btn {
-            font-size: 12px;
-            font-weight: bold;
-            padding: 5px 15px;
-            border-radius: 25px;
-        }
     }
 </style>
 
@@ -640,6 +791,9 @@
         </div>
 
         <div class="header-container3">
+            <div class="header-logo-container">
+                <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+            </div>
 
             <div class="header-menu-container">
 
@@ -694,7 +848,7 @@
                     <span class="material-symbols-outlined close-btn2">close</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="fresh.html">Fresh Grocery</a></li>
                     <li><a href="shop.html">Shop</a></li>
@@ -716,22 +870,94 @@
 
     </header>
 
-    <div class="hero-section">
+    <footer class="footer-section">
 
-        <div class="hero-content">
-            <p>Get up to 30% off on your first $150 purchase.</p>
-            <h1>Don't Miss Out on Our Best <br> Grocery Deals?</h1>
-            <p>We have Prepared Special Discounts for you on grocery products. <br> Don't miss these opportunities.</p>
-            <button class="hero-btn">Shop Now<span class="material-symbols-outlined">arrow_right_alt</span></button>
+        <div class="footer-section-top">
+            <div class="footer1">
+                <div class="footer-logo">
+                    <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+                </div>
+
+                <p>What's Inside:New Arrivals, Exclusive sales,News @ Mores</p>
+
+                <div class="subscribe-container">
+                    <input type="email" placeholder="Subscribe" id="footer-email">
+                    <button type="submit" class="subscribe">Subscribe</button>
+                </div>
+
+                <div class="sotial-icons">
+                    <a href="404.html"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+
+            </div>
+
+            <div class="footer2">
+                <h2>Our Stores</h2>
+
+                <div class="store-links">
+                    <a href="">Delivery Information</a>
+                    <a href="">Support Center</a>
+                    <a href="">Privacy Policy</a>
+                    <a href="">Terms @ Conditions</a>
+                    <a href="">Cookies Policy</a>
+                </div>
+            </div>
+
+            <div class="footer3">
+                <h2>Our Stores</h2>
+
+                <div class="store-links">
+                    <a href="">Home</a>
+                    <a href="">About</a>
+                    <a href="">Fresh grocery</a>
+                    <a href="">Shop</a>
+                    <a href="">Contact Us</a>
+                </div>
+            </div>
+
+            <div class="footer4">
+
+                <h2>Need Help?</h2>
+
+                <div class="store-links">
+                    <div class=" footer-details">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <div>
+                            <p>258 Daniel Street, 2589 Phones Line </p>
+                            <p>Berlin,Germany</p>
+                        </div>
+                    </div>
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">mail</span>
+                        <div>
+                            <p>258 Daniel Street, 2589 Phones Line </p>
+                            <p>admin@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">call</span>
+                        <div>
+                            <p>Live Chat Chat With an Experts</p>
+                            <p>+91 0987654321</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="side-btns">
-            <button><span class="material-symbols-outlined">arrow_left</span></button>
-            <button><span class="material-symbols-outlined">arrow_right</span></button>
+        <div class="footer-section-bottom">
+            <p>@2026 Stackly.All Rights Reserved</p>
+            <div>
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms & conditions</a>
+            </div>
         </div>
-    </div>
 
- 
+    </footer>
 
     <script>
         let navlink = document.querySelector(".nav-links")
@@ -776,7 +1002,7 @@
 
 
         window.addEventListener("resize", () => {
-            if (window.innerWidth > 1050) {
+            if (window.innerWidth > 1150) {
                 navlink.style.display = "flex"
                 closebtn.style.display = "none"
                 closebtn2.style.display = "none"
@@ -785,7 +1011,7 @@
 
             }
 
-            else if (window.innerWidth < 1050 && window.innerWidth > 650) {
+            else if (window.innerWidth < 1150 && window.innerWidth > 650) {
 
                 navlink.style.display = "none"
                 closebtn.style.display = "none"
@@ -823,6 +1049,35 @@
                 window.location.href = "404.html"
             })
         })
+
+        //footer js
+
+        const footeremail=document.querySelector("#footer-email")
+        const subscribebtn=document.querySelector(".subscribe")
+
+        subscribebtn.addEventListener("click",()=>{
+
+            let emailpattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(footeremail.value.trim()==""){
+                  alert("enter Your Email")
+            footeremail.focus()
+            return;
+            }
+          
+
+            if(!emailpattern.test(footeremail.value.trim())){
+                alert("pleae enter valid email")
+                footeremail.focus()
+                return;
+            }
+
+            alert("Subscribe Successfully!")
+
+            footeremail.value=""
+        })
+
+
 
 
 
