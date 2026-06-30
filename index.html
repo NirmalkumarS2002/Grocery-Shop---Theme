@@ -184,8 +184,8 @@
         padding-right: 5%;
     }
 
-    .category-container:hover{
-               box-shadow: 0 0 10px rgba(19, 19, 19, 0.226);
+    .category-container:hover {
+        box-shadow: 0 0 10px rgba(19, 19, 19, 0.226);
     }
 
     .category-container span {
@@ -270,7 +270,7 @@
     }
 
     .header-icons-container div:hover {
-         box-shadow: 0 0 10px rgba(19, 19, 19, 0.226);
+        box-shadow: 0 0 10px rgba(19, 19, 19, 0.226);
     }
 
     .header-icons-container div span {
@@ -548,12 +548,28 @@
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
+        animation: fadeIn .8s ease;
+    }
+
+    .hero-section.fade {
+        animation: fadeIn .8s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: .4;
+            transform: scale(1.05);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 
     .hero-content {
         font-family: "DM Sans", sans-serif;
         padding-right: 150px;
-
     }
 
 
@@ -904,7 +920,7 @@
         color: rgb(133, 133, 133);
     }
 
-    .footer-section-bottom div a:hover{
+    .footer-section-bottom div a:hover {
         color: var(--primariy-color);
     }
 
@@ -1054,8 +1070,8 @@
         </div>
 
         <div class="side-btns">
-            <button><span class="material-symbols-outlined">arrow_left</span></button>
-            <button><span class="material-symbols-outlined">arrow_right</span></button>
+            <button class="left-btn"><span class="material-symbols-outlined">arrow_left</span></button>
+            <button class="right-btn"><span class="material-symbols-outlined">arrow_right</span></button>
         </div>
     </div>
 
@@ -1071,7 +1087,7 @@
 
                 <div class="subscribe-container">
                     <input type="email" placeholder="Subscribe" id="footer-email">
-                    <button class="subscribe">Subscribe</button>
+                    <button type="submit" class="subscribe">Subscribe</button>
                 </div>
 
                 <div class="sotial-icons">
@@ -1238,6 +1254,75 @@
                 window.location.href = "404.html"
             })
         })
+
+        //footer js
+
+        const footeremail=document.querySelector("#footer-email")
+        const subscribebtn=document.querySelector(".subscribe")
+
+        subscribebtn.addEventListener("click",()=>{
+
+            let emailpattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(footeremail.value.trim()==""){
+                  alert("enter Your Email")
+            footeremail.focus()
+            return;
+            }
+          
+
+            if(!emailpattern.test(footeremail.value.trim())){
+                alert("pleae enter valid email")
+                footeremail.focus()
+                return;
+            }
+
+            alert("Subscribe Successfully!")
+
+            footeremail.value=""
+        })
+
+        //hero-section
+        let herobg = document.querySelector('.hero-section')
+        let leftbtn = document.querySelector(".left-btn")
+        let rightbtn = document.querySelector(".right-btn")
+        let image = ["./src/hero1.webp", "./src/hero2.webp"]
+        index = 0;
+
+        function changeHero() {
+            herobg.classList.remove("fade");
+            void herobg.offsetWidth;   // animation restart
+            herobg.style.backgroundImage =`linear-gradient(125deg, rgba(0,128,0,.38), rgba(0,128,0,.15)),url(${image[index]})`;
+            herobg.classList.add("fade");
+        }
+
+
+
+        rightbtn.addEventListener("click", () => {
+            index++;
+            if (index >= image.length) {
+                index = 0;
+            }
+            changeHero();
+        });
+
+        leftbtn.addEventListener("click", () => {
+            index--;
+            if (index < 0) {
+                index = image.length - 1;
+            }
+         changeHero();
+
+        });
+
+        setInterval(() => {
+           index++;
+            if (index >= image.length) {
+                index = 0;
+            }
+            changeHero();
+        }, 2000);
+
 
 
 
