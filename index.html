@@ -28,6 +28,7 @@
     :root {
         --border-color: 1px solid rgba(128, 128, 128, 0.425);
         --header-bg-color: #F3F4F6;
+        --primariy-color:#629D24;
     }
 
     html,
@@ -612,9 +613,17 @@
     /*footer*/
 
     .footer-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: #1A1A1A;
+
+    }
+
+    .footer-section-top {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        padding: 30px 30px;
+        padding: 60px 30px;
         gap: 20px;
     }
 
@@ -624,7 +633,7 @@
         width: 80%;
     }
 
-    .footer-logo img{
+    .footer-logo img {
         width: 200px;
     }
 
@@ -637,6 +646,7 @@
         line-height: 1.5;
         max-width: 300px;
         margin-bottom: 20px;
+        color: rgb(133, 133, 133);;
     }
 
     .subscribe-container {
@@ -645,33 +655,85 @@
     }
 
     .subscribe-container input {
-        padding: 10px 20px;
+        padding: 15px 20px;
         width: 100%;
-
+        border-radius: 6px;
+        border: none;
+        background: #639d2436;
+        color: white;
     }
 
-    .subscribe {
-        position: absolute;
-        right: 5px;
-        top: 50%;
-        transform: translateY(-50%);
-        padding: 6px 20px;
-    }
+        .subscribe-container input:focus{
+            border: 1px solid var(--primariy-color);
+            outline: none;
+        }
 
-    .sotial-icons {
-        display: flex;
-        gap: 10px;
-    }
+      .subscribe-container input::placeholder{
+        color: gray;
+      }
+.subscribe{
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: #629D24;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: all .35s ease;
+}
 
-    .sotial-icons a i {
-        font-size: 30px;
-    }
+/* Hover */
+.subscribe:hover{
+    background: #78be2c;
+    transform: translateY(-50%) translateY(-3px);
+    box-shadow: 0 10px 25px rgba(98,157,36,.45);
+}
+
+    .sotial-icons{
+    display: flex;
+    gap: 20px;
+}
+
+.sotial-icons a{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(98,157,36,.25);
+    border-radius: 50%;
+    text-decoration: none;
+    transition: all .4s ease;
+}
+
+.sotial-icons a i{
+    font-size: 26px;
+    color: #629D24;
+    transition: all .4s ease;
+}
+
+/* Hover */
+.sotial-icons a:hover{
+    background: #629D24;
+    border-color: #629D24;
+    transform: translateY(-8px) scale(1.08);
+    box-shadow: 0 10px 25px rgba(98,157,36,.45);
+}
+
+.sotial-icons a:hover i{
+    color: #fff;
+    transform: rotate(360deg);
+}
 
     .footer2 h2,
     .footer3 h2,
     .footer4 h2 {
         margin-bottom: 20px;
         font-size: 25px;
+        color: white;
 
     }
 
@@ -684,6 +746,11 @@
     .store-links a {
         text-decoration: none;
         font-size: 15px;
+        color: rgb(133, 133, 133);
+    }
+
+     .store-links a:hover {
+        color: var(--primariy-color);
     }
 
     .footer-details {
@@ -691,25 +758,66 @@
         gap: 15px;
     }
 
+    .footer-details span {
+        font-size: 30px;
+        color: var(--primariy-color);
+    }
+
     .footer-details div p {
         font-size: 15px;
         margin-bottom: 4px;
+        color: rgb(133, 133, 133);;
+    }
+
+      .footer-details div p:last-child:hover{
+        color: var(--primariy-color);
+      }
+
+    .footer-section-bottom {
+        display: flex;
+        justify-content: space-around;
+        border-top: var(--border-color);
+        padding: 30px 30px;
+        align-items: center;
+    }
+
+    .footer-section-bottom p {
+        font-size: 15px;
+           color: rgb(133, 133, 133);;
+    }
+
+    .footer-section-bottom div {
+        display: flex;
+        gap: 10px;
+    }
+
+
+    .footer-section-bottom div a {
+        text-decoration: none;
+        font-size: 15px;
+           color: rgb(133, 133, 133);
     }
 
     @media (max-width:1100px) {
-        .footer-section {
+        .footer-section-top {
             grid-template-columns: repeat(2, minmax(200px, 1fr));
         }
 
     }
 
     @media (max-width:575px) {
-        .footer-section {
+        .footer-section-top {
             grid-template-columns: repeat(1, minmax(200px, 1fr));
         }
 
         .footer1 {
             width: 100%;
+        }
+
+        .footer-section-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
 
@@ -843,78 +951,88 @@
 
     <footer class="footer-section">
 
-        <div class="footer1">
-            <div class="footer-logo">
-                <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
-            </div>
-
-            <p>What's Inside:New Arrivals, Exclusive sales,News @ Mores</p>
-
-            <div class="subscribe-container">
-                <input type="email" placeholder="Subscribe" id="footer-email">
-                <button class="subscribe">Subscribe</button>
-            </div>
-
-            <div class="sotial-icons">
-                <a href="404.html"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="404.html"><i class="fa-brands fa-facebook"></i></a>
-                <a href="404.html"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-
-        </div>
-
-        <div class="footer2">
-            <h2>Our Stores</h2>
-
-            <div class="store-links">
-                <a href="">Delivery Information</a>
-                <a href="">Support Center</a>
-                <a href="">Privacy Policy</a>
-                <a href="">Terms @ Conditions</a>
-                <a href="">Cookies Policy</a>
-            </div>
-        </div>
-
-        <div class="footer3">
-            <h2>Our Stores</h2>
-
-            <div class="store-links">
-                <a href="">Home</a>
-                <a href="">About</a>
-                <a href="">Fresh grocery</a>
-                <a href="">Shop</a>
-                <a href="">Contact Us</a>
-            </div>
-        </div>
-
-        <div class="footer4">
-
-            <h2>Need Help?</h2>
-
-            <div class="store-links">
-                <div class=" footer-details">
-                    <span class="material-symbols-outlined">location_on</span>
-                    <div>
-                        <p>258 Daniel Street, 2589 Phones Line </p>
-                        <p>Berlin,Germany</p>
-                    </div>
-                </div>
-                <div class="footer-details">
-                    <span class="material-symbols-outlined">mail</span>
-                    <div>
-                        <p>258 Daniel Street, 2589 Phones Line </p>
-                        <p>admin@gmail.com</p>
-                    </div>
+        <div class="footer-section-top">
+            <div class="footer1">
+                <div class="footer-logo">
+                    <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
                 </div>
 
-                <div class="footer-details">
-                    <span class="material-symbols-outlined">call</span>
-                    <div>
-                        <p>Live Chat Chat With an Experts</p>
-                        <p>+91 0987654321</p>
+                <p>What's Inside:New Arrivals, Exclusive sales,News @ Mores</p>
+
+                <div class="subscribe-container">
+                    <input type="email" placeholder="Subscribe" id="footer-email">
+                    <button class="subscribe">Subscribe</button>
+                </div>
+
+                <div class="sotial-icons">
+                    <a href="404.html"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+
+            </div>
+
+            <div class="footer2">
+                <h2>Our Stores</h2>
+
+                <div class="store-links">
+                    <a href="">Delivery Information</a>
+                    <a href="">Support Center</a>
+                    <a href="">Privacy Policy</a>
+                    <a href="">Terms @ Conditions</a>
+                    <a href="">Cookies Policy</a>
+                </div>
+            </div>
+
+            <div class="footer3">
+                <h2>Our Stores</h2>
+
+                <div class="store-links">
+                    <a href="">Home</a>
+                    <a href="">About</a>
+                    <a href="">Fresh grocery</a>
+                    <a href="">Shop</a>
+                    <a href="">Contact Us</a>
+                </div>
+            </div>
+
+            <div class="footer4">
+
+                <h2>Need Help?</h2>
+
+                <div class="store-links">
+                    <div class=" footer-details">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <div>
+                            <p>258 Daniel Street, 2589 Phones Line </p>
+                            <p>Berlin,Germany</p>
+                        </div>
+                    </div>
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">mail</span>
+                        <div>
+                            <p>258 Daniel Street, 2589 Phones Line </p>
+                            <p>admin@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">call</span>
+                        <div>
+                            <p>Live Chat Chat With an Experts</p>
+                            <p>+91 0987654321</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="footer-section-bottom">
+            <p>@2026 Stackly.All Rights Reserved</p>
+            <div>
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms & conditions</a>
             </div>
         </div>
 
