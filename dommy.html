@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - Grocery Shop</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    :root {
+        --border-color: 1px solid rgba(128, 128, 128, 0.425);
+        --header-bg-color: #F3F4F6;
+    }
+
+    html,
+    body {
+        overflow-x: hidden;
+                font-family: "DM Sans", sans-serif;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* header 1*/
+
+    .header-section {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 5%;
+        background: #629D23;
+    }
+
+    .header-container p,
+    .header-container a {
+        text-decoration: none;
+        font-size: 15px;
+        color: white;
+    }
+
+    .header-link a:first-child {
+        margin-right: 20px;
+    }
+
+    @media (max-width:600px) {
+        .header-container {
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 5%;
+        }
+
+        .header-container p,
+        .header-container a {
+            font-size: 13px;
+        }
+    }
+
+    /* header 2*/
+
+    .header-container2 {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 5%;
+        border-bottom: var(--border-color);
+    }
+
+    .accout-contaner {
+        border-right: var(--border-color);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-right: 20px;
+    }
+
+    .accout-contaner a {
+        text-decoration: none;
+        font-size: 14px;
+        color: gray;
+        padding-block: 15px;
+
+    }
+
+    .deliver-container {
+        display: flex;
+        align-items: center;
+        color: gray;
+        font-size: 14px;
+    }
+
+    .track-container {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .track-container a {
+        text-decoration: none;
+        color: gray;
+        font-size: 14px;
+        padding-block: 15px;
+        padding-inline: 20px;
+    }
+
+    .track-container a:first-child {
+        border-inline: var(--border-color);
+    }
+
+    .track-container a:nth-child(2) {
+        border-right: var(--border-color);
+    }
+
+    @media (max-width:950px) {
+        .header-container2 {
+            display: none;
+        }
+
+    }
+
+
+
+
+    /* header 3*/
+
+    .header-container3 {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 5%;
+        padding-block: 20px;
+        gap: 20px;
+    }
+
+    .header-logo-container img {
+        width: 200px;
+    }
+
+    .header-menu-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        width: 50%;
+    }
+
+    .category-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 14px 22px;
+        border-radius: 7px;
+        background: var(--header-bg-color);
+        padding-right: 5%;
+    }
+
+    .category-container span {
+        font-size: 20px;
+    }
+
+    .category-container a {
+        color: black;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: center;
+
+    }
+
+    .search-container input {
+        padding: 15px 40px;
+        border: 1px solid green;
+        border-radius: 7px;
+        font-size: 15px;
+        background: var(--header-bg-color);
+        width: clamp(200px, 30vw, 400px);
+    }
+
+    .search-container input:focus {
+        box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.507);
+        border: 1px solid green;
+        outline: none;
+    }
+
+
+    .search-menu {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .search-btn {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        padding: 12px 20px;
+        transform: translateY(-50%);
+        border: none;
+        background: #629D23;
+        color: white;
+        border-radius: 7px;
+    }
+
+    .header-icons-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-icons-container div:last-child {
+        display: none;
+    }
+
+    .header-icons-container div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 20px;
+        border: var(--border-color);
+        border-radius: 7px;
+        box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.247);
+    }
+
+    .header-icons-container div span {
+        font-size: 20px;
+    }
+
+    .header-icons-container div p {
+        font-size: 15px;
+    }
+
+
+    @media (max-width:1385px) {
+        .category-container {
+            display: none;
+        }
+
+        .header-icons-container div:nth-child(2) {
+            display: none;
+        }
+    }
+
+    @media (max-width:950px) {
+        .header-menu-container {
+            display: none;
+        }
+    }
+
+    @media (max-width:600px) {
+
+
+        .header-container3 {
+
+            padding-block: 10px;
+        }
+
+        .header-logo-container img {
+            width: 150px;
+        }
+
+
+        .header-icons-container div span {
+            font-size: 17px;
+        }
+
+        .header-icons-container div p {
+            font-size: 13px;
+        }
+
+        .header-icons-container div {
+            padding: 10px 15px;
+
+        }
+
+    }
+
+    @media (max-width:450px) {
+        .header-icons-container div {
+            padding: 5px 5px;
+
+        }
+
+        .header-icons-container div p {
+            display: none;
+        }
+
+    }
+
+    /*  header container4*/
+
+    .header-container4 {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 5%;
+        background: var(--header-bg-color);
+    }
+
+    .menubar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-btns {
+        display: flex;
+        align-items: center;
+    }
+
+    .open-btn {
+        display: none;
+        font-size: 25px;
+    }
+
+    .close-btn {
+        display: none;
+        font-size: 25px;
+    }
+
+    .close-btn2 {
+        display: none;
+        font-size: 25px;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 20px;
+    }
+
+    .nav-links li {
+        list-style: none;
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        font-size: 16px;
+        color: black;
+    }
+
+    .trinding-container {
+        display: flex;
+        justify-content: flex-end;
+
+    }
+
+
+    .trend-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 20px 60px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .trend-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-top: 25px solid #629D24;
+        border-left: 40px solid transparent;
+    }
+
+
+
+    .trend-container a {
+        text-decoration: none;
+        font-size: 16px;
+        color: black;
+    }
+
+    .offer-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        background: #629D24;
+        padding: 20px 20px;
+    }
+
+    .offer-container p {
+        font-size: 15px;
+        color: rgb(255, 255, 255);
+    }
+
+    .offer-container a {
+        text-decoration: none;
+        background: white;
+        padding: 3px 20px;
+        border-radius: 20px;
+        font-size: 14px;
+        color: green;
+    }
+
+    @media (max-width:1050px) {
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            background: white;
+            height: 100vh;
+            width: 320px;
+            align-items: flex-start;
+            z-index: 1000;
+            justify-content: flex-start;
+            padding: 60px 40px;
+        }
+
+        .nav-btns {
+            display: flex;
+        }
+
+        .open-btn {
+            display: block;
+        }
+
+        .close-btn {
+            display: none;
+            z-index: 10001;
+            position: absolute;
+            top: 0;
+            left: 240px;
+            padding: 15px 40px;
+        }
+
+        .close-btn2 {
+            display: none;
+            z-index: 10001;
+            position: absolute;
+            top: 0;
+            left: 240px;
+            padding: 15px 40px;
+        }
+    }
+
+    @media (max-width:650px) {
+        .header-icons-container div:last-child {
+            display: flex;
+        }
+
+        .trinding-container {
+            display: none;
+        }
+
+        .open-btn {
+            display: none;
+        }
+
+        .header-container3 {
+            border-bottom: var(--border-color);
+        }
+    }
+
+    /*Hero section*/
+
+    .hero-section {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: 75vh;
+        background: linear-gradient(125deg, rgba(0, 128, 0, 0.384), rgba(0, 128, 0, 0.144)), url("./src/hero1.webp");
+        background-position: top center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+    }
+
+    .hero-content {
+        font-family: "DM Sans", sans-serif;
+        padding-right: 150px;
+
+    }
+
+
+    .hero-content p {
+        font-size: 17px;
+        margin-bottom: 20px;
+        line-height: 1.8;
+        color: white;
+    }
+
+    .hero-content p:first-child {
+        color: green;
+    }
+
+    .hero-content h1 {
+        font-size: clamp(30px, 4vw, 50px);
+        line-height: 1.3;
+        margin-bottom: 20px;
+    }
+
+    .hero-btn {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 25px;
+        background: #629D24;
+        border: none;
+        gap: 5px;
+        color: white;
+    }
+
+    .side-btns button {
+        height: clamp(30px, 5vw, 70px);
+        width: clamp(30px, 5vw, 70px);
+        border-radius: 50%;
+        color: white;
+        background: rgba(128, 128, 128, 0.281);
+        border: none;
+        backdrop-filter: blur(50px);
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .side-btns button:first-child {
+        top: 50%;
+        left: 2%;
+        transform: translateY(-50%);
+    }
+
+
+    .side-btns button:last-child {
+        top: 50%;
+        right: 2%;
+        transform: translateY(-50%);
+    }
+
+    @media (max-width:800px) {
+        .hero-section {
+            justify-content: center;
+        }
+
+        .hero-content {
+            padding-right: 0;
+            text-align: center;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+
+        .hero-content p {
+            font-size: 15px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .hero-content p:first-child {
+            font-size: 15px;
+        }
+
+        .hero-content h1 {
+            font-size: 30px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .side-btns button span {
+            font-size: 18px;
+        }
+
+        .hero-btn {
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px 15px;
+            border-radius: 25px;
+        }
+    }
+
+
+/*added section body{font-family:'DM Sans',sans-serif;background:var(--surface-0);color:var(--text-primary)}*/
+
+
+.g-green{color:#3a7d0a}
+.btn-green{background:#4a8f0d;color:#fff;border:none;border-radius:8px;cursor:pointer;font-weight:500}
+.btn-outline{background:transparent;color:#4a8f0d;border:1.5px solid #4a8f0d;border-radius:8px;cursor:pointer;font-weight:500}
+.section-label{font-size:13px;font-weight:600;color:#4a8f0d;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-size:28px;font-weight:700;color:var(--text-primary);margin-bottom:6px;line-height:1.25}
+.section-sub{font-size:15px;color:var(--text-secondary);margin-bottom:32px}
+
+/* 1. HERO */
+.hero{position:relative;border-radius:16px;overflow:hidden;height:420px;display:flex;align-items:center;margin-bottom:56px}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=80') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(20,40,5,0.82) 40%,rgba(20,40,5,0.15))}
+.hero-content{position:relative;padding:0 56px;max-width:560px}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.15);color:#b7f47a;border:1px solid rgba(183,244,122,0.35);border-radius:20px;font-size:13px;font-weight:600;padding:5px 16px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero-content h1{font-size:38px;font-weight:800;color:#fff;line-height:1.18;margin-bottom:14px}
+.hero-content p{font-size:15px;color:rgba(255,255,255,0.75);margin-bottom:28px;line-height:1.7}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap}
+.hero-btns .btn-green{padding:13px 28px;font-size:15px;border-radius:30px}
+.hero-btns .btn-ghost{background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.3);border-radius:30px;padding:13px 24px;font-size:15px;cursor:pointer;backdrop-filter:blur(4px)}
+.hero-stats{display:flex;gap:32px;margin-top:32px}
+.hero-stat span{display:block;font-size:22px;font-weight:800;color:#b7f47a}
+.hero-stat p{font-size:12px;color:rgba(255,255,255,0.6);margin-top:2px}
+.hero-img-card{position:absolute;right:60px;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2);border-radius:16px;padding:20px 24px;backdrop-filter:blur(12px);min-width:190px}
+.hero-img-card .tag{font-size:11px;color:#b7f47a;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px}
+.hero-img-card .price{font-size:26px;font-weight:800;color:#fff}
+.hero-img-card .old{font-size:14px;color:rgba(255,255,255,0.45);text-decoration:line-through;margin-top:2px}
+
+/* 2. CATEGORIES */
+.section{margin-bottom:64px}
+.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.cat-card{border-radius:14px;overflow:hidden;cursor:pointer;border:1px solid var(--border);transition:transform 0.2s;background:var(--surface-2)}
+.cat-card:hover{transform:translateY(-4px)}
+.cat-img{width:100%;aspect-ratio:1;object-fit:cover}
+.cat-label{padding:10px;font-size:13px;font-weight:600;text-align:center;color:var(--text-primary)}
+
+/* 3. DEALS */
+.deals-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.deal-banner{border-radius:16px;overflow:hidden;position:relative;min-height:200px;display:flex;align-items:flex-end;cursor:pointer}
+.deal-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.deal-banner .deal-content{position:relative;background:linear-gradient(0deg,rgba(10,25,5,0.88) 40%,transparent);padding:20px 22px;width:100%}
+.deal-banner .discount{display:inline-block;background:#ea4335;color:#fff;border-radius:20px;font-size:12px;font-weight:700;padding:3px 12px;margin-bottom:6px}
+.deal-banner h3{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px}
+.deal-banner p{font-size:13px;color:rgba(255,255,255,0.6)}
+.deal-banner.big{grid-row:span 2;min-height:420px}
+
+/* 4. PRODUCTS */
+.products-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.tab-pills{display:flex;gap:8px}
+.tab-pill{padding:7px 18px;border-radius:20px;font-size:13px;font-weight:500;cursor:pointer;border:1px solid var(--border);color:var(--text-secondary);background:var(--surface-2)}
+.tab-pill.active{background:#4a8f0d;color:#fff;border-color:#4a8f0d}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.prod-card{border-radius:14px;border:1px solid var(--border);background:var(--surface-2);overflow:hidden;transition:box-shadow 0.2s}
+.prod-card:hover{box-shadow:0 4px 20px rgba(74,143,13,0.12)}
+.prod-img-wrap{position:relative;overflow:hidden}
+.prod-img-wrap img{width:100%;aspect-ratio:1;object-fit:cover;transition:transform 0.3s}
+.prod-card:hover .prod-img-wrap img{transform:scale(1.06)}
+.prod-badge{position:absolute;top:10px;left:10px;background:#ea4335;color:#fff;border-radius:20px;font-size:11px;font-weight:700;padding:3px 10px}
+.prod-wish{position:absolute;top:10px;right:10px;width:32px;height:32px;border-radius:50%;background:var(--surface-2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px}
+.prod-info{padding:14px}
+.prod-cat{font-size:11px;color:#4a8f0d;font-weight:600;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px}
+.prod-name{font-size:14px;font-weight:600;color:var(--text-primary);margin-bottom:8px;line-height:1.3}
+.prod-rating{display:flex;align-items:center;gap:5px;margin-bottom:10px}
+.stars{color:#f59e0b;font-size:13px}
+.rating-count{font-size:12px;color:var(--text-muted)}
+.prod-footer{display:flex;align-items:center;justify-content:space-between}
+.prod-price{font-size:17px;font-weight:800;color:#4a8f0d}
+.prod-old{font-size:12px;color:var(--text-muted);text-decoration:line-through;margin-left:4px}
+.add-btn{width:32px;height:32px;border-radius:8px;background:#4a8f0d;color:#fff;border:none;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:300}
+
+/* 5. BANNER */
+.promo-banner{border-radius:20px;overflow:hidden;position:relative;height:260px;display:flex;align-items:center;margin-bottom:64px}
+.promo-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.promo-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,60,10,0.88) 40%,rgba(10,60,10,0.1))}
+.promo-content{position:relative;padding:0 60px}
+.promo-content .label{font-size:12px;font-weight:700;color:#b7f47a;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.promo-content h2{font-size:30px;font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px}
+.promo-content p{font-size:15px;color:rgba(255,255,255,0.7);margin-bottom:22px}
+.promo-content button{background:#fff;color:#2d6b05;border:none;border-radius:25px;padding:12px 28px;font-size:14px;font-weight:700;cursor:pointer}
+
+/* 6. FEATURES */
+.features-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.feat-card{border-radius:16px;border:1px solid var(--border);background:var(--surface-2);padding:28px 22px;text-align:center}
+.feat-icon{width:56px;height:56px;border-radius:14px;background:#eaf5d5;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:26px}
+.feat-card h3{font-size:15px;font-weight:700;color:var(--text-primary);margin-bottom:6px}
+.feat-card p{font-size:13px;color:var(--text-secondary);line-height:1.6}
+
+/* 7. TESTIMONIALS */
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.testi-card{border-radius:16px;border:1px solid var(--border);background:var(--surface-2);padding:28px 24px}
+.testi-stars{color:#f59e0b;font-size:16px;margin-bottom:14px}
+.testi-text{font-size:14px;color:var(--text-secondary);line-height:1.7;margin-bottom:20px;font-style:italic}
+.testi-user{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.testi-name{font-size:14px;font-weight:700;color:var(--text-primary)}
+.testi-meta{font-size:12px;color:var(--text-muted);margin-top:1px}
+.testi-verified{display:flex;align-items:center;gap:4px;color:#4a8f0d;font-size:11px;font-weight:600;margin-top:3px}
+
+.view-all{color:#4a8f0d;font-size:14px;font-weight:600;cursor:pointer;background:none;border:none}
+</style>
+
+<body>
+
+    <header class="header-section">
+
+        <div class="header-container">
+            <p>Welcome to our Stackly Grocery Store!</p>
+            <div class="header-link">
+                <a href="404.html">Need help?</a>
+                <a href="404.html">order-tracking</a>
+            </div>
+        </div>
+
+        <div class="header-container2">
+            <div class="accout-contaner">
+                <a href="404.html">About</a>
+                <a href="404.html">My account</a>
+                <a href="404.html">wishlist</a>
+            </div>
+
+            <div class="deliver-container">
+                <p>We deliver to Your Order Everyday form 7:00 to 22:00 </p>
+            </div>
+
+            <div class="track-container">
+                <a href="404.html">English</a>
+                <a href="404.html">USD</a>
+                <a href="404.html">Track Order</a>
+            </div>
+        </div>
+
+        <div class="header-container3">
+
+            <div class="header-menu-container">
+
+                <div class="category-container errorpage">
+                    <span class="material-symbols-outlined">filter_list</span>
+                    <a href="404.html">Categories</a>
+                </div>
+
+                <div class="search-container">
+                    <span class="material-symbols-outlined search-menu">search</span>
+                    <input type="search" placeholder="Search For Products">
+                    <button class="search-btn errorpage">Search</button>
+                </div>
+
+            </div>
+
+            <div class="header-icons-container">
+
+                <div class="login-btn">
+                    <span class="material-symbols-outlined">person</span>
+                    <P>Login</P>
+                </div>
+
+                <div class="errorpage">
+                    <span class="material-symbols-outlined">favorite</span>
+                    <p>Wishlist</p>
+
+                </div>
+
+                <div class="errorpage">
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                    <p>Cart</p>
+                </div>
+
+
+                <div>
+                    <span class="material-symbols-outlined open-btn2">menu</span>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="header-container4">
+
+            <div class="menubar">
+
+                <div class="nav-btns">
+                    <span class="material-symbols-outlined open-btn">menu</span>
+                    <span class="material-symbols-outlined close-btn">close</span>
+                    <span class="material-symbols-outlined close-btn2">close</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="fresh.html">Fresh Grocery</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+
+            <div class="trinding-container">
+                <div class="trend-container">
+                    <a href="404.html">Trending Products</a>
+                </div>
+
+                <div class="offer-container">
+                    <p>Get 30% Discont Now</p><a href="404.html">Sale</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="hero-section">
+
+        <div class="hero-content">
+            <p>Get up to 30% off on your first $150 purchase.</p>
+            <h1>Don't Miss Out on Our Best <br> Grocery Deals?</h1>
+            <p>We have Prepared Special Discounts for you on grocery products. <br> Don't miss these opportunities.</p>
+            <button class="hero-btn">Shop Now<span class="material-symbols-outlined">arrow_right_alt</span></button>
+        </div>
+
+        <div class="side-btns">
+            <button><span class="material-symbols-outlined">arrow_left</span></button>
+            <button><span class="material-symbols-outlined">arrow_right</span></button>
+        </div>
+    </div>
+
+
+    <div style="padding:32px 28px;max-width:90%;margin:0 auto">
+
+<!-- SECTION 1: HERO -->
+<div class="hero" style="margin-bottom:56px">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">New Arrivals Every Morning</div>
+    <h1>Fresh From<br>Farm to Your<br>Doorstep</h1>
+    <p>Premium organic groceries delivered<br>in under 60 minutes. No compromise.</p>
+    <div class="hero-btns">
+      <button class="btn-green">Shop Now</button>
+      <button class="hero-btns btn-ghost" style="background:rgba(255,255,255,0.12);color:#fff;border:1.5px solid rgba(255,255,255,0.3);border-radius:30px;padding:13px 24px;font-size:15px;cursor:pointer">View Deals</button>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><span>5K+</span><p>Products</p></div>
+      <div class="hero-stat"><span>99%</span><p>Organic</p></div>
+      <div class="hero-stat"><span>60min</span><p>Delivery</p></div>
+    </div>
+  </div>
+  <div class="hero-img-card">
+    <div class="tag">Today's Offer</div>
+    <div style="font-size:15px;color:#b7f47a;font-weight:600;margin-bottom:6px">Fresh Veggies</div>
+    <div class="price">$4.99<span style="font-size:14px;font-weight:400">/kg</span></div>
+    <div class="old">Was $7.49</div>
+    <div style="margin-top:14px;background:#4a8f0d;color:#fff;border-radius:20px;padding:6px 16px;font-size:12px;font-weight:700;text-align:center">33% OFF</div>
+  </div>
+</div>
+
+<!-- SECTION 2: CATEGORIES -->
+<div class="section">
+  <div class="section-label">Browse by type</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+    <div class="section-title" style="margin-bottom:0">Shop by Category</div>
+    <button class="view-all">View all categories →</button>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&q=80" alt="Fruits">
+      <div class="cat-label">Fruits</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=300&q=80" alt="Vegetables">
+      <div class="cat-label">Veggies</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=300&q=80" alt="Dairy">
+      <div class="cat-label">Dairy</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=300&q=80" alt="Bakery">
+      <div class="cat-label">Bakery</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=300&q=80" alt="Beverages">
+      <div class="cat-label">Drinks</div>
+    </div>
+    <div class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?w=300&q=80" alt="Snacks">
+      <div class="cat-label">Snacks</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: DEALS BANNERS -->
+<div class="section">
+  <div class="section-label">Limited time</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+    <div class="section-title" style="margin-bottom:0">Hot Deals Today</div>
+    <button class="view-all">See all deals →</button>
+  </div>
+  <div class="deals-grid">
+    <div class="deal-banner big">
+      <img src="https://images.unsplash.com/photo-1518843875459-f738682238a6?w=600&q=80" alt="Fruits deal">
+      <div class="deal-content">
+        <div class="discount">UP TO 40% OFF</div>
+        <h3>Fresh Tropical Fruits</h3>
+        <p>Mangoes, pineapples & more</p>
+        <button class="btn-green" style="margin-top:12px;padding:9px 22px;font-size:13px;border-radius:20px">Shop Now</button>
+      </div>
+    </div>
+    <div class="deal-banner">
+      <img src="https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=500&q=80" alt="Dairy">
+      <div class="deal-content">
+        <div class="discount">25% OFF</div>
+        <h3>Organic Dairy Bundle</h3>
+        <p>Milk, cheese & yogurt</p>
+      </div>
+    </div>
+    <div class="deal-banner">
+      <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=500&q=80" alt="Vegetables">
+      <div class="deal-content">
+        <div class="discount">BUY 2 GET 1</div>
+        <h3>Farm Fresh Veggies</h3>
+        <p>Tomatoes, spinach & more</p>
+      </div>
+    </div>
+    <div class="deal-banner">
+      <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&q=80" alt="Bakery">
+      <div class="deal-content">
+        <div class="discount">30% OFF</div>
+        <h3>Artisan Bakery</h3>
+        <p>Breads, croissants & pastries</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: PRODUCTS -->
+<div class="section">
+  <div class="section-label">Hand picked</div>
+  <div class="products-header">
+    <div class="section-title" style="margin-bottom:0">Popular Products</div>
+    <div class="tab-pills">
+      <div class="tab-pill active">All</div>
+      <div class="tab-pill">Organic</div>
+      <div class="tab-pill">New</div>
+      <div class="tab-pill">Sale</div>
+    </div>
+  </div>
+  <div class="products-grid">
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&q=80" alt="Apple">
+        <div class="prod-badge">-20%</div>
+        <div class="prod-wish">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Fruits</div>
+        <div class="prod-name">Royal Gala Apples</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-count">(128)</span></div>
+        <div class="prod-footer">
+          <div><span class="prod-price">$3.49</span><span class="prod-old">$4.39</span></div>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1597362925123-77861d3fbac7?w=400&q=80" alt="Broccoli">
+        <div class="prod-wish">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Vegetables</div>
+        <div class="prod-name">Organic Broccoli</div>
+        <div class="prod-rating"><span class="stars">★★★★☆</span><span class="rating-count">(89)</span></div>
+        <div class="prod-footer">
+          <div><span class="prod-price">$2.29</span></div>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1587486913049-53fc88980cfc?w=400&q=80" alt="Strawberries">
+        <div class="prod-badge">New</div>
+        <div class="prod-wish">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Fruits</div>
+        <div class="prod-name">Fresh Strawberries</div>
+        <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-count">(245)</span></div>
+        <div class="prod-footer">
+          <div><span class="prod-price">$4.99</span><span class="prod-old">$6.49</span></div>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="prod-card">
+      <div class="prod-img-wrap">
+        <img src="https://images.unsplash.com/photo-1571689936114-b01d714c5e33?w=400&q=80" alt="Yogurt">
+        <div class="prod-wish">♡</div>
+      </div>
+      <div class="prod-info">
+        <div class="prod-cat">Dairy</div>
+        <div class="prod-name">Greek Yogurt 500g</div>
+        <div class="prod-rating"><span class="stars">★★★★☆</span><span class="rating-count">(67)</span></div>
+        <div class="prod-footer">
+          <div><span class="prod-price">$3.89</span></div>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:28px">
+    <button class="btn-outline" style="padding:12px 36px;font-size:15px">Load More Products</button>
+  </div>
+</div>
+
+<!-- SECTION 5: PROMO BANNER -->
+<div class="promo-banner">
+  <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=1200&q=80" alt="Fresh produce">
+  <div class="promo-overlay"></div>
+  <div class="promo-content">
+    <div class="label">Weekend Special</div>
+    <h2>Get 30% Off Your<br>First Order Over $50</h2>
+    <p>Use code <strong style="color:#b7f47a">FRESH30</strong> at checkout. Valid this weekend only.</p>
+    <button>Claim Offer</button>
+  </div>
+</div>
+
+<!-- SECTION 6: FEATURES -->
+<div class="section">
+  <div class="section-label">Why choose us</div>
+  <div class="section-title">The Stackly Difference</div>
+  <div class="section-sub">Everything you need, delivered the way you deserve</div>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🚚</div>
+      <h3>Free Fast Delivery</h3>
+      <p>Free delivery on orders over $35. Arrives in under 60 minutes.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🌿</div>
+      <h3>100% Organic</h3>
+      <p>Every product is certified organic, direct from trusted local farms.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔒</div>
+      <h3>Secure Payments</h3>
+      <p>End-to-end encrypted checkout. All major cards accepted.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">↩️</div>
+      <h3>Easy Returns</h3>
+      <p>Not happy? Get a full refund or replacement — no questions asked.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7: TESTIMONIALS -->
+<div class="section">
+  <div class="section-label">Customer love</div>
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+    <div class="section-title" style="margin-bottom:0">What Our Customers Say</div>
+    <button class="view-all">Read all reviews →</button>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"The freshest groceries I've ever ordered online. The vegetables looked and tasted like they were just picked that morning. Absolutely love it!"</div>
+      <div class="testi-user">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sarah">
+        <div>
+          <div class="testi-name">Sarah Mitchell</div>
+          <div class="testi-meta">Regular customer since 2023</div>
+          <div class="testi-verified">✓ Verified Purchase</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-text">"Delivered in 45 minutes and everything was perfectly packed. The organic fruits are amazing — my kids actually eat vegetables now!"</div>
+      <div class="testi-user">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="James">
+        <div>
+          <div class="testi-name">James Okafor</div>
+          <div class="testi-meta">Premium member</div>
+          <div class="testi-verified">✓ Verified Purchase</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★☆</div>
+      <div class="testi-text">"Great selection and really competitive prices. The weekly deals save me so much money on groceries. Highly recommend to every family."</div>
+      <div class="testi-user">
+        <img class="testi-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Priya">
+        <div>
+          <div class="testi-name">Priya Sharma</div>
+          <div class="testi-meta">Shopper since 2024</div>
+          <div class="testi-verified">✓ Verified Purchase</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+    <script>
+        let navlink = document.querySelector(".nav-links")
+        let openbtn1 = document.querySelector(".open-btn")
+        let openbtn2 = document.querySelector('.open-btn2')
+        let closebtn = document.querySelector(".close-btn")
+        let closebtn2 = document.querySelector(".close-btn2")
+
+        openbtn1.addEventListener("click", () => {
+            navlink.style.display = "flex"
+            closebtn.style.display = "block"
+            closebtn2.style.display = "none"
+            openbtn1.style.display = "none"
+            openbtn2.style.display = "none"
+
+        })
+
+        closebtn.addEventListener("click", () => {
+            navlink.style.display = "none"
+            closebtn.style.display = "none"
+            openbtn1.style.display = "block"
+            closebtn2.style.display = "none"
+            openbtn2.style.display = "none"
+        })
+
+        openbtn2.addEventListener("click", () => {
+            navlink.style.display = "flex"
+            closebtn2.style.display = "block"
+            closebtn.style.display = "none"
+            openbtn1.style.display = "none"
+            openbtn2.style.display = "block"
+        })
+
+        closebtn2.addEventListener("click", () => {
+            navlink.style.display = "none"
+            closebtn.style.display = "none"
+            openbtn1.style.display = "none"
+            closebtn2.style.display = "none"
+            openbtn2.style.display = "block"
+        })
+
+
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 1050) {
+                navlink.style.display = "flex"
+                closebtn.style.display = "none"
+                closebtn2.style.display = "none"
+                openbtn1.style.display = "none"
+                openbtn2.style.display = "none"
+
+            }
+
+            else if (window.innerWidth < 1050 && window.innerWidth > 650) {
+
+                navlink.style.display = "none"
+                closebtn.style.display = "none"
+                closebtn2.style.display = "none"
+                openbtn1.style.display = "block"
+                openbtn2.style.display = "none"
+
+            }
+
+
+            else if (window.innerWidth < 650) {
+                navlink.style.display = "none"
+                closebtn.style.display = "none"
+                closebtn2.style.display = "none"
+                openbtn1.style.display = "none"
+                openbtn2.style.display = "block"
+
+            }
+
+        })
+
+
+        //login 
+
+        let loginbtn = document.querySelector(".login-btn")
+        loginbtn.addEventListener("click", () => {
+            window.location.href = "login.html"
+        })
+
+        //404 page
+
+        let errorpage = document.querySelectorAll(".errorpage")
+        errorpage.forEach((error) => {
+            error.addEventListener("click", () => {
+                window.location.href = "404.html"
+            })
+        })
+
+
+        //added
+
+        document.querySelectorAll('.tab-pill').forEach(pill=>{
+  pill.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-pill').forEach(p=>p.classList.remove('active'));
+    pill.classList.add('active');
+  });
+});
+document.querySelectorAll('.prod-wish').forEach(w=>{
+  w.addEventListener('click',()=>{
+    w.textContent = w.textContent==='♡' ? '♥' : '♡';
+    w.style.color = w.textContent==='♥' ? '#ea4335' : '';
+  });
+});
+document.querySelectorAll('.add-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    btn.textContent='✓';
+    btn.style.background='#2d7f0a';
+    setTimeout(()=>{btn.textContent='+';btn.style.background='';},1200);
+  });
+});
+
+
+
+    </script>
+
+</body>
+
+</html>

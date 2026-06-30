@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stackly - Fresh Products</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --green:       #629D23;
+      --green-dark:  #4a7a18;
+      --green-pale:  #f0f7e6;
+      --green-mid:   #d4edaa;
+      --cream:       #FAFAF8;
+      --charcoal:    #1b1b1b;
+      --muted:       #6b7280;
+      --border:      1px solid #e5e7eb;
+      --r:           14px;
+    }
+
+    body { font-family:"DM Sans",sans-serif; background:var(--cream); color:var(--charcoal); }
+    a { text-decoration:none; color:inherit; }
+    img { display:block; }
+
+    /* ─── SHARED HELPERS ─── */
+    .eyebrow {
+      font-size:11px; font-weight:700; letter-spacing:2.5px;
+      text-transform:uppercase; color:var(--green); margin-bottom:6px;
+    }
+    .heading {
+      font-family:"Playfair Display",serif;
+      font-size:clamp(24px,3.5vw,40px);
+      line-height:1.2; color:var(--charcoal);
+    }
+    .sec-pad { padding:56px 6%; }
+
+    /* ════════════════════════════════════════════
+       SECTION 1 — FULL-WIDTH HERO SPLIT
+    ════════════════════════════════════════════ */
+    .fresh-hero {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      min-height:520px;
+    }
+    .hero-left {
+      background: linear-gradient(145deg,#1d4208 0%,#3a7012 50%,#629D23 100%);
+      display:flex; flex-direction:column;
+      justify-content:center;
+      padding:60px 7%;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero-left::after {
+      content:"";
+      position:absolute; bottom:-80px; right:-80px;
+      width:260px; height:260px; border-radius:50%;
+      background:rgba(255,255,255,.06);
+    }
+    .hero-left .eyebrow { color:#a8d572; margin-bottom:12px; }
+    .hero-left h1 {
+      font-family:"Playfair Display",serif;
+      font-size:clamp(28px,4vw,52px);
+      color:#fff; line-height:1.15; margin-bottom:18px;
+    }
+    .hero-left h1 em { font-style:italic; color:#c5f079; }
+    .hero-left p { color:rgba(255,255,255,.8); font-size:15px; line-height:1.7; margin-bottom:32px; max-width:380px; }
+    .hero-pills { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:32px; }
+    .pill {
+      padding:6px 16px; border-radius:20px; font-size:12px; font-weight:600;
+      background:rgba(255,255,255,.15); color:#fff; border:1px solid rgba(255,255,255,.25);
+    }
+    .hero-cta {
+      display:inline-flex; align-items:center; gap:8px;
+      padding:13px 28px; border-radius:30px;
+      background:#fff; color:var(--green-dark);
+      font-weight:700; font-size:14px; border:none; cursor:pointer;
+      width:fit-content; transition:transform .2s;
+    }
+    .hero-cta:hover { transform:translateX(4px); }
+    .hero-right {
+      position:relative; overflow:hidden;
+    }
+    .hero-right img {
+      width:100%; height:100%; object-fit:cover;
+    }
+    .hero-badge {
+      position:absolute; top:28px; right:28px;
+      width:88px; height:88px; border-radius:50%;
+      background:var(--green); color:#fff;
+      display:flex; flex-direction:column;
+      align-items:center; justify-content:center;
+      text-align:center;
+      font-size:11px; font-weight:700; line-height:1.2;
+      border:3px solid #fff;
+      box-shadow:0 4px 18px rgba(0,0,0,.2);
+    }
+    .hero-badge strong { font-size:22px; display:block; }
+
+    @media(max-width:768px){
+      .fresh-hero { grid-template-columns:1fr; }
+      .hero-right { height:260px; }
+    }
+
+    /* ════════════════════════════════════════════
+       SECTION 2 — FRESHNESS PROMISE BAND
+    ════════════════════════════════════════════ */
+    .promise-band {
+      background:#fff;
+      border-top:var(--border); border-bottom:var(--border);
+      padding:0 6%;
+    }
+    .promise-inner {
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      divide-x: var(--border);
+    }
+    .promise-item {
+      display:flex; align-items:center; gap:16px;
+      padding:26px 20px;
+      border-right:var(--border);
+    }
+    .promise-item:last-child { border-right:none; }
+    .promise-icon {
+      flex-shrink:0;
+      width:50px; height:50px; border-radius:12px;
+      background:var(--green-pale);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+    .promise-icon img { width:30px; height:30px; object-fit:contain; }
+    .promise-item h4 { font-size:14px; font-weight:700; margin-bottom:3px; }
+    .promise-item p { font-size:12px; color:var(--muted); line-height:1.5; }
+
+    @media(max-width:860px){
+      .promise-inner { grid-template-columns:1fr 1fr; }
+      .promise-item:nth-child(2) { border-right:none; }
+    }
+    @media(max-width:500px){
+      .promise-inner { grid-template-columns:1fr; }
+      .promise-item { border-right:none; border-bottom:var(--border); }
+    }
+
+    /* ════════════════════════════════════════════
+       SECTION 3 — TABBED PRODUCT SHOWCASE
+    ════════════════════════════════════════════ */
+    .showcase-section { background:var(--cream); }
+    .showcase-header {
+      display:flex; justify-content:space-between; align-items:flex-end;
+      margin-bottom:28px; flex-wrap:wrap; gap:14px;
+    }
+    .tab-strip {
+      display:flex; gap:6px; flex-wrap:wrap;
+    }
+    .tab-btn {
+      padding:8px 18px; border-radius:20px; border:var(--border);
+      background:#fff; font-size:13px; font-weight:600;
+      cursor:pointer; transition:all .2s; color:var(--muted);
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background:var(--green); color:#fff; border-color:var(--green);
+    }
+    .view-all { font-size:13px; color:var(--green); font-weight:600; }
+    .view-all:hover { text-decoration:underline; }
+
+    .product-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(188px,1fr));
+      gap:18px;
+    }
+    .p-card {
+      background:#fff; border-radius:var(--r); border:var(--border);
+      overflow:hidden; position:relative;
+      transition:box-shadow .25s, transform .25s;
+    }
+    .p-card:hover { box-shadow:0 10px 32px rgba(0,0,0,.08); transform:translateY(-4px); }
+    .p-tag {
+      position:absolute; top:10px; left:10px;
+      font-size:10px; font-weight:700; letter-spacing:.5px;
+      padding:3px 10px; border-radius:20px;
+      background:var(--green); color:#fff;
+    }
+    .p-tag.sale { background:#f59e0b; }
+    .p-tag.new  { background:#3b82f6; }
+    .wl {
+      position:absolute; top:10px; right:10px;
+      width:32px; height:32px; border-radius:50%;
+      background:#fff; border:var(--border);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; font-size:15px; transition:background .2s;
+    }
+    .wl:hover { background:#fee2e2; }
+    .wl.on { background:#fee2e2; color:#ef4444; }
+    .p-img {
+      width:100%; height:160px; object-fit:cover; background:#f9fafb;
+    }
+    .p-body { padding:14px; }
+    .p-meta { font-size:11px; color:var(--muted); margin-bottom:4px; }
+    .p-name { font-size:14px; font-weight:700; margin-bottom:10px; line-height:1.3; }
+    .p-foot { display:flex; justify-content:space-between; align-items:center; }
+    .p-price { font-size:17px; font-weight:800; color:var(--green); }
+    .p-price s { font-size:12px; color:#9ca3af; font-weight:400; margin-left:4px; }
+    .p-add {
+      width:34px; height:34px; border-radius:50%;
+      background:var(--green); color:#fff; border:none;
+      font-size:22px; cursor:pointer; display:flex;
+      align-items:center; justify-content:center;
+      transition:background .2s;
+    }
+    .p-add:hover { background:var(--green-dark); }
+
+    /* ════════════════════════════════════════════
+       SECTION 4 — FARM STORY (Editorial split)
+    ════════════════════════════════════════════ */
+    .farm-section {
+      background:#fff;
+      border-top:var(--border);
+    }
+    .farm-inner {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+      align-items:stretch;
+    }
+    .farm-gallery {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      grid-template-rows:240px 240px;
+      gap:4px;
+    }
+    .farm-gallery img {
+      width:100%; height:100%; object-fit:cover;
+    }
+    .farm-gallery img:first-child {
+      grid-row:1/3; grid-column:1;
+    }
+    .farm-copy {
+      padding:56px 7%;
+      display:flex; flex-direction:column; justify-content:center;
+    }
+    .farm-copy .eyebrow { margin-bottom:10px; }
+    .farm-copy .heading { margin-bottom:20px; }
+    .farm-copy p {
+      font-size:15px; color:var(--muted);
+      line-height:1.8; margin-bottom:16px;
+    }
+    .farm-stat-row {
+      display:flex; gap:32px; margin:24px 0;
+    }
+    .farm-stat strong {
+      display:block; font-size:28px; font-weight:800; color:var(--green);
+    }
+    .farm-stat span { font-size:12px; color:var(--muted); }
+    .farm-link {
+      display:inline-flex; align-items:center; gap:6px;
+      font-size:14px; font-weight:700; color:var(--green);
+    }
+    .farm-link:hover { text-decoration:underline; }
+
+    @media(max-width:860px){
+      .farm-inner { grid-template-columns:1fr; }
+      .farm-gallery { grid-template-rows:200px 200px; }
+    }
+
+    /* ════════════════════════════════════════════
+       SECTION 5 — FRESHNESS TIMELINE
+    ════════════════════════════════════════════ */
+    .timeline-section {
+      background:var(--cream);
+    }
+    .timeline-section .heading { margin-bottom:48px; text-align:center; }
+    .timeline-section .eyebrow { text-align:center; }
+    .timeline {
+      position:relative;
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:0;
+    }
+    .timeline::before {
+      content:"";
+      position:absolute; top:44px; left:12.5%; right:12.5%;
+      height:2px; background:var(--green-mid); z-index:0;
+    }
+    .tl-step {
+      display:flex; flex-direction:column; align-items:center;
+      text-align:center; padding:0 16px; position:relative; z-index:1;
+    }
+    .tl-dot {
+      width:88px; height:88px; border-radius:50%;
+      background:#fff; border:3px solid var(--green-mid);
+      display:flex; align-items:center; justify-content:center;
+      overflow:hidden; margin-bottom:18px;
+      transition:border-color .2s;
+    }
+    .tl-dot img { width:100%; height:100%; object-fit:cover; }
+    .tl-step:hover .tl-dot { border-color:var(--green); }
+    .tl-num {
+      position:absolute; top:-2px; right:calc(50% - 52px);
+      width:20px; height:20px; border-radius:50%;
+      background:var(--green); color:#fff;
+      font-size:10px; font-weight:800;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .tl-step h4 { font-size:14px; font-weight:700; margin-bottom:6px; }
+    .tl-step p { font-size:12px; color:var(--muted); line-height:1.6; }
+
+    @media(max-width:700px){
+      .timeline { grid-template-columns:1fr 1fr; gap:30px; }
+      .timeline::before { display:none; }
+    }
+    @media(max-width:420px){
+      .timeline { grid-template-columns:1fr; }
+    }
+
+    /* ════════════════════════════════════════════
+       SECTION 6 — SEASONAL DEALS MOSAIC
+    ════════════════════════════════════════════ */
+    .mosaic-section { background:#fff; border-top:var(--border); }
+    .mosaic-section .heading { margin-bottom:28px; }
+    .mosaic-grid {
+      display:grid;
+      grid-template-columns:2fr 1fr 1fr;
+      grid-template-rows:260px 260px;
+      gap:14px;
+    }
+    .mosaic-card {
+      position:relative; border-radius:var(--r);
+      overflow:hidden; cursor:pointer;
+    }
+    .mosaic-card img {
+      width:100%; height:100%; object-fit:cover;
+      transition:transform .4s;
+    }
+    .mosaic-card:hover img { transform:scale(1.06); }
+    .mosaic-card:first-child { grid-row:1/3; }
+    .mosaic-overlay {
+      position:absolute; inset:0;
+      background:linear-gradient(to top, rgba(0,0,0,.6) 0%, transparent 55%);
+      display:flex; flex-direction:column;
+      justify-content:flex-end; padding:20px;
+    }
+    .mosaic-overlay .tag {
+      font-size:10px; font-weight:700; letter-spacing:1.5px;
+      text-transform:uppercase; color:var(--green-mid); margin-bottom:6px;
+    }
+    .mosaic-overlay h3 { font-size:18px; font-weight:700; color:#fff; margin-bottom:6px; }
+    .mosaic-overlay .mo-price {
+      font-size:15px; font-weight:800; color:#fff;
+    }
+    .mosaic-overlay .mo-price span {
+      font-size:12px; font-weight:400; text-decoration:line-through;
+      color:rgba(255,255,255,.6); margin-left:6px;
+    }
+    .mo-btn {
+      margin-top:12px; padding:8px 18px;
+      background:var(--green); color:#fff;
+      border:none; border-radius:20px;
+      font-size:12px; font-weight:700; cursor:pointer;
+      width:fit-content; transition:background .2s;
+    }
+    .mo-btn:hover { background:var(--green-dark); }
+
+    @media(max-width:780px){
+      .mosaic-grid { grid-template-columns:1fr 1fr; grid-template-rows:auto; }
+      .mosaic-card:first-child { grid-row:auto; grid-column:1/3; height:240px; }
+    }
+    @media(max-width:480px){
+      .mosaic-grid { grid-template-columns:1fr; }
+      .mosaic-card:first-child { grid-column:auto; }
+      .mosaic-card { height:200px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     SECTION 1 — HERO SPLIT
+════════════════════════════════════════════ -->
+<section class="fresh-hero">
+  <div class="hero-left">
+    <p class="eyebrow">Fresh From The Farm</p>
+    <h1>The <em>Freshest</em><br>Groceries,<br>Every Single Day</h1>
+    <p>Harvested at peak ripeness and delivered to your door within 24 hours. No compromises on quality.</p>
+    <div class="hero-pills">
+      <span class="pill">Pesticide-Free</span>
+      <span class="pill">Direct From Farms</span>
+      <span class="pill">No Preservatives</span>
+    </div>
+    <button class="hero-cta">Shop Fresh Now &rarr;</button>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&h=600&fit=crop" alt="Fresh vegetables and fruits"/>
+    <div class="hero-badge"><strong>30%</strong> OFF Today Only</div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     SECTION 2 — FRESHNESS PROMISE BAND
+════════════════════════════════════════════ -->
+<section class="promise-band">
+  <div class="promise-inner">
+    <div class="promise-item">
+      <div class="promise-icon">
+        <img src="https://images.unsplash.com/photo-1546548970-71785318a17b?w=60&h=60&fit=crop" alt="Harvested daily"/>
+      </div>
+      <div>
+        <h4>Harvested Daily</h4>
+        <p>Produce cut fresh every morning from partner farms.</p>
+      </div>
+    </div>
+    <div class="promise-item">
+      <div class="promise-icon">
+        <img src="https://images.unsplash.com/photo-1609557927087-f9cf8e88de18?w=60&h=60&fit=crop" alt="Cold chain"/>
+      </div>
+      <div>
+        <h4>Cold-Chain Delivery</h4>
+        <p>Temperature-controlled from farm gate to your door.</p>
+      </div>
+    </div>
+    <div class="promise-item">
+      <div class="promise-icon">
+        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=60&h=60&fit=crop" alt="Certified organic"/>
+      </div>
+      <div>
+        <h4>Certified Organic</h4>
+        <p>All produce meets strict organic certification standards.</p>
+      </div>
+    </div>
+    <div class="promise-item">
+      <div class="promise-icon">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=60&h=60&fit=crop" alt="Freshness guarantee"/>
+      </div>
+      <div>
+        <h4>Freshness Guarantee</h4>
+        <p>Full refund if your order is not fresh. Simple.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     SECTION 3 — TABBED PRODUCT SHOWCASE
+════════════════════════════════════════════ -->
+<section class="showcase-section sec-pad">
+  <div class="showcase-header">
+    <div>
+      <p class="eyebrow">Today's Selection</p>
+      <h2 class="heading">Fresh Picks</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-end;">
+      <a href="#" class="view-all">View all products &rarr;</a>
+      <div class="tab-strip">
+        <button class="tab-btn active" onclick="filterTab(this,'all')">All</button>
+        <button class="tab-btn" onclick="filterTab(this,'fruit')">Fruits</button>
+        <button class="tab-btn" onclick="filterTab(this,'veg')">Vegetables</button>
+        <button class="tab-btn" onclick="filterTab(this,'herb')">Herbs</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-grid" id="productGrid">
+
+    <div class="p-card" data-cat="fruit">
+      <span class="p-tag">Organic</span>
+      <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+      <img class="p-img" src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=400&h=320&fit=crop" alt="Apples"/>
+      <div class="p-body">
+        <p class="p-meta">Fruit &bull; 1 kg</p>
+        <p class="p-name">Gala Apples</p>
+        <div class="p-foot">
+          <p class="p-price">$3.29 <s>$4.49</s></p>
+          <button class="p-add">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="veg">
+      <span class="p-tag sale">Sale</span>
+      <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+      <img class="p-img" src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=400&h=320&fit=crop" alt="Potatoes"/>
+      <div class="p-body">
+        <p class="p-meta">Vegetable &bull; 2 kg</p>
+        <p class="p-name">Russet Potatoes</p>
+        <div class="p-foot">
+          <p class="p-price">$2.49</p>
+          <button class="p-add">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="herb">
+      <span class="p-tag new">New</span>
+      <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+      <img class="p-img" src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=400&h=320&fit=crop" alt="Basil"/>
+      <div class="p-body">
+        <p class="p-meta">Herb &bull; 50 g bunch</p>
+        <p class="p-name">Fresh Basil</p>
+        <div class="p-foot">
+          <p class="p-price">$1.49</p>
+          <button class="p-add">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="fruit">
+      <span class="p-tag">Organic</span>
+      <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+      <img class="p-img" src="https://images.unsplash.com/photo-1615485291234-9d694218aeb3?w=400&h=320&fit=crop" alt="Mango"/>
+      <div class="p-body">
+        <p class="p-meta">Fruit &bull; Per piece</p>
+        <p class="p-name">Alphonso Mango</p>
+        <div class="p-foot">
+          <p class="p-price">$2.19 <s>$2.99</s></p>
+          <button class="p-add">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="veg">
+      <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+      <img class="p-img" src="https://images.unsplash.com/photo-1573246123716-6b1782bfc499?w=400&h=320&fit=crop" alt="Broccoli"/>
+      <div class="p-body">
+        <p class="p-meta">Vegetable &bull; 1 head</p>
+        <p class="p-name">Broccoli Crown</p>
+        <div class="p-foot">
+          <p class="p-price">$1.89</p>
+          <button class="p-add">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="herb">
+      <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+      <img class="p-img" src="https://images.unsplash.com/photo-1591261730799-ee4e6c2d16d7?w=400&h=320&fit=crop" alt="Rosemary"/>
+      <div class="p-body">
+        <p class="p-meta">Herb &bull; 30 g</p>
+        <p class="p-name">Fresh Rosemary</p>
+        <div class="p-foot">
+          <p class="p-price">$1.29</p>
+          <button class="p-add">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="fruit">
+      <span class="p-tag sale">-25%</span>
+      <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+      <img class="p-img" src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400&h=320&fit=crop" alt="Strawberries"/>
+      <div class="p-body">
+        <p class="p-meta">Fruit &bull; 400 g punnet</p>
+        <p class="p-name">Strawberries</p>
+        <div class="p-foot">
+          <p class="p-price">$3.74 <s>$4.99</s></p>
+          <button class="p-add">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="p-card" data-cat="veg">
+      <span class="p-tag">Organic</span>
+      <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+      <img class="p-img" src="https://images.unsplash.com/photo-1448907503123-67254d59ca4f?w=400&h=320&fit=crop" alt="Spinach"/>
+      <div class="p-body">
+        <p class="p-meta">Vegetable &bull; 200 g bag</p>
+        <p class="p-name">Baby Spinach</p>
+        <div class="p-foot">
+          <p class="p-price">$2.29 <s>$3.09</s></p>
+          <button class="p-add">+</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     SECTION 4 — FARM STORY
+════════════════════════════════════════════ -->
+<section class="farm-section">
+  <div class="farm-inner">
+    <div class="farm-gallery">
+      <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=600&fit=crop" alt="Farm field"/>
+      <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&h=296&fit=crop" alt="Picking produce"/>
+      <img src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=400&h=296&fit=crop" alt="Fresh harvest"/>
+    </div>
+    <div class="farm-copy">
+      <p class="eyebrow">Our Story</p>
+      <h2 class="heading">We Know Every Farm<br>By Name</h2>
+      <p>We partner with fewer than 80 hand-selected farms across the country, visiting each one personally before adding them to our network. No middlemen. No warehouses. Just the farm, us, and your kitchen.</p>
+      <p>Our farm partners commit to zero synthetic pesticides and open-gate harvesting — which means your order is picked the same morning it ships.</p>
+      <div class="farm-stat-row">
+        <div class="farm-stat">
+          <strong>80+</strong>
+          <span>Partner Farms</span>
+        </div>
+        <div class="farm-stat">
+          <strong>24 hr</strong>
+          <span>Farm to Door</span>
+        </div>
+        <div class="farm-stat">
+          <strong>100%</strong>
+          <span>Pesticide-Free</span>
+        </div>
+      </div>
+      <a href="#" class="farm-link">Meet our farmers &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     SECTION 5 — FRESHNESS TIMELINE
+════════════════════════════════════════════ -->
+<section class="timeline-section sec-pad">
+  <p class="eyebrow">How it works</p>
+  <h2 class="heading" style="text-align:center;margin-bottom:48px;">From Soil to Your<br>Kitchen in 4 Steps</h2>
+  <div class="timeline">
+    <div class="tl-step">
+      <div class="tl-dot">
+        <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=160&h=160&fit=crop" alt="Farm"/>
+      </div>
+      <span class="tl-num">1</span>
+      <h4>Harvested Fresh</h4>
+      <p>Farmers pick your order at first light, at peak ripeness.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">
+        <img src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=160&h=160&fit=crop" alt="Sorting"/>
+      </div>
+      <span class="tl-num">2</span>
+      <h4>Quality Checked</h4>
+      <p>Every batch is graded and inspected before it leaves the farm.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=160&h=160&fit=crop" alt="Packed"/>
+      </div>
+      <span class="tl-num">3</span>
+      <h4>Packed Carefully</h4>
+      <p>Eco-friendly cold packaging keeps everything crisp in transit.</p>
+    </div>
+    <div class="tl-step">
+      <div class="tl-dot">
+        <img src="https://images.unsplash.com/photo-1609557927087-f9cf8e88de18?w=160&h=160&fit=crop" alt="Delivered"/>
+      </div>
+      <span class="tl-num">4</span>
+      <h4>Delivered to You</h4>
+      <p>At your door within 24 hours, guaranteed fresh or refunded.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     SECTION 6 — SEASONAL DEALS MOSAIC
+════════════════════════════════════════════ -->
+<section class="mosaic-section sec-pad">
+  <p class="eyebrow">What's in Season</p>
+  <h2 class="heading">Seasonal Deals, Right Now</h2>
+  <div class="mosaic-grid" style="margin-top:28px;">
+
+    <div class="mosaic-card">
+      <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=700&h=600&fit=crop" alt="Summer fruits"/>
+      <div class="mosaic-overlay">
+        <p class="tag">Peak Season</p>
+        <h3>Summer Stone Fruits</h3>
+        <p class="mo-price">From $2.49 <span>$3.99</span></p>
+        <button class="mo-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="mosaic-card">
+      <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&h=340&fit=crop" alt="Leafy greens"/>
+      <div class="mosaic-overlay">
+        <p class="tag">Fresh Today</p>
+        <h3>Leafy Greens</h3>
+        <p class="mo-price">From $1.29</p>
+        <button class="mo-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="mosaic-card">
+      <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=500&h=340&fit=crop" alt="Citrus fruits"/>
+      <div class="mosaic-overlay">
+        <p class="tag">30% Off</p>
+        <h3>Citrus Bundle</h3>
+        <p class="mo-price">$6.99 <span>$9.99</span></p>
+        <button class="mo-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="mosaic-card">
+      <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&h=340&fit=crop" alt="Root vegetables"/>
+      <div class="mosaic-overlay">
+        <p class="tag">Farm Pick</p>
+        <h3>Root Vegetables</h3>
+        <p class="mo-price">From $1.79</p>
+        <button class="mo-btn">Shop Now</button>
+      </div>
+    </div>
+
+    <div class="mosaic-card">
+      <img src="https://images.unsplash.com/photo-1606787503004-3d85e7f18d14?w=500&h=340&fit=crop" alt="Herbs bundle"/>
+      <div class="mosaic-overlay">
+        <p class="tag">New Arrival</p>
+        <h3>Fresh Herb Bundle</h3>
+        <p class="mo-price">$3.99 <span>$5.49</span></p>
+        <button class="mo-btn">Shop Now</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  // Tab filter
+  function filterTab(btn, cat) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.p-card').forEach(card => {
+      card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+    });
+  }
+
+  // Wishlist toggle
+  function toggleWl(el) {
+    const on = el.classList.toggle('on');
+    el.innerHTML = on ? '&#9829;' : '&#9825;';
+    el.style.color = on ? '#ef4444' : '';
+  }
+</script>
+</body>
+</html>

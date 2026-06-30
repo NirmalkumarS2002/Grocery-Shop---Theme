@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stackly - Shop</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --green: #629D23;
+      --green-dark: #4a7a18;
+      --green-light: #eef5e4;
+      --cream: #FAFAF7;
+      --charcoal: #1c1c1c;
+      --gray: #6b7280;
+      --border: 1px solid #e5e7eb;
+      --radius: 14px;
+    }
+
+    body { font-family: "DM Sans", sans-serif; background: var(--cream); color: var(--charcoal); }
+
+    /* ── SECTION 1: CATEGORY STRIP ── */
+    .category-strip {
+      padding: 40px 5%;
+      background: white;
+      border-bottom: var(--border);
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(22px, 3vw, 34px);
+      color: var(--charcoal);
+      margin-bottom: 28px;
+    }
+    .cat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 14px;
+    }
+    .cat-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 10px;
+      border-radius: var(--radius);
+      background: var(--green-light);
+      cursor: pointer;
+      transition: transform .2s, background .2s;
+      text-decoration: none;
+    }
+    .cat-card:hover { transform: translateY(-4px); background: #d7edba; }
+    .cat-card.active { background: var(--green); }
+    .cat-card.active span, .cat-card.active p { color: white; }
+    .cat-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      background: #ddd;
+    }
+    .cat-card p { font-size: 13px; font-weight: 600; color: var(--charcoal); text-align: center; }
+
+    /* ── SECTION 2: FILTER + PRODUCT GRID ── */
+    .shop-body {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 30px;
+      padding: 40px 5%;
+    }
+
+    /* Sidebar */
+    .sidebar { display: flex; flex-direction: column; gap: 28px; }
+    .filter-box {
+      background: white;
+      border-radius: var(--radius);
+      padding: 22px;
+      border: var(--border);
+    }
+    .filter-title { font-size: 14px; font-weight: 700; margin-bottom: 16px; color: var(--charcoal); }
+    .filter-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .filter-list li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--gray); cursor: pointer; }
+    .filter-list li input[type=checkbox] { accent-color: var(--green); width: 15px; height: 15px; }
+    .filter-list li:hover { color: var(--green); }
+    .price-range { display: flex; flex-direction: column; gap: 10px; }
+    .price-range input[type=range] { accent-color: var(--green); width: 100%; }
+    .price-labels { display: flex; justify-content: space-between; font-size: 13px; color: var(--gray); }
+    .apply-btn {
+      margin-top: 8px;
+      padding: 9px 18px;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      width: 100%;
+    }
+    .apply-btn:hover { background: var(--green-dark); }
+
+    /* Product Grid */
+    .products-area { min-width: 0; }
+    .products-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .products-topbar p { font-size: 14px; color: var(--gray); }
+    .sort-select {
+      padding: 9px 14px;
+      border: var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: "DM Sans", sans-serif;
+      color: var(--charcoal);
+      background: white;
+      cursor: pointer;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      gap: 18px;
+    }
+    .product-card {
+      background: white;
+      border-radius: var(--radius);
+      border: var(--border);
+      overflow: hidden;
+      transition: box-shadow .2s, transform .2s;
+      position: relative;
+    }
+    .product-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.09); transform: translateY(-3px); }
+    .product-card .badge {
+      position: absolute; top: 10px; left: 10px;
+      background: var(--green); color: white;
+      font-size: 11px; font-weight: 700;
+      padding: 3px 9px; border-radius: 20px;
+    }
+    .product-card .badge.out { background: #ef4444; }
+    .wish-btn {
+      position: absolute; top: 10px; right: 10px;
+      width: 30px; height: 30px;
+      background: white; border: var(--border);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      cursor: pointer; font-size: 14px;
+      transition: background .2s;
+    }
+    .wish-btn:hover { background: #fee2e2; }
+    .product-img {
+      width: 100%; height: 155px; object-fit: cover;
+      background: #f3f4f6;
+    }
+    .product-info { padding: 14px; }
+    .product-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+    .product-weight { font-size: 12px; color: var(--gray); margin-bottom: 8px; }
+    .product-footer { display: flex; align-items: center; justify-content: space-between; }
+    .product-price { font-size: 16px; font-weight: 700; color: var(--green); }
+    .product-price s { font-size: 12px; color: #9ca3af; font-weight: 400; margin-left: 4px; }
+    .add-btn {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: var(--green); color: white;
+      border: none; font-size: 20px; line-height: 1;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .add-btn:hover { background: var(--green-dark); }
+
+    @media (max-width: 900px) {
+      .shop-body { grid-template-columns: 1fr; }
+      .sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    }
+    @media (max-width: 600px) {
+      .sidebar { grid-template-columns: 1fr; }
+    }
+
+    /* ── SECTION 3: FLASH DEAL BANNER ── */
+    .flash-section {
+      padding: 0 5% 50px;
+    }
+    .flash-inner {
+      background: linear-gradient(135deg, #1a3a0a 0%, #629D23 60%, #8bc34a 100%);
+      border-radius: 20px;
+      padding: 40px 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      overflow: hidden;
+      position: relative;
+    }
+    .flash-inner::before {
+      content: "";
+      position: absolute; right: -60px; top: -60px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.06);
+    }
+    .flash-text { color: white; flex: 1; }
+    .flash-text h2 { font-family: "Playfair Display", serif; font-size: clamp(22px, 3vw, 40px); line-height: 1.2; margin-bottom: 10px; }
+    .flash-text p { font-size: 15px; opacity: .85; margin-bottom: 24px; max-width: 420px; }
+    .countdown { display: flex; gap: 12px; margin-bottom: 24px; }
+    .count-block {
+      background: rgba(255,255,255,.15);
+      backdrop-filter: blur(8px);
+      border-radius: 10px;
+      padding: 10px 14px;
+      text-align: center;
+      color: white;
+    }
+    .count-block span { display: block; font-size: 24px; font-weight: 700; line-height: 1; }
+    .count-block small { font-size: 10px; opacity: .75; letter-spacing: 1px; text-transform: uppercase; }
+    .flash-cta {
+      padding: 12px 28px;
+      background: white;
+      color: var(--green-dark);
+      font-weight: 700;
+      font-size: 14px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: transform .2s;
+    }
+    .flash-cta:hover { transform: scale(1.04); }
+    .flash-img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid rgba(255,255,255,.25);
+      flex-shrink: 0;
+    }
+    @media (max-width: 700px) {
+      .flash-inner { flex-direction: column; text-align: center; padding: 30px 24px; }
+      .countdown { justify-content: center; }
+      .flash-img { width: 130px; height: 130px; }
+    }
+
+    /* ── SECTION 4: ORGANIC PICKS (Horizontal scroll cards) ── */
+    .organic-section { padding: 0 5% 50px; }
+    .section-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; }
+    .see-all { font-size: 14px; color: var(--green); font-weight: 600; text-decoration: none; }
+    .see-all:hover { text-decoration: underline; }
+    .organic-scroll {
+      display: flex;
+      gap: 18px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+    .organic-scroll::-webkit-scrollbar { height: 4px; }
+    .organic-scroll::-webkit-scrollbar-track { background: #f3f4f6; border-radius: 4px; }
+    .organic-scroll::-webkit-scrollbar-thumb { background: var(--green); border-radius: 4px; }
+    .organic-card {
+      flex: 0 0 220px;
+      scroll-snap-align: start;
+      background: white;
+      border-radius: var(--radius);
+      border: var(--border);
+      padding: 16px;
+      text-align: center;
+      transition: box-shadow .2s;
+    }
+    .organic-card:hover { box-shadow: 0 6px 22px rgba(0,0,0,.08); }
+    .organic-card img { width: 100%; height: 130px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; }
+    .organic-tag { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: 4px; }
+    .organic-name { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+    .organic-rating { font-size: 12px; color: #f59e0b; margin-bottom: 10px; }
+    .organic-price { font-size: 16px; font-weight: 700; color: var(--charcoal); }
+    .organic-price span { font-size: 12px; color: #9ca3af; font-weight: 400; margin-left: 4px; text-decoration: line-through; }
+
+    /* ── SECTION 5: FEATURE TILES ── */
+    .features-section { padding: 0 5% 50px; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 18px;
+    }
+    .feature-tile {
+      background: white;
+      border-radius: var(--radius);
+      border: var(--border);
+      padding: 30px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .feature-icon {
+      width: 52px; height: 52px;
+      border-radius: 14px;
+      background: var(--green-light);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+    }
+    .feature-tile h3 { font-size: 16px; font-weight: 700; }
+    .feature-tile p { font-size: 13px; color: var(--gray); line-height: 1.6; }
+
+    /* ── SECTION 6: NEWSLETTER ── */
+    .newsletter-section {
+      padding: 60px 5%;
+      background: white;
+      border-top: var(--border);
+    }
+    .newsletter-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .newsletter-inner .section-label { display: block; margin-bottom: 8px; }
+    .newsletter-inner .section-title { margin-bottom: 12px; }
+    .newsletter-inner p { font-size: 15px; color: var(--gray); margin-bottom: 28px; line-height: 1.7; }
+    .newsletter-form {
+      display: flex;
+      border: 2px solid var(--green);
+      border-radius: 50px;
+      overflow: hidden;
+      background: white;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px 22px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      font-family: "DM Sans", sans-serif;
+    }
+    .newsletter-form button {
+      padding: 14px 28px;
+      background: var(--green);
+      color: white;
+      border: none;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 0 50px 50px 0;
+      transition: background .2s;
+    }
+    .newsletter-form button:hover { background: var(--green-dark); }
+    .newsletter-trust { margin-top: 14px; font-size: 12px; color: #9ca3af; }
+    @media (max-width: 500px) {
+      .newsletter-form { flex-direction: column; border-radius: 14px; }
+      .newsletter-form button { border-radius: 0 0 12px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 1: CATEGORY STRIP
+══════════════════════════════════════════════ -->
+<section class="category-strip">
+  <p class="section-label">Browse by Category</p>
+  <h2 class="section-title">What are you looking for?</h2>
+  <div class="cat-grid">
+    <a href="#" class="cat-card active">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=120&h=120&fit=crop" alt="All">
+      <p>All Items</p>
+    </a>
+    <a href="#" class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=120&h=120&fit=crop" alt="Fruits">
+      <p>Fruits</p>
+    </a>
+    <a href="#" class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=120&h=120&fit=crop" alt="Vegetables">
+      <p>Vegetables</p>
+    </a>
+    <a href="#" class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1563636619-e9143da7973b?w=120&h=120&fit=crop" alt="Dairy">
+      <p>Dairy</p>
+    </a>
+    <a href="#" class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=120&h=120&fit=crop" alt="Bakery">
+      <p>Bakery</p>
+    </a>
+    <a href="#" class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1515543237350-b3eea1ec8082?w=120&h=120&fit=crop" alt="Snacks">
+      <p>Snacks</p>
+    </a>
+    <a href="#" class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1624395213043-fa2e123b2656?w=120&h=120&fit=crop" alt="Beverages">
+      <p>Beverages</p>
+    </a>
+    <a href="#" class="cat-card">
+      <img class="cat-img" src="https://images.unsplash.com/photo-1534482421-64566f976cfa?w=120&h=120&fit=crop" alt="Meat">
+      <p>Meat</p>
+    </a>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 2: FILTER SIDEBAR + PRODUCT GRID
+══════════════════════════════════════════════ -->
+<div class="shop-body">
+
+  <aside class="sidebar">
+    <!-- Price Filter -->
+    <div class="filter-box">
+      <p class="filter-title">Price Range</p>
+      <div class="price-range">
+        <input type="range" min="0" max="100" value="60" />
+        <div class="price-labels"><span>$0</span><span>$60</span></div>
+      </div>
+      <button class="apply-btn" style="margin-top:14px;">Apply</button>
+    </div>
+    <!-- Category Filter -->
+    <div class="filter-box">
+      <p class="filter-title">Category</p>
+      <ul class="filter-list">
+        <li><input type="checkbox" checked /> Fruits & Vegetables</li>
+        <li><input type="checkbox" /> Dairy & Eggs</li>
+        <li><input type="checkbox" /> Bakery</li>
+        <li><input type="checkbox" /> Snacks</li>
+        <li><input type="checkbox" /> Beverages</li>
+        <li><input type="checkbox" /> Meat & Seafood</li>
+      </ul>
+    </div>
+    <!-- Rating Filter -->
+    <div class="filter-box">
+      <p class="filter-title">Rating</p>
+      <ul class="filter-list">
+        <li><input type="checkbox" /> 4 stars & above</li>
+        <li><input type="checkbox" /> 3 stars & above</li>
+        <li><input type="checkbox" /> 2 stars & above</li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="products-area">
+    <div class="products-topbar">
+      <p>Showing <strong>24 products</strong></p>
+      <select class="sort-select">
+        <option>Sort by: Popularity</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Newest First</option>
+      </select>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product Cards -->
+      <div class="product-card">
+        <span class="badge">-20%</span>
+        <span class="wish-btn">&#9825;</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=400&h=300&fit=crop" alt="Apples" />
+        <div class="product-info">
+          <p class="product-name">Red Delicious Apples</p>
+          <p class="product-weight">1 kg bag</p>
+          <div class="product-footer">
+            <p class="product-price">$3.49 <s>$4.39</s></p>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <span class="badge">Organic</span>
+        <span class="wish-btn">&#9825;</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1481349518771-20055b2a7b24?w=400&h=300&fit=crop" alt="Bananas" />
+        <div class="product-info">
+          <p class="product-name">Fresh Bananas</p>
+          <p class="product-weight">6 pack</p>
+          <div class="product-footer">
+            <p class="product-price">$1.89</p>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <span class="wish-btn">&#9825;</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1573246123716-6b1782bfc499?w=400&h=300&fit=crop" alt="Broccoli" />
+        <div class="product-info">
+          <p class="product-name">Broccoli Crown</p>
+          <p class="product-weight">Per piece</p>
+          <div class="product-footer">
+            <p class="product-price">$1.29</p>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <span class="badge out">Low Stock</span>
+        <span class="wish-btn">&#9825;</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1559181567-c3190eff4459?w=400&h=300&fit=crop" alt="Cherries" />
+        <div class="product-info">
+          <p class="product-name">Sweet Cherries</p>
+          <p class="product-weight">500 g box</p>
+          <div class="product-footer">
+            <p class="product-price">$5.99 <s>$7.49</s></p>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <span class="badge">-15%</span>
+        <span class="wish-btn">&#9825;</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=300&fit=crop" alt="Milk" />
+        <div class="product-info">
+          <p class="product-name">Full Cream Milk</p>
+          <p class="product-weight">1 litre</p>
+          <div class="product-footer">
+            <p class="product-price">$2.19 <s>$2.59</s></p>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <span class="wish-btn">&#9825;</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1549931319-a545dcf3bc7c?w=400&h=300&fit=crop" alt="Sourdough" />
+        <div class="product-info">
+          <p class="product-name">Sourdough Loaf</p>
+          <p class="product-weight">800 g loaf</p>
+          <div class="product-footer">
+            <p class="product-price">$4.49</p>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <span class="badge">Organic</span>
+        <span class="wish-btn">&#9825;</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=400&h=300&fit=crop" alt="Potatoes" />
+        <div class="product-info">
+          <p class="product-name">Russet Potatoes</p>
+          <p class="product-weight">2 kg bag</p>
+          <div class="product-footer">
+            <p class="product-price">$2.79</p>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+      <div class="product-card">
+        <span class="badge">-25%</span>
+        <span class="wish-btn">&#9825;</span>
+        <img class="product-img" src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400&h=300&fit=crop" alt="Strawberries" />
+        <div class="product-info">
+          <p class="product-name">Strawberries</p>
+          <p class="product-weight">400 g punnet</p>
+          <div class="product-footer">
+            <p class="product-price">$3.75 <s>$4.99</s></p>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 3: FLASH DEAL BANNER
+══════════════════════════════════════════════ -->
+<section class="flash-section">
+  <div class="flash-inner">
+    <div class="flash-text">
+      <p class="section-label" style="color:#a8d572;">Limited Time Offer</p>
+      <h2>Fresh Deals End<br>Tonight at Midnight</h2>
+      <p>Stock up on premium organic produce at prices we can only hold for 24 hours. No coupon needed.</p>
+      <div class="countdown">
+        <div class="count-block"><span id="h">08</span><small>Hrs</small></div>
+        <div class="count-block"><span id="m">34</span><small>Min</small></div>
+        <div class="count-block"><span id="s">59</span><small>Sec</small></div>
+      </div>
+      <button class="flash-cta">Shop the Deal</button>
+    </div>
+    <img class="flash-img"
+      src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?w=400&h=400&fit=crop"
+      alt="Fresh produce flash deal" />
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 4: ORGANIC PICKS (Horizontal scroll)
+══════════════════════════════════════════════ -->
+<section class="organic-section">
+  <div class="section-head">
+    <div>
+      <p class="section-label">Hand-picked</p>
+      <h2 class="section-title">Organic Favourites</h2>
+    </div>
+    <a href="#" class="see-all">See all &rarr;</a>
+  </div>
+  <div class="organic-scroll">
+    <div class="organic-card">
+      <img src="https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=400&h=260&fit=crop" alt="Avocado" />
+      <p class="organic-tag">Organic</p>
+      <p class="organic-name">Hass Avocado</p>
+      <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9733; (148)</p>
+      <p class="organic-price">$1.99 <span>$2.49</span></p>
+    </div>
+    <div class="organic-card">
+      <img src="https://images.unsplash.com/photo-1615485291234-9d694218aeb3?w=400&h=260&fit=crop" alt="Mango" />
+      <p class="organic-tag">Seasonal</p>
+      <p class="organic-name">Alphonso Mango</p>
+      <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9733; (203)</p>
+      <p class="organic-price">$2.49</p>
+    </div>
+    <div class="organic-card">
+      <img src="https://images.unsplash.com/photo-1448907503123-67254d59ca4f?w=400&h=260&fit=crop" alt="Spinach" />
+      <p class="organic-tag">Organic</p>
+      <p class="organic-name">Baby Spinach</p>
+      <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9734; (87)</p>
+      <p class="organic-price">$2.29 <span>$3.09</span></p>
+    </div>
+    <div class="organic-card">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&h=260&fit=crop" alt="Tomatoes" />
+      <p class="organic-tag">Local Farm</p>
+      <p class="organic-name">Vine Tomatoes</p>
+      <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9733; (312)</p>
+      <p class="organic-price">$1.79</p>
+    </div>
+    <div class="organic-card">
+      <img src="https://images.unsplash.com/photo-1580910051074-3eb694886505?w=400&h=260&fit=crop" alt="Grapes" />
+      <p class="organic-tag">Organic</p>
+      <p class="organic-name">Green Seedless Grapes</p>
+      <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9733; (91)</p>
+      <p class="organic-price">$4.49 <span>$5.99</span></p>
+    </div>
+    <div class="organic-card">
+      <img src="https://images.unsplash.com/photo-1543218024-57a70143c369?w=400&h=260&fit=crop" alt="Carrots" />
+      <p class="organic-tag">Farm Fresh</p>
+      <p class="organic-name">Rainbow Carrots</p>
+      <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9734; (56)</p>
+      <p class="organic-price">$2.09</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 5: FEATURE TILES
+══════════════════════════════════════════════ -->
+<section class="features-section">
+  <p class="section-label">Why choose Stackly</p>
+  <h2 class="section-title" style="margin-bottom:24px;">Shopping made simple</h2>
+  <div class="features-grid">
+    <div class="feature-tile">
+      <div class="feature-icon">&#127793;</div>
+      <h3>100% Fresh Produce</h3>
+      <p>Every item is sourced directly from certified farms and restocked daily to guarantee peak freshness.</p>
+    </div>
+    <div class="feature-tile">
+      <div class="feature-icon">&#128666;</div>
+      <h3>Same-Day Delivery</h3>
+      <p>Order before 2 PM and your groceries arrive the same evening. No minimum order required.</p>
+    </div>
+    <div class="feature-tile">
+      <div class="feature-icon">&#128274;</div>
+      <h3>Secure Payments</h3>
+      <p>All transactions are encrypted end-to-end. Pay by card, wallet, or cash on delivery.</p>
+    </div>
+    <div class="feature-tile">
+      <div class="feature-icon">&#9851;</div>
+      <h3>Easy Returns</h3>
+      <p>Not happy with an item? We collect it within 24 hours and refund you instantly, no questions asked.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 6: NEWSLETTER
+══════════════════════════════════════════════ -->
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <span class="section-label">Stay in the loop</span>
+    <h2 class="section-title">Weekly deals in your inbox</h2>
+    <p>Subscribe and get exclusive discounts, seasonal recipes, and early access to flash sales delivered every Thursday.</p>
+    <div class="newsletter-form">
+      <input type="email" placeholder="Enter your email address" />
+      <button type="button">Subscribe</button>
+    </div>
+    <p class="newsletter-trust">No spam. Unsubscribe at any time.</p>
+  </div>
+</section>
+
+<script>
+  // Countdown timer
+  let total = 8 * 3600 + 34 * 60 + 59;
+  const hEl = document.getElementById('h');
+  const mEl = document.getElementById('m');
+  const sEl = document.getElementById('s');
+  function tick() {
+    if (total <= 0) return;
+    total--;
+    const h = Math.floor(total / 3600);
+    const m = Math.floor((total % 3600) / 60);
+    const s = total % 60;
+    hEl.textContent = String(h).padStart(2,'0');
+    mEl.textContent = String(m).padStart(2,'0');
+    sEl.textContent = String(s).padStart(2,'0');
+  }
+  setInterval(tick, 1000);
+
+  // Category active toggle
+  document.querySelectorAll('.cat-card').forEach(card => {
+    card.addEventListener('click', e => {
+      e.preventDefault();
+      document.querySelectorAll('.cat-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+    });
+  });
+
+  // Wishlist toggle
+  document.querySelectorAll('.wish-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.textContent = btn.textContent === '♡' ? '♥' : '♡';
+      btn.style.color = btn.textContent === '♥' ? '#ef4444' : '';
+    });
+  });
+</script>
+</body>
+</html>
