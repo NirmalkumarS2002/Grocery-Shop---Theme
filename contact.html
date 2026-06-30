@@ -1,366 +1,1382 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Stackly - Contact Us</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap"
+    rel="stylesheet" />
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
   <style>
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
 
     :root {
-      --green:      #629D23;
+      --border-color: 1px solid rgba(128, 128, 128, 0.425);
+      --header-bg-color: #F3F4F6;
+      --primariy-color: #629D24;
+    }
+
+    html,
+    body {
+      overflow-x: hidden;
+      font-family: "DM Sans", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* header 1*/
+
+    .header-section {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 5%;
+      background: #629D23;
+    }
+
+    .header-container p,
+    .header-container a {
+      text-decoration: none;
+      font-size: 15px;
+      color: white;
+    }
+
+    .header-link a:first-child {
+      margin-right: 20px;
+    }
+
+    @media (max-width:600px) {
+      .header-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 5%;
+      }
+
+      .header-container p,
+      .header-container a {
+        font-size: 13px;
+      }
+    }
+
+    /* header 2*/
+
+    .header-container2 {
+      display: flex;
+      justify-content: space-between;
+      padding-inline: 5%;
+      border-bottom: var(--border-color);
+    }
+
+    .accout-contaner {
+      border-right: var(--border-color);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding-right: 20px;
+    }
+
+    .accout-contaner a {
+      text-decoration: none;
+      font-size: 14px;
+      color: black;
+      padding-block: 15px;
+
+    }
+
+    .accout-contaner a:hover {
+      color: var(--primariy-color);
+    }
+
+    .deliver-container {
+      display: flex;
+      align-items: center;
+      color: black;
+      font-size: 14px;
+    }
+
+    .track-container {
+      display: flex;
+      align-items: center;
+
+    }
+
+    .track-container a {
+      text-decoration: none;
+      color: black;
+      font-size: 14px;
+      padding-block: 15px;
+      padding-inline: 20px;
+    }
+
+    .track-container a:hover {
+      color: var(--primariy-color);
+    }
+
+    .track-container a:first-child {
+      border-inline: var(--border-color);
+    }
+
+    .track-container a:nth-child(2) {
+      border-right: var(--border-color);
+    }
+
+    @media (max-width:950px) {
+      .header-container2 {
+        display: none;
+      }
+
+    }
+
+
+
+
+    /* header 3*/
+
+    .header-container3 {
+      display: flex;
+      justify-content: space-between;
+      padding-inline: 5%;
+      padding-block: 20px;
+      gap: 20px;
+    }
+
+    .header-logo-container img {
+      width: 200px;
+    }
+
+    .header-menu-container {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      width: 50%;
+    }
+
+    .category-container {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 14px 22px;
+      border-radius: 7px;
+      background: var(--header-bg-color);
+      padding-right: 5%;
+    }
+
+    .category-container:hover {
+      box-shadow: 0 0 10px rgba(19, 19, 19, 0.226);
+    }
+
+    .category-container span {
+      font-size: 20px;
+      color: var(--primariy-color);
+    }
+
+    .category-container a {
+      color: black;
+      font-size: 15px;
+      text-decoration: none;
+    }
+
+    .search-container {
+      display: flex;
+      align-items: center;
+      position: relative;
+      justify-content: center;
+
+    }
+
+    .search-container input {
+      padding: 15px 40px;
+      border: 1px solid green;
+      border-radius: 7px;
+      font-size: 15px;
+      background: var(--header-bg-color);
+      width: clamp(200px, 30vw, 400px);
+    }
+
+    .search-container input:focus {
+      box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.507);
+      border: 1px solid green;
+      outline: none;
+    }
+
+
+    .search-menu {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .search-btn {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      padding: 12px 20px;
+      transform: translateY(-50%);
+      border: none;
+      background: #629D23;
+      color: white;
+      border-radius: 7px;
+    }
+
+    .search-btn:hover {
+      background: #63bd04;
+      box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
+    .header-icons-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header-icons-container div:last-child {
+      display: none;
+    }
+
+    .header-icons-container div {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 20px;
+      border: var(--border-color);
+      border-radius: 7px;
+      box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.247);
+    }
+
+    .header-icons-container div:hover {
+      box-shadow: 0 0 10px rgba(19, 19, 19, 0.226);
+    }
+
+    .header-icons-container div span {
+      font-size: 20px;
+      color: var(--primariy-color);
+    }
+
+    .header-icons-container div p {
+      font-size: 15px;
+    }
+
+
+    @media (max-width:1385px) {
+      .category-container {
+        display: none;
+      }
+
+      .header-icons-container div:nth-child(2) {
+        display: none;
+      }
+    }
+
+    @media (max-width:950px) {
+      .header-menu-container {
+        display: none;
+      }
+    }
+
+    @media (max-width:600px) {
+
+
+      .header-container3 {
+
+        padding-block: 10px;
+      }
+
+      .header-logo-container img {
+        width: 150px;
+      }
+
+
+      .header-icons-container div span {
+        font-size: 17px;
+      }
+
+      .header-icons-container div p {
+        font-size: 13px;
+      }
+
+      .header-icons-container div {
+        padding: 10px 15px;
+
+      }
+
+    }
+
+    @media (max-width:450px) {
+      .header-icons-container div {
+        padding: 5px 5px;
+
+      }
+
+      .header-icons-container div p {
+        display: none;
+      }
+
+    }
+
+    /*  header container4*/
+
+    .header-container4 {
+      display: flex;
+      justify-content: space-between;
+      padding-inline: 5%;
+      background: var(--header-bg-color);
+    }
+
+    .menubar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-btns {
+      display: flex;
+      align-items: center;
+    }
+
+    .open-btn {
+      display: none;
+      font-size: 25px;
+    }
+
+    .close-btn {
+      display: none;
+      font-size: 25px;
+    }
+
+    .close-btn2 {
+      display: none;
+      font-size: 25px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 20px;
+    }
+
+    .nav-links li {
+      list-style: none;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      font-size: 16px;
+      color: black;
+      padding: 5px 10px;
+      transition: 0.5s ease;
+    }
+
+    .nav-links li a:hover {
+      background: var(--primariy-color);
+      color: white;
+      border-radius: 7px;
+    }
+
+    .nav-links .active {
+      background: var(--primariy-color);
+      color: white;
+      border-radius: 7px;
+
+    }
+
+
+    .trinding-container {
+      display: flex;
+      justify-content: flex-end;
+
+    }
+
+
+    .trend-container {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      padding: 20px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .trend-container::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-top: 25px solid #629D24;
+      border-left: 40px solid transparent;
+    }
+
+
+
+    .trend-container a {
+      text-decoration: none;
+      font-size: 16px;
+      color: black;
+    }
+
+    .trend-container a:hover {
+      color: var(--primariy-color);
+    }
+
+    .offer-container {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background: #629D24;
+      padding: 20px 20px;
+    }
+
+    .offer-container p {
+      font-size: 15px;
+      color: rgb(255, 255, 255);
+    }
+
+    .offer-container a {
+      text-decoration: none;
+      background: white;
+      padding: 3px 20px;
+      border-radius: 20px;
+      font-size: 14px;
+      color: green;
+      transition: 0.5s ease;
+    }
+
+    .offer-container a:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgb(0, 255, 0);
+    }
+
+    @media (max-width:1150px) {
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        background: white;
+        height: 100vh;
+        width: 320px;
+        align-items: flex-start;
+        z-index: 1000;
+        justify-content: flex-start;
+        padding: 60px 40px;
+      }
+
+      .nav-btns {
+        display: flex;
+      }
+
+      .open-btn {
+        display: block;
+      }
+
+      .close-btn {
+        display: none;
+        z-index: 10001;
+        position: absolute;
+        top: 0;
+        left: 240px;
+        padding: 15px 40px;
+      }
+
+      .close-btn2 {
+        display: none;
+        z-index: 10001;
+        position: absolute;
+        top: 0;
+        left: 240px;
+        padding: 15px 40px;
+      }
+    }
+
+    @media (max-width:650px) {
+      .header-icons-container div:last-child {
+        display: flex;
+      }
+
+      .trinding-container {
+        display: none;
+      }
+
+      .open-btn {
+        display: none;
+      }
+
+      .header-container3 {
+        border-bottom: var(--border-color);
+      }
+    }
+
+    /*footer*/
+
+    .footer-section {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #1A1A1A;
+
+    }
+
+    .footer-section-top {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      padding: 60px 30px;
+      gap: 20px;
+    }
+
+    .footer1 {
+      display: flex;
+      flex-direction: column;
+      width: 80%;
+    }
+
+    .footer-logo img {
+      width: 200px;
+    }
+
+    .footer1 .footer-logo {
+      margin-bottom: 20px;
+    }
+
+    .footer1 p {
+      font-size: 15px;
+      line-height: 1.5;
+      max-width: 300px;
+      margin-bottom: 20px;
+      color: rgb(133, 133, 133);
+      ;
+    }
+
+    .subscribe-container {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .subscribe-container input {
+      padding: 15px 20px;
+      width: 100%;
+      border-radius: 6px;
+      border: none;
+      background: #639d2436;
+      color: white;
+      transition: 0.5s ease;
+    }
+
+    .subscribe-container input:focus {
+      border: 1px solid var(--primariy-color);
+      outline: none;
+      box-shadow: 0 0 20px rgba(0, 252, 0, 0.185);
+    }
+
+    .subscribe-container input::placeholder {
+      color: gray;
+    }
+
+    .subscribe {
+      position: absolute;
+      right: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 10px 20px;
+      border-radius: 5px;
+      background: #629D24;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      transition: all .35s ease;
+    }
+
+    /* Hover */
+    .subscribe:hover {
+      background: #78be2c;
+      transform: translateY(-50%) translateY(-3px);
+      box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
+    .sotial-icons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .sotial-icons a {
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(98, 157, 36, .25);
+      border-radius: 50%;
+      text-decoration: none;
+      transition: all .4s ease;
+    }
+
+    .sotial-icons a i {
+      font-size: 26px;
+      color: #629D24;
+      transition: all .4s ease;
+    }
+
+    /* Hover */
+    .sotial-icons a:hover {
+      background: #629D24;
+      border-color: #629D24;
+      transform: translateY(-8px) scale(1.08);
+      box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
+    .sotial-icons a:hover i {
+      color: #fff;
+      transform: rotate(360deg);
+    }
+
+    .footer2 h2,
+    .footer3 h2,
+    .footer4 h2 {
+      margin-bottom: 20px;
+      font-size: 25px;
+      color: white;
+
+    }
+
+    .store-links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .store-links a {
+      text-decoration: none;
+      font-size: 15px;
+      color: rgb(133, 133, 133);
+    }
+
+    .store-links a:hover {
+      color: var(--primariy-color);
+    }
+
+    .footer-details {
+      display: flex;
+      gap: 15px;
+    }
+
+    .footer-details span {
+      font-size: 30px;
+      color: var(--primariy-color);
+    }
+
+    .footer-details div p {
+      font-size: 15px;
+      margin-bottom: 4px;
+      color: rgb(133, 133, 133);
+      ;
+    }
+
+    .footer-details div p:last-child:hover {
+      color: var(--primariy-color);
+    }
+
+    .footer-section-bottom {
+      display: flex;
+      justify-content: space-around;
+      border-top: var(--border-color);
+      padding: 30px 30px;
+      align-items: center;
+    }
+
+    .footer-section-bottom p {
+      font-size: 15px;
+      color: rgb(133, 133, 133);
+      ;
+    }
+
+    .footer-section-bottom div {
+      display: flex;
+      gap: 10px;
+    }
+
+
+    .footer-section-bottom div a {
+      text-decoration: none;
+      font-size: 15px;
+      color: rgb(133, 133, 133);
+    }
+
+    .footer-section-bottom div a:hover {
+      color: var(--primariy-color);
+    }
+
+    @media (max-width:1100px) {
+      .footer-section-top {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+      }
+
+    }
+
+    @media (max-width:575px) {
+      .footer-section-top {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+      }
+
+      .footer1 {
+        width: 100%;
+      }
+
+      .footer-section-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+
+    }
+
+
+    /*added seciton*/
+    :root {
+      --green: #629D23;
       --green-dark: #4a7a18;
       --green-pale: #f0f7e6;
-      --green-mid:  #d4edaa;
-      --cream:      #FAFAF8;
-      --charcoal:   #1b1b1b;
-      --muted:      #6b7280;
-      --border:     1px solid #e5e7eb;
-      --r:          14px;
+      --green-mid: #d4edaa;
+      --cream: #FAFAF8;
+      --charcoal: #1b1b1b;
+      --muted: #6b7280;
+      --border: 1px solid #e5e7eb;
+      --r: 14px;
     }
 
-    body { font-family:"DM Sans",sans-serif; background:var(--cream); color:var(--charcoal); }
-    a { text-decoration:none; color:inherit; }
-    img { display:block; }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+    }
 
     .eyebrow {
-      font-size:11px; font-weight:700; letter-spacing:2.5px;
-      text-transform:uppercase; color:var(--green); margin-bottom:8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
     }
+
     .heading {
-      font-family:"Playfair Display",serif;
-      font-size:clamp(24px,3.5vw,40px);
-      line-height:1.2; color:var(--charcoal);
+      font-size: clamp(24px, 3.5vw, 40px);
+      line-height: 1.2;
+      color: var(--charcoal);
     }
-    .sec-pad { padding:64px 6%; }
+
+    .sec-pad {
+      padding: 64px 6%;
+    }
 
 
     /* ════════════════════════════════════════════
        SECTION 1 — HERO BANNER
     ════════════════════════════════════════════ */
     .contact-hero {
-      position:relative;
-      height:420px;
-      overflow:hidden;
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
     }
+
     .contact-hero img {
-      width:100%; height:100%; object-fit:cover;
-      transform:scale(1.04);
-      transition:transform 8s ease;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+      transition: transform 8s ease;
     }
-    .contact-hero:hover img { transform:scale(1); }
+
+    .contact-hero:hover img {
+      transform: scale(1);
+    }
+
     .hero-overlay {
-      position:absolute; inset:0;
-      background:linear-gradient(135deg,rgba(26,58,8,.82) 0%,rgba(98,157,35,.45) 100%);
-      display:flex; flex-direction:column;
-      align-items:center; justify-content:center;
-      text-align:center; padding:24px;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26, 58, 8, .82) 0%, rgba(98, 157, 35, .45) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
     }
-    .hero-overlay .eyebrow { color:#a8d572; }
+
+    .hero-overlay .eyebrow {
+      color: #a8d572;
+    }
+
     .hero-overlay h1 {
-      font-family:"Playfair Display",serif;
-      font-size:clamp(30px,5vw,58px);
-      color:#fff; line-height:1.15; margin-bottom:16px;
+      font-size: clamp(30px, 5vw, 58px);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
     }
-    .hero-overlay h1 em { font-style:italic; color:#c5f079; }
+
+    .hero-overlay h1 em {
+      font-style: italic;
+      color: #c5f079;
+    }
+
     .hero-overlay p {
-      font-size:16px; color:rgba(255,255,255,.82);
-      max-width:500px; line-height:1.7; margin-bottom:28px;
+      font-size: 16px;
+      color: rgba(255, 255, 255, .82);
+      max-width: 500px;
+      line-height: 1.7;
+      margin-bottom: 28px;
     }
+
     .hero-scroll-cta {
-      display:inline-flex; align-items:center; gap:8px;
-      padding:12px 28px; border-radius:30px;
-      background:#fff; color:var(--green-dark);
-      font-weight:700; font-size:14px; cursor:pointer;
-      border:none; transition:transform .2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 30px;
+      background: #fff;
+      color: var(--green-dark);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      transition: transform .2s;
     }
-    .hero-scroll-cta:hover { transform:translateY(3px); }
 
-
-    /* ════════════════════════════════════════════
-       SECTION 2 — CONTACT CARDS ROW
-    ════════════════════════════════════════════ */
-    .cards-section {
-      background:#fff;
-      border-top:var(--border); border-bottom:var(--border);
-    }
-    .cards-inner {
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:0;
-    }
-    .c-card {
-      padding:36px 28px;
-      border-right:var(--border);
-      display:flex; flex-direction:column; gap:14px;
-      transition:background .2s;
-    }
-    .c-card:last-child { border-right:none; }
-    .c-card:hover { background:var(--green-pale); }
-    .c-icon {
-      width:52px; height:52px; border-radius:14px;
-      overflow:hidden; flex-shrink:0;
-    }
-    .c-icon img { width:100%; height:100%; object-fit:cover; }
-    .c-card h3 { font-size:16px; font-weight:700; }
-    .c-card p { font-size:13px; color:var(--muted); line-height:1.6; }
-    .c-link {
-      font-size:13px; font-weight:700; color:var(--green);
-      display:inline-flex; align-items:center; gap:4px;
-    }
-    .c-link:hover { text-decoration:underline; }
-
-    @media(max-width:860px){
-      .cards-inner { grid-template-columns:1fr 1fr; }
-      .c-card:nth-child(2) { border-right:none; }
-      .c-card:nth-child(3) { border-top:var(--border); }
-      .c-card:nth-child(4) { border-top:var(--border); border-right:none; }
-    }
-    @media(max-width:500px){
-      .cards-inner { grid-template-columns:1fr; }
-      .c-card { border-right:none; border-bottom:var(--border); }
+    .hero-scroll-cta:hover {
+      transform: translateY(3px);
     }
 
 
+    
     /* ════════════════════════════════════════════
        SECTION 3 — CONTACT FORM + IMAGE SPLIT
     ════════════════════════════════════════════ */
-    .form-section { background:var(--cream); }
-    .form-inner {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:60px;
-      align-items:start;
+    .form-section {
+      background: var(--cream);
     }
-    .form-left {}
-    .form-left .eyebrow { margin-bottom:10px; }
-    .form-left .heading { margin-bottom:14px; }
-    .form-left > p { font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:32px; }
+
+    .form-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+
+    .form-left .eyebrow {
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .form-left .heading {
+      margin-bottom: 14px;
+    }
+
+    .form-left>p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
 
     .form-grid {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
     }
-    .form-group { display:flex; flex-direction:column; gap:6px; }
-    .form-group.full { grid-column:1/3; }
-    .form-group label { font-size:12px; font-weight:700; color:var(--charcoal); letter-spacing:.5px; }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group.full {
+      grid-column: 1/3;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--charcoal);
+      letter-spacing: .5px;
+    }
+
     .form-group input,
     .form-group select,
     .form-group textarea {
-      padding:13px 16px;
-      border:var(--border);
-      border-radius:10px;
-      font-size:14px;
-      font-family:"DM Sans",sans-serif;
-      background:#fff;
-      color:var(--charcoal);
-      outline:none;
-      transition:border-color .2s, box-shadow .2s;
+      padding: 13px 16px;
+      border: var(--border);
+      border-radius: 10px;
+      font-size: 14px;
+      font-family: "DM Sans", sans-serif;
+      background: #fff;
+      color: var(--charcoal);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
     }
+
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color:var(--green);
-      box-shadow:0 0 0 3px rgba(98,157,35,.12);
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(98, 157, 35, .12);
     }
-    .form-group textarea { resize:vertical; min-height:120px; }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
     .topic-chips {
-      display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
     }
+
     .chip {
-      padding:7px 16px; border-radius:20px; border:var(--border);
-      font-size:12px; font-weight:600; cursor:pointer;
-      background:#fff; color:var(--muted);
-      transition:all .15s;
+      padding: 7px 16px;
+      border-radius: 20px;
+      border: var(--border);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      background: #fff;
+      color: var(--muted);
+      transition: all .15s;
     }
-    .chip.active, .chip:hover {
-      background:var(--green); color:#fff; border-color:var(--green);
+
+    .chip.active,
+    .chip:hover {
+      background: var(--green);
+      color: #fff;
+      border-color: var(--green);
     }
+
     .submit-btn {
-      margin-top:20px;
-      width:100%; padding:15px;
-      background:var(--green); color:#fff;
-      border:none; border-radius:10px;
-      font-size:15px; font-weight:700;
-      cursor:pointer; font-family:"DM Sans",sans-serif;
-      transition:background .2s, transform .15s;
+      margin-top: 20px;
+      width: 100%;
+      padding: 15px;
+      background: var(--green);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: "DM Sans", sans-serif;
+      transition: background .2s, transform .15s;
     }
-    .submit-btn:hover { background:var(--green-dark); transform:translateY(-2px); }
-    .form-note { margin-top:12px; font-size:12px; color:var(--muted); text-align:center; }
+
+    .submit-btn:hover {
+      background: var(--green-dark);
+      transform: translateY(-2px);
+    }
+
+    .form-note {
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align: center;
+    }
 
     /* Right image stack */
-    .form-right { display:flex; flex-direction:column; gap:16px; }
-    .form-img-main {
-      width:100%; height:280px; object-fit:cover;
-      border-radius:var(--r);
+    .form-right {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
-    .form-img-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-    .form-img-row img {
-      width:100%; height:150px; object-fit:cover;
-      border-radius:var(--r);
-    }
-    .hours-box {
-      background:var(--green);
-      border-radius:var(--r);
-      padding:22px 24px;
-      color:#fff;
-    }
-    .hours-box h4 { font-size:15px; font-weight:700; margin-bottom:14px; }
-    .hours-row {
-      display:flex; justify-content:space-between;
-      font-size:13px; padding:7px 0;
-      border-bottom:1px solid rgba(255,255,255,.2);
-    }
-    .hours-row:last-child { border-bottom:none; }
-    .hours-row span:last-child { font-weight:600; }
 
-    @media(max-width:860px){
-      .form-inner { grid-template-columns:1fr; gap:36px; }
-      .form-right { display:none; }
+    .form-img-main {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: var(--r);
     }
-    @media(max-width:500px){
-      .form-grid { grid-template-columns:1fr; }
-      .form-group.full { grid-column:auto; }
+
+    .form-img-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-img-row img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: var(--r);
+    }
+
+    .hours-box {
+      background: var(--green);
+      border-radius: var(--r);
+      padding: 22px 24px;
+      color: #fff;
+    }
+
+    .hours-box h4 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .2);
+    }
+
+    .hours-row:last-child {
+      border-bottom: none;
+    }
+
+    .hours-row span:last-child {
+      font-weight: 600;
+    }
+
+    @media(max-width:860px) {
+      .form-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .form-right {
+        display: none;
+      }
+    }
+
+    @media(max-width:500px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
     }
 
 
     /* ════════════════════════════════════════════
        SECTION 4 — STORE LOCATOR
     ════════════════════════════════════════════ */
-    .locator-section { background:#fff; border-top:var(--border); }
-    .locator-inner {
-      display:grid;
-      grid-template-columns:340px 1fr;
-      gap:0;
-      min-height:440px;
-      border:var(--border);
-      border-radius:20px;
-      overflow:hidden;
-    }
-    .loc-list {
-      border-right:var(--border);
-      overflow-y:auto;
-      max-height:440px;
-    }
-    .loc-search {
-      padding:16px;
-      border-bottom:var(--border);
-      position:sticky; top:0; background:#fff; z-index:1;
-    }
-    .loc-search input {
-      width:100%; padding:11px 14px;
-      border:var(--border); border-radius:8px;
-      font-size:13px; font-family:"DM Sans",sans-serif;
-      outline:none;
-    }
-    .loc-search input:focus { border-color:var(--green); }
-    .loc-item {
-      padding:18px 20px;
-      border-bottom:var(--border);
-      cursor:pointer;
-      transition:background .15s;
-    }
-    .loc-item:hover, .loc-item.active { background:var(--green-pale); }
-    .loc-item h4 { font-size:14px; font-weight:700; margin-bottom:4px; }
-    .loc-item p { font-size:12px; color:var(--muted); line-height:1.5; }
-    .loc-badge {
-      display:inline-block; margin-top:6px;
-      padding:2px 10px; border-radius:20px;
-      font-size:10px; font-weight:700;
-      background:var(--green-mid); color:var(--green-dark);
-    }
-    .loc-map {
-      position:relative; overflow:hidden;
-      background:#e8f0e0;
-    }
-    .loc-map img {
-      width:100%; height:100%; object-fit:cover; opacity:.9;
-    }
-    .map-pin {
-      position:absolute; top:50%; left:50%;
-      transform:translate(-50%,-100%);
-      background:var(--green); color:#fff;
-      font-size:12px; font-weight:700;
-      padding:6px 14px; border-radius:20px;
-      white-space:nowrap;
-      box-shadow:0 4px 14px rgba(0,0,0,.2);
-    }
-    .map-pin::after {
-      content:"";
-      position:absolute; top:100%; left:50%;
-      transform:translateX(-50%);
-      border:6px solid transparent;
-      border-top-color:var(--green);
+    .locator-section {
+      background: #fff;
+      border-top: var(--border);
     }
 
-    @media(max-width:760px){
-      .locator-inner { grid-template-columns:1fr; }
-      .loc-list { max-height:260px; border-right:none; border-bottom:var(--border); }
-      .loc-map { height:220px; }
+    .locator-section .eyebrow{
+      font-size: clamp(14px,1.5vw,18px);
+    }
+
+    .locator-inner {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 0;
+  min-height: 440px;
+      border: var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    .loc-list {
+      border-right: var(--border);
+      max-height: 440px;
+    }
+
+    .loc-search {
+      padding: 16px;
+      border-bottom: var(--border);
+      position: sticky;
+      top: 0;
+      background: #fff;
+      z-index: 1;
+    }
+
+    .loc-search input {
+      width: 100%;
+      padding: 11px 14px;
+      border: var(--border);
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: "DM Sans", sans-serif;
+      outline: none;
+    }
+
+    .loc-search input:focus {
+      border-color: var(--green);
+    }
+
+    .loc-item {
+      padding: 18px 20px;
+      border-bottom: var(--border);
+      cursor: pointer;
+      transition: background .15s;
+    }
+
+    .loc-item:hover,
+    .loc-item.active {
+      background: var(--green-pale);
+    }
+
+    .loc-item h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .loc-item p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .loc-badge {
+      display: inline-block;
+      margin-top: 6px;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 10px;
+      font-weight: 700;
+      background: var(--green-mid);
+      color: var(--green-dark);
+    }
+
+    .loc-map {
+      position: relative;
+      overflow: hidden;
+      background: #e8f0e0;
+    }
+
+    .loc-map img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .9;
+    }
+
+    .map-pin {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -100%);
+      background: var(--green);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .2);
+    }
+
+    .map-pin::after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: var(--green);
+    }
+
+    @media (max-width:1284px) {
+      
+    .loc-list {
+      overflow-y: auto;
+    }
+
+    }
+    @media(max-width:760px) {
+      .locator-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .loc-list {
+        max-height: 260px;
+        border-right: none;
+        border-bottom: var(--border);
+      }
+
+      .loc-map {
+        height: 220px;
+      }
     }
 
 
     /* ════════════════════════════════════════════
        SECTION 5 — FAQ ACCORDION
     ════════════════════════════════════════════ */
-    .faq-section { background:var(--cream); }
+    .faq-section {
+      background: var(--cream);
+    }
+
     .faq-wrapper {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:60px;
-      align-items:start;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
     }
-    .faq-left {}
-    .faq-left .heading { margin-bottom:16px; }
-    .faq-left p { font-size:15px; color:var(--muted); line-height:1.7; margin-bottom:28px; }
+
+    .faq-left .eyebrow{
+      color: var(--green);
+    }
+
+    .faq-left .heading {
+      margin-bottom: 16px;
+    }
+
+    .faq-left p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
     .faq-img {
-      width:100%; border-radius:var(--r);
-      overflow:hidden; position:relative;
+      width: 100%;
+      border-radius: var(--r);
+      overflow: hidden;
+      position: relative;
     }
-    .faq-img img { width:100%; height:280px; object-fit:cover; }
+
+    .faq-img img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
     .faq-stat {
-      position:absolute; bottom:20px; left:20px;
-      background:#fff;
-      border-radius:12px;
-      padding:14px 20px;
-      box-shadow:0 4px 20px rgba(0,0,0,.12);
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, .12);
     }
-    .faq-stat strong { display:block; font-size:22px; color:var(--green); font-weight:800; }
-    .faq-stat span { font-size:12px; color:var(--muted); }
+
+    .faq-stat strong {
+      display: block;
+      font-size: 22px;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .faq-stat span {
+      font-size: 12px;
+      color: var(--muted);
+    }
 
     .faq-right {}
-    .faq-item {
-      border-bottom:var(--border);
-      overflow:hidden;
-    }
-    .faq-item:first-child { border-top:var(--border); }
-    .faq-q {
-      width:100%; background:none; border:none;
-      padding:18px 0;
-      display:flex; justify-content:space-between; align-items:center;
-      font-family:"DM Sans",sans-serif;
-      font-size:15px; font-weight:600;
-      color:var(--charcoal); cursor:pointer; text-align:left; gap:12px;
-    }
-    .faq-q .faq-icon {
-      width:26px; height:26px; flex-shrink:0;
-      border-radius:50%; background:var(--green-pale);
-      display:flex; align-items:center; justify-content:center;
-      font-size:16px; color:var(--green); transition:transform .3s, background .2s;
-    }
-    .faq-item.open .faq-icon { transform:rotate(45deg); background:var(--green); color:#fff; }
-    .faq-a {
-      max-height:0; overflow:hidden;
-      transition:max-height .35s ease, padding .35s;
-    }
-    .faq-item.open .faq-a { max-height:200px; }
-    .faq-a p { font-size:14px; color:var(--muted); line-height:1.7; padding-bottom:18px; }
 
-    @media(max-width:760px){
-      .faq-wrapper { grid-template-columns:1fr; }
-      .faq-left .faq-img { display:none; }
+    .faq-item {
+      border-bottom: var(--border);
+      overflow: hidden;
+    }
+
+    .faq-item:first-child {
+      border-top: var(--border);
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 18px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: "DM Sans", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--charcoal);
+      cursor: pointer;
+      text-align: left;
+      gap: 12px;
+    }
+
+    .faq-q .faq-icon {
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: var(--green-pale);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--green);
+      transition: transform .3s, background .2s;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+      background: var(--green);
+      color: #fff;
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .35s;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 200px;
+    }
+
+    .faq-a p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      padding-bottom: 18px;
+    }
+
+    @media(max-width:760px) {
+      .faq-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+    
     }
 
 
@@ -368,392 +1384,762 @@
        SECTION 6 — SOCIAL + CTA STRIP
     ════════════════════════════════════════════ */
     .social-section {
-      background:linear-gradient(135deg,#1d4208 0%,#3a7012 55%,#629D23 100%);
-      padding:64px 6%;
+      background: linear-gradient(135deg, #1d4208 0%, #3a7012 55%, #629D23 100%);
+      padding: 64px 6%;
     }
+
     .social-inner {
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:60px;
-      align-items:center;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
     }
-    .social-left { color:#fff; }
-    .social-left .eyebrow { color:#a8d572; }
-    .social-left .heading { color:#fff; margin-bottom:14px; }
-    .social-left p { font-size:15px; color:rgba(255,255,255,.8); line-height:1.7; margin-bottom:28px; }
-    .social-links { display:flex; gap:12px; flex-wrap:wrap; }
+
+    .social-left {
+      color: #fff;
+    }
+
+    .social-left .eyebrow {
+      color: #a8d572;
+    }
+
+    .social-left .heading {
+      color: #fff;
+      margin-bottom: 14px;
+    }
+
+    .social-left p {
+      font-size: 15px;
+      color: rgba(255, 255, 255, .8);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
     .soc-btn {
-      display:flex; align-items:center; gap:10px;
-      padding:12px 20px; border-radius:10px;
-      background:rgba(255,255,255,.12);
-      border:1px solid rgba(255,255,255,.25);
-      color:#fff; font-size:13px; font-weight:600;
-      cursor:pointer; transition:background .2s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .12);
+      border: 1px solid rgba(255, 255, 255, .25);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s; 
     }
-    .soc-btn img { width:20px; height:20px; border-radius:4px; object-fit:cover; }
-    .soc-btn:hover { background:rgba(255,255,255,.22); }
+
+    .soc-btn img {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    .soc-btn:hover {
+      background: rgba(255, 255, 255, .22);
+    }
 
     .social-right {
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:8px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
     }
-    .soc-img {
-      border-radius:10px; overflow:hidden;
-      aspect-ratio:1; cursor:pointer;
-    }
-    .soc-img img {
-      width:100%; height:100%; object-fit:cover;
-      transition:transform .35s, filter .35s;
-      filter:brightness(.85);
-    }
-    .soc-img:hover img { transform:scale(1.08); filter:brightness(1); }
 
-    @media(max-width:760px){
-      .social-inner { grid-template-columns:1fr; gap:36px; }
-      .social-right { grid-template-columns:repeat(3,1fr); }
+    .soc-img {
+      border-radius: 10px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      cursor: pointer;
+    }
+
+    .soc-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .35s, filter .35s;
+      filter: brightness(.85);
+    }
+
+    .soc-img:hover img {
+      transform: scale(1.08);
+      filter: brightness(1);
+    }
+
+    @media(max-width:760px) {
+      .social-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .social-right {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+
+      .soc-btn{
+        flex: 1;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- ════════════════════════════════════════════
+  <header class="header-section">
+
+    <div class="header-container">
+      <p>Welcome to our Stackly Grocery Store!</p>
+      <div class="header-link">
+        <a href="404.html">Need help?</a>
+        <a href="404.html">order-tracking</a>
+      </div>
+    </div>
+
+    <div class="header-container2">
+      <div class="accout-contaner">
+        <a href="404.html">About</a>
+        <a href="404.html">My account</a>
+        <a href="404.html">wishlist</a>
+      </div>
+
+      <div class="deliver-container">
+        <p>We deliver to Your Order Everyday form 7:00 to 22:00 </p>
+      </div>
+
+      <div class="track-container">
+        <a href="404.html">English</a>
+        <a href="404.html">USD</a>
+        <a href="404.html">Track Order</a>
+      </div>
+    </div>
+
+    <div class="header-container3">
+      <div class="header-logo-container">
+        <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+      </div>
+
+      <div class="header-menu-container">
+
+        <div class="category-container errorpage">
+          <span class="material-symbols-outlined">filter_list</span>
+          <a href="404.html">Categories</a>
+        </div>
+
+        <div class="search-container">
+          <span class="material-symbols-outlined search-menu">search</span>
+          <input type="search" placeholder="Search For Products">
+          <button class="search-btn errorpage">Search</button>
+        </div>
+
+      </div>
+
+      <div class="header-icons-container">
+
+        <div class="login-btn">
+          <span class="material-symbols-outlined">person</span>
+          <P>Login</P>
+        </div>
+
+        <div class="errorpage">
+          <span class="material-symbols-outlined">favorite</span>
+          <p>Wishlist</p>
+
+        </div>
+
+        <div class="errorpage">
+          <span class="material-symbols-outlined">add_shopping_cart</span>
+          <p>Cart</p>
+        </div>
+
+
+        <div>
+          <span class="material-symbols-outlined open-btn2">menu</span>
+        </div>
+
+      </div>
+
+
+    </div>
+
+    <div class="header-container4">
+
+      <div class="menubar">
+
+        <div class="nav-btns">
+          <span class="material-symbols-outlined open-btn">menu</span>
+          <span class="material-symbols-outlined close-btn">close</span>
+          <span class="material-symbols-outlined close-btn2">close</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="fresh.html">Fresh Grocery</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="contact.html"  class="active">Contact Us</a></li>
+        </ul>
+      </div>
+
+
+      <div class="trinding-container">
+        <div class="trend-container">
+          <a href="404.html">Trending Products</a>
+        </div>
+
+        <div class="offer-container">
+          <p>Get 30% Discont Now</p><a href="404.html">Sale</a>
+        </div>
+      </div>
+    </div>
+
+  </header>
+  <!-- ════════════════════════════════════════════
      SECTION 1 — HERO BANNER
 ════════════════════════════════════════════ -->
-<section class="contact-hero">
-  <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1400&h=600&fit=crop" alt="Fresh grocery store"/>
-  <div class="hero-overlay">
-    <p class="eyebrow">Get In Touch</p>
-    <h1>We're Here to <em>Help</em><br>You Every Step</h1>
-    <p>Questions about your order, delivery, or products? Our friendly team is available 7 days a week to assist you.</p>
-    <button class="hero-scroll-cta" onclick="document.querySelector('.form-section').scrollIntoView({behavior:'smooth'})">
-      Send Us a Message &darr;
-    </button>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     SECTION 2 — CONTACT CARDS
-════════════════════════════════════════════ -->
-<section class="cards-section">
-  <div class="cards-inner">
-
-    <div class="c-card">
-      <div class="c-icon">
-        <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=104&h=104&fit=crop" alt="Phone"/>
-      </div>
-      <h3>Call Us</h3>
-      <p>Speak directly to our support team. Available every day from 7 AM to 10 PM.</p>
-      <a href="tel:+18001234567" class="c-link">+1 800 123 4567 &rarr;</a>
+  <section class="contact-hero">
+    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1400&h=600&fit=crop"
+      alt="Fresh grocery store" />
+    <div class="hero-overlay">
+      <p class="eyebrow">Get In Touch</p>
+      <h1>We're Here to Help<br>You Every Step</h1>
+      <p>Questions about your order, delivery, or products? Our friendly team is available 7 days a week to assist you.
+      </p>
+      <button class="hero-scroll-cta"
+        onclick="document.querySelector('.form-section').scrollIntoView({behavior:'smooth'})">
+        Send Us a Message &darr;
+      </button>
     </div>
+  </section>
 
-    <div class="c-card">
-      <div class="c-icon">
-        <img src="https://images.unsplash.com/photo-1596526131083-e8c633c948d2?w=104&h=104&fit=crop" alt="Email"/>
-      </div>
-      <h3>Email Us</h3>
-      <p>We reply to every message within 2 hours on business days. Usually much faster.</p>
-      <a href="mailto:hello@stackly.com" class="c-link">hello@stackly.com &rarr;</a>
-    </div>
 
-    <div class="c-card">
-      <div class="c-icon">
-        <img src="https://images.unsplash.com/photo-1577563908411-5077b6dc7624?w=104&h=104&fit=crop" alt="Live chat"/>
-      </div>
-      <h3>Live Chat</h3>
-      <p>Chat with a real person, not a bot. Available on our app and website right now.</p>
-      <a href="#" class="c-link">Start Chatting &rarr;</a>
-    </div>
 
-    <div class="c-card">
-      <div class="c-icon">
-        <img src="https://images.unsplash.com/photo-1604357209793-fca5dca89f97?w=104&h=104&fit=crop" alt="Store visit"/>
-      </div>
-      <h3>Visit a Store</h3>
-      <p>Find your nearest Stackly store and talk to us in person, any day of the week.</p>
-      <a href="#" class="c-link">Find a Store &rarr;</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
+  <!-- ════════════════════════════════════════════
      SECTION 3 — CONTACT FORM
 ════════════════════════════════════════════ -->
-<section class="form-section sec-pad">
-  <div class="form-inner">
+  <section class="form-section sec-pad">
+    <div class="form-inner">
 
-    <div class="form-left">
-      <p class="eyebrow">Send a Message</p>
-      <h2 class="heading">Tell Us What's On<br>Your Mind</h2>
-      <p>Whether it's a question, feedback, or just a hello — fill out the form and someone from our team will get back to you within 2 hours.</p>
+      <div class="form-left">
+        <p class="eyebrow">Send a Message</p>
+        <h2 class="heading">Tell Us What's On<br>Your Mind</h2>
+        <p>Whether it's a question, feedback, or just a hello — fill out the form and someone from our team will get
+          back to you within 2 hours.</p>
 
-      <p style="font-size:13px;font-weight:700;color:var(--charcoal);margin-bottom:10px;">What's this about?</p>
-      <div class="topic-chips">
-        <span class="chip active" onclick="selectChip(this)">Order Issue</span>
-        <span class="chip" onclick="selectChip(this)">Delivery</span>
-        <span class="chip" onclick="selectChip(this)">Product Quality</span>
-        <span class="chip" onclick="selectChip(this)">Returns</span>
-        <span class="chip" onclick="selectChip(this)">Other</span>
+        <p style="font-size:13px;font-weight:700;color:var(--charcoal);margin-bottom:10px;">What's this about?</p>
+        <div class="topic-chips">
+          <span class="chip active" onclick="selectChip(this)">Order Issue</span>
+          <span class="chip" onclick="selectChip(this)">Delivery</span>
+          <span class="chip" onclick="selectChip(this)">Product Quality</span>
+          <span class="chip" onclick="selectChip(this)">Returns</span>
+          <span class="chip" onclick="selectChip(this)">Other</span>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith" />
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@email.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+1 800 000 0000" />
+          </div>
+          <div class="form-group">
+            <label>Order ID (optional)</label>
+            <input type="text" placeholder="#STK-00000" />
+          </div>
+          <div class="form-group">
+            <label>Priority</label>
+            <select>
+              <option>Normal</option>
+              <option>Urgent</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label>Your Message</label>
+            <textarea placeholder="Describe your issue or question in detail..."></textarea>
+          </div>
+        </div>
+
+        <button class="submit-btn" onclick="handleSubmit(this)">Send Message</button>
+        <p class="form-note">We typically reply within 2 hours on business days.</p>
       </div>
 
-      <div class="form-grid">
-        <div class="form-group">
-          <label>First Name</label>
-          <input type="text" placeholder="John"/>
+      <div class="form-right">
+        <img class="form-img-main" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&h=460&fit=crop"
+          alt="Customer support team" />
+        <div class="form-img-row">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=240&fit=crop"
+            alt="Support agent" />
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=240&fit=crop"
+            alt="Fresh produce" />
         </div>
-        <div class="form-group">
-          <label>Last Name</label>
-          <input type="text" placeholder="Smith"/>
+        <div class="form-img-row">
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=240&fit=crop"
+            alt="Support agent" />
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=240&fit=crop"
+            alt="Fresh produce" />
         </div>
-        <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="john@email.com"/>
-        </div>
-        <div class="form-group">
-          <label>Phone Number</label>
-          <input type="tel" placeholder="+1 800 000 0000"/>
-        </div>
-        <div class="form-group">
-          <label>Order ID (optional)</label>
-          <input type="text" placeholder="#STK-00000"/>
-        </div>
-        <div class="form-group">
-          <label>Priority</label>
-          <select>
-            <option>Normal</option>
-            <option>Urgent</option>
-          </select>
-        </div>
-        <div class="form-group full">
-          <label>Your Message</label>
-          <textarea placeholder="Describe your issue or question in detail..."></textarea>
+        <div class="hours-box">
+          <h4>Support Hours</h4>
+          <div class="hours-row"><span>Monday – Friday</span><span>7:00 AM – 10:00 PM</span></div>
+          <div class="hours-row"><span>Saturday</span><span>8:00 AM – 8:00 PM</span></div>
+          <div class="hours-row"><span>Sunday</span><span>9:00 AM – 6:00 PM</span></div>
         </div>
       </div>
 
-      <button class="submit-btn" onclick="handleSubmit(this)">Send Message</button>
-      <p class="form-note">We typically reply within 2 hours on business days.</p>
     </div>
+  </section>
 
-    <div class="form-right">
-      <img class="form-img-main" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&h=460&fit=crop" alt="Customer support team"/>
-      <div class="form-img-row">
-        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&h=240&fit=crop" alt="Support agent"/>
-        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=240&fit=crop" alt="Fresh produce"/>
-      </div>
-      <div class="hours-box">
-        <h4>Support Hours</h4>
-        <div class="hours-row"><span>Monday – Friday</span><span>7:00 AM – 10:00 PM</span></div>
-        <div class="hours-row"><span>Saturday</span><span>8:00 AM – 8:00 PM</span></div>
-        <div class="hours-row"><span>Sunday</span><span>9:00 AM – 6:00 PM</span></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
+  <!-- ════════════════════════════════════════════
      SECTION 4 — STORE LOCATOR
 ════════════════════════════════════════════ -->
-<section class="locator-section sec-pad" style="background:#fff;">
-  <p class="eyebrow">Find Us</p>
-  <h2 class="heading" style="margin-bottom:28px;">Our Store Locations</h2>
-  <div class="locator-inner">
-    <div class="loc-list">
-      <div class="loc-search">
-        <input type="text" placeholder="Search by city or zip code..." oninput="filterStores(this.value)"/>
+  <section class="locator-section sec-pad" style="background:#fff;">
+    <p class="eyebrow">Find Us</p>
+    <h2 class="heading" style="margin-bottom:28px;">Our Store Locations</h2>
+    <div class="locator-inner">
+      <div class="loc-list">
+        <div class="loc-search">
+          <input type="text" placeholder="Search by city or zip code..." oninput="filterStores(this.value)" />
+        </div>
+        <div class="loc-item active" onclick="selectStore(this,'Downtown Market')">
+          <h4>Downtown Market</h4>
+          <p>142 Green Street, New York, NY 10001</p>
+          <span class="loc-badge">Open Now</span>
+        </div>
+        <div class="loc-item" onclick="selectStore(this,'Westside Fresh')">
+          <h4>Westside Fresh</h4>
+          <p>87 Organic Ave, Brooklyn, NY 11201</p>
+          <span class="loc-badge">Open Now</span>
+        </div>
+        <div class="loc-item" onclick="selectStore(this,'Uptown Stackly')">
+          <h4>Uptown Stackly</h4>
+          <p>310 Farm Road, Manhattan, NY 10025</p>
+          <span class="loc-badge" style="background:#fee2e2;color:#dc2626;">Closes at 6 PM</span>
+        </div>
+        <div class="loc-item" onclick="selectStore(this,'East Village Hub')">
+          <h4>East Village Hub</h4>
+          <p>55 Harvest Lane, Queens, NY 11354</p>
+          <span class="loc-badge">Open Now</span>
+        </div>
       </div>
-      <div class="loc-item active" onclick="selectStore(this,'Downtown Market')">
-        <h4>Downtown Market</h4>
-        <p>142 Green Street, New York, NY 10001</p>
-        <span class="loc-badge">Open Now</span>
-      </div>
-      <div class="loc-item" onclick="selectStore(this,'Westside Fresh')">
-        <h4>Westside Fresh</h4>
-        <p>87 Organic Ave, Brooklyn, NY 11201</p>
-        <span class="loc-badge">Open Now</span>
-      </div>
-      <div class="loc-item" onclick="selectStore(this,'Uptown Stackly')">
-        <h4>Uptown Stackly</h4>
-        <p>310 Farm Road, Manhattan, NY 10025</p>
-        <span class="loc-badge" style="background:#fee2e2;color:#dc2626;">Closes at 6 PM</span>
-      </div>
-      <div class="loc-item" onclick="selectStore(this,'East Village Hub')">
-        <h4>East Village Hub</h4>
-        <p>55 Harvest Lane, Queens, NY 11354</p>
-        <span class="loc-badge">Open Now</span>
-      </div>
-      <div class="loc-item" onclick="selectStore(this,'Garden City Store')">
-        <h4>Garden City Store</h4>
-        <p>201 Fresh Blvd, Garden City, NY 11530</p>
-        <span class="loc-badge">Open Now</span>
+      <div class="loc-map">
+        <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1000&h=600&fit=crop" alt="Map view" />
+        <div class="map-pin" id="mapPin">Downtown Market</div>
       </div>
     </div>
-    <div class="loc-map">
-      <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=1000&h=600&fit=crop" alt="Map view"/>
-      <div class="map-pin" id="mapPin">Downtown Market</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<!-- ════════════════════════════════════════════
+  <!-- ════════════════════════════════════════════
      SECTION 5 — FAQ ACCORDION
 ════════════════════════════════════════════ -->
-<section class="faq-section sec-pad">
-  <div class="faq-wrapper">
+  <section class="faq-section sec-pad">
+    <div class="faq-wrapper">
 
-    <div class="faq-left">
-      <p class="eyebrow">Common Questions</p>
-      <h2 class="heading" style="margin-bottom:14px;">Answers to What<br>People Ask Most</h2>
-      <p>Can't find what you're looking for? Use the contact form above or call our team directly — we're happy to help.</p>
-      <div class="faq-img">
-        <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=700&h=360&fit=crop" alt="Fresh produce support"/>
-        <div class="faq-stat">
-          <strong>98%</strong>
-          <span>Customer Satisfaction</span>
+      <div class="faq-left">
+        <p class="eyebrow">Common Questions</p>
+        <h2 class="heading" style="margin-bottom:14px;">Answers to What<br>People Ask Most</h2>
+        <p>Can't find what you're looking for? Use the contact form above or call our team directly — we're happy to
+          help.</p>
+        <div class="faq-img">
+          <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=700&h=360&fit=crop"
+            alt="Fresh produce support" />
+          <div class="faq-stat">
+            <strong>98%</strong>
+            <span>Customer Satisfaction</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-right">
+        <div class="faq-item open">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How do I track my order?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Once your order is dispatched, you'll receive an SMS and email with a live tracking link. You can also
+              log in to your Stackly account and check the Orders section for real-time updates.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            What is your freshness guarantee?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Every item we deliver is guaranteed to be fresh. If any product doesn't meet your expectations, simply
+              contact us within 24 hours of delivery and we'll arrange a full refund or replacement, no questions asked.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Can I change or cancel my order?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes. You can modify or cancel your order within 30 minutes of placing it by visiting the Orders page in
+              your account. After that window, please contact our support team as quickly as possible and we'll do our
+              best to help.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Do you deliver on weekends and holidays?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Yes, we deliver 7 days a week including public holidays. Delivery slots may be more limited on holidays,
+              so we recommend placing your order a day in advance to secure your preferred time.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            How can I apply a promo code?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>Add your items to the cart, then proceed to checkout. On the payment page you'll see a "Promo Code" field
+              — enter your code there and click Apply. The discount will be reflected in your order total immediately.
+            </p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            Is there a minimum order value for delivery?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">
+            <p>There is no minimum order value. However, orders above $50 qualify for free delivery. Orders below $50
+              incur a small delivery fee which is displayed clearly at checkout before you confirm.</p>
+          </div>
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="faq-right">
-      <div class="faq-item open">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          How do I track my order?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>Once your order is dispatched, you'll receive an SMS and email with a live tracking link. You can also log in to your Stackly account and check the Orders section for real-time updates.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          What is your freshness guarantee?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>Every item we deliver is guaranteed to be fresh. If any product doesn't meet your expectations, simply contact us within 24 hours of delivery and we'll arrange a full refund or replacement, no questions asked.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Can I change or cancel my order?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>Yes. You can modify or cancel your order within 30 minutes of placing it by visiting the Orders page in your account. After that window, please contact our support team as quickly as possible and we'll do our best to help.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Do you deliver on weekends and holidays?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>Yes, we deliver 7 days a week including public holidays. Delivery slots may be more limited on holidays, so we recommend placing your order a day in advance to secure your preferred time.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          How can I apply a promo code?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>Add your items to the cart, then proceed to checkout. On the payment page you'll see a "Promo Code" field — enter your code there and click Apply. The discount will be reflected in your order total immediately.</p>
-        </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
-          Is there a minimum order value for delivery?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a">
-          <p>There is no minimum order value. However, orders above $50 qualify for free delivery. Orders below $50 incur a small delivery fee which is displayed clearly at checkout before you confirm.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
+  <!-- ════════════════════════════════════════════
      SECTION 6 — SOCIAL + INSTAGRAM GRID
 ════════════════════════════════════════════ -->
-<section class="social-section">
-  <div class="social-inner">
+  <section class="social-section">
+    <div class="social-inner">
 
-    <div class="social-left">
-      <p class="eyebrow">Follow Along</p>
-      <h2 class="heading" style="color:#fff;">Join Our Growing<br>Community</h2>
-      <p>Tag your Stackly hauls and get featured on our page. We share the best posts every week — fresh food, real kitchens, real people.</p>
-      <div class="social-links">
-        <button class="soc-btn">
-          <img src="https://images.unsplash.com/photo-1611262588019-db6cc2032da3?w=40&h=40&fit=crop" alt="Instagram"/>
-          Instagram
-        </button>
-        <button class="soc-btn">
-          <img src="https://images.unsplash.com/photo-1519836301234-a28a2a8dc9df?w=40&h=40&fit=crop" alt="Facebook"/>
-          Facebook
-        </button>
-        <button class="soc-btn">
-          <img src="https://images.unsplash.com/photo-1611605698335-8b1569810432?w=40&h=40&fit=crop" alt="Twitter"/>
-          Twitter
-        </button>
+      <div class="social-left">
+        <p class="eyebrow">Follow Along</p>
+        <h2 class="heading" style="color:#fff;">Join Our Growing<br>Community</h2>
+        <p>Tag your Stackly hauls and get featured on our page. We share the best posts every week — fresh food, real
+          kitchens, real people.</p>
+        <div class="social-links">
+
+          <button class="soc-btn">
+          <i class="fa-brands fa-whatsapp"></i>
+            Whatsapp
+          </button>
+          <button class="soc-btn">
+            <i class="fa-brands fa-instagram"></i>
+            Instagram
+          </button>
+          <button class="soc-btn">
+           <i class="fa-brands fa-facebook"></i>
+            Facebook
+          </button>
+          <button class="soc-btn">
+          <i class="fa-brands fa-x-twitter"></i>
+            Twitter
+          </button>
+        </div>
+      </div>
+
+      <div class="social-right">
+        <div class="soc-img"><img
+            src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=300&fit=crop"
+            alt="Fresh fruits" /></div>
+        <div class="soc-img"><img
+            src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=300&h=300&fit=crop" alt="Vegetables" />
+        </div>
+        <div class="soc-img"><img
+            src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=300&h=300&fit=crop" alt="Citrus" />
+        </div>
+        <div class="soc-img"><img
+            src="https://images.unsplash.com/photo-1448907503123-67254d59ca4f?w=300&h=300&fit=crop" alt="Spinach" />
+        </div>
+        <div class="soc-img"><img
+            src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=300&h=300&fit=crop"
+            alt="Strawberries" /></div>
+        <div class="soc-img"><img
+            src="https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=300&h=300&fit=crop" alt="Avocado" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer-section">
+
+    <div class="footer-section-top">
+      <div class="footer1">
+        <div class="footer-logo">
+          <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+        </div>
+
+        <p>What's Inside:New Arrivals, Exclusive sales,News @ Mores</p>
+
+        <div class="subscribe-container">
+          <input type="email" placeholder="Subscribe" id="footer-email">
+          <button type="submit" class="subscribe">Subscribe</button>
+        </div>
+
+        <div class="sotial-icons">
+          <a href="404.html"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="404.html"><i class="fa-brands fa-facebook"></i></a>
+          <a href="404.html"><i class="fa-brands fa-x-twitter"></i></a>
+          <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+
+      </div>
+
+      <div class="footer2">
+        <h2>Our Stores</h2>
+
+        <div class="store-links">
+          <a href="">Delivery Information</a>
+          <a href="">Support Center</a>
+          <a href="">Privacy Policy</a>
+          <a href="">Terms @ Conditions</a>
+          <a href="">Cookies Policy</a>
+        </div>
+      </div>
+
+      <div class="footer3">
+        <h2>Our Stores</h2>
+
+        <div class="store-links">
+          <a href="">Home</a>
+          <a href="">About</a>
+          <a href="">Fresh grocery</a>
+          <a href="">Shop</a>
+          <a href="">Contact Us</a>
+        </div>
+      </div>
+
+      <div class="footer4">
+
+        <h2>Need Help?</h2>
+
+        <div class="store-links">
+          <div class=" footer-details">
+            <span class="material-symbols-outlined">location_on</span>
+            <div>
+              <p>258 Daniel Street, 2589 Phones Line </p>
+              <p>Berlin,Germany</p>
+            </div>
+          </div>
+          <div class="footer-details">
+            <span class="material-symbols-outlined">mail</span>
+            <div>
+              <p>258 Daniel Street, 2589 Phones Line </p>
+              <p>admin@gmail.com</p>
+            </div>
+          </div>
+
+          <div class="footer-details">
+            <span class="material-symbols-outlined">call</span>
+            <div>
+              <p>Live Chat Chat With an Experts</p>
+              <p>+91 0987654321</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="social-right">
-      <div class="soc-img"><img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=300&h=300&fit=crop" alt="Fresh fruits"/></div>
-      <div class="soc-img"><img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=300&h=300&fit=crop" alt="Vegetables"/></div>
-      <div class="soc-img"><img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=300&h=300&fit=crop" alt="Citrus"/></div>
-      <div class="soc-img"><img src="https://images.unsplash.com/photo-1448907503123-67254d59ca4f?w=300&h=300&fit=crop" alt="Spinach"/></div>
-      <div class="soc-img"><img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=300&h=300&fit=crop" alt="Strawberries"/></div>
-      <div class="soc-img"><img src="https://images.unsplash.com/photo-1582979512210-99b6a53386f9?w=300&h=300&fit=crop" alt="Avocado"/></div>
+    <div class="footer-section-bottom">
+      <p>@2026 Stackly.All Rights Reserved</p>
+      <div>
+        <a href="404.html">Privacy Policy</a>
+        <a href="404.html">Terms & conditions</a>
+      </div>
     </div>
 
-  </div>
-</section>
+  </footer>
 
-<script>
-  // Topic chips
-  function selectChip(el) {
-    document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-    el.classList.add('active');
-  }
+  <script>
 
-  // Form submit
-  function handleSubmit(btn) {
-    btn.textContent = 'Sending...';
-    btn.style.background = '#4a7a18';
-    setTimeout(() => {
-      btn.textContent = 'Message Sent!';
-      btn.style.background = '#16a34a';
+    let navlink = document.querySelector(".nav-links")
+    let openbtn1 = document.querySelector(".open-btn")
+    let openbtn2 = document.querySelector('.open-btn2')
+    let closebtn = document.querySelector(".close-btn")
+    let closebtn2 = document.querySelector(".close-btn2")
+
+    openbtn1.addEventListener("click", () => {
+      navlink.style.display = "flex"
+      closebtn.style.display = "block"
+      closebtn2.style.display = "none"
+      openbtn1.style.display = "none"
+      openbtn2.style.display = "none"
+
+    })
+
+    closebtn.addEventListener("click", () => {
+      navlink.style.display = "none"
+      closebtn.style.display = "none"
+      openbtn1.style.display = "block"
+      closebtn2.style.display = "none"
+      openbtn2.style.display = "none"
+    })
+
+    openbtn2.addEventListener("click", () => {
+      navlink.style.display = "flex"
+      closebtn2.style.display = "block"
+      closebtn.style.display = "none"
+      openbtn1.style.display = "none"
+      openbtn2.style.display = "block"
+    })
+
+    closebtn2.addEventListener("click", () => {
+      navlink.style.display = "none"
+      closebtn.style.display = "none"
+      openbtn1.style.display = "none"
+      closebtn2.style.display = "none"
+      openbtn2.style.display = "block"
+    })
+
+
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1150) {
+        navlink.style.display = "flex"
+        closebtn.style.display = "none"
+        closebtn2.style.display = "none"
+        openbtn1.style.display = "none"
+        openbtn2.style.display = "none"
+
+      }
+
+      else if (window.innerWidth < 1150 && window.innerWidth > 650) {
+
+        navlink.style.display = "none"
+        closebtn.style.display = "none"
+        closebtn2.style.display = "none"
+        openbtn1.style.display = "block"
+        openbtn2.style.display = "none"
+
+      }
+
+
+      else if (window.innerWidth < 650) {
+        navlink.style.display = "none"
+        closebtn.style.display = "none"
+        closebtn2.style.display = "none"
+        openbtn1.style.display = "none"
+        openbtn2.style.display = "block"
+
+      }
+
+    })
+
+
+    //login 
+
+    let loginbtn = document.querySelector(".login-btn")
+    loginbtn.addEventListener("click", () => {
+      window.location.href = "login.html"
+    })
+
+    //404 page
+
+    let errorpage = document.querySelectorAll(".errorpage")
+    errorpage.forEach((error) => {
+      error.addEventListener("click", () => {
+        window.location.href = "404.html"
+      })
+    })
+
+    //footer js
+
+    const footeremail = document.querySelector("#footer-email")
+    const subscribebtn = document.querySelector(".subscribe")
+
+    subscribebtn.addEventListener("click", () => {
+
+      let emailpattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      if (footeremail.value.trim() == "") {
+        alert("enter Your Email")
+        footeremail.focus()
+        return;
+      }
+
+
+      if (!emailpattern.test(footeremail.value.trim())) {
+        alert("pleae enter valid email")
+        footeremail.focus()
+        return;
+      }
+
+      alert("Subscribe Successfully!")
+
+      footeremail.value = ""
+    })
+
+
+    // Topic chips
+    function selectChip(el) {
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+    }
+
+    // Form submit
+    function handleSubmit(btn) {
+      btn.textContent = 'Sending...';
+      btn.style.background = '#4a7a18';
       setTimeout(() => {
-        btn.textContent = 'Send Message';
-        btn.style.background = '';
-      }, 3000);
-    }, 1200);
-  }
+        btn.textContent = 'Message Sent!';
+        btn.style.background = '#16a34a';
+        setTimeout(() => {
+          btn.textContent = 'Send Message';
+          btn.style.background = '';
+        }, 3000);
+      }, 1200);
+    }
 
-  // FAQ toggle
-  function toggleFaq(btn) {
-    const item = btn.closest('.faq-item');
-    const isOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!isOpen) item.classList.add('open');
-  }
+    // FAQ toggle
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
 
-  // Store locator
-  function selectStore(el, name) {
-    document.querySelectorAll('.loc-item').forEach(i => i.classList.remove('active'));
-    el.classList.add('active');
-    document.getElementById('mapPin').textContent = name;
-  }
+    // Store locator
+    function selectStore(el, name) {
+      document.querySelectorAll('.loc-item').forEach(i => i.classList.remove('active'));
+      el.classList.add('active');
+      document.getElementById('mapPin').textContent = name;
+    }
 
-  function filterStores(val) {
-    document.querySelectorAll('.loc-item').forEach(item => {
-      const text = item.textContent.toLowerCase();
-      item.style.display = text.includes(val.toLowerCase()) ? '' : 'none';
-    });
-  }
-</script>
+    function filterStores(val) {
+      document.querySelectorAll('.loc-item').forEach(item => {
+        const text = item.textContent.toLowerCase();
+        item.style.display = text.includes(val.toLowerCase()) ? '' : 'none';
+      });
+    }
+  </script>
 </body>
+
 </html>
