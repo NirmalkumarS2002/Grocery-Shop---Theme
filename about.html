@@ -1,890 +1,2053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stackly - Grocery Shop</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Chelsea+Market&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Figtree:ital,wght@0,300..900;1,300..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Oldenburg&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto+Slab:wght@100..900&display=swap"
+        rel="stylesheet">
+</head>
+
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
-  }
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    color: var(--text-primary);
-    background: var(--surface-0)
-  }
+    :root {
+        --border-color: 1px solid rgba(128, 128, 128, 0.425);
+        --header-bg-color: #F3F4F6;
+        --primariy-color: #629D24;
+    }
 
-  .g {
-    color: #3b6d11
-  }
+    html,
+    body {
+        overflow-x: hidden;
+        font-family: "DM Sans", sans-serif;
+    }
 
-  .chip {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* header 1*/
+
+    .header-section {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px 5%;
+        background: #629D23;
+    }
+
+    .header-container p,
+    .header-container a {
+        text-decoration: none;
+        font-size: 15px;
+        color: white;
+    }
+
+    .header-link a:first-child {
+        margin-right: 20px;
+    }
+
+    @media (max-width:600px) {
+        .header-container {
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 5%;
+        }
+
+        .header-container p,
+        .header-container a {
+            font-size: 13px;
+        }
+    }
+
+    /* header 2*/
+
+    .header-container2 {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 5%;
+        border-bottom: var(--border-color);
+    }
+
+    .accout-contaner {
+        border-right: var(--border-color);
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding-right: 20px;
+    }
+
+    .accout-contaner a {
+        text-decoration: none;
+        font-size: 14px;
+        color: black;
+        padding-block: 15px;
+
+    }
+
+    .accout-contaner a:hover {
+        color: var(--primariy-color);
+    }
+
+    .deliver-container {
+        display: flex;
+        align-items: center;
+        color: black;
+        font-size: 14px;
+    }
+
+    .track-container {
+        display: flex;
+        align-items: center;
+
+    }
+
+    .track-container a {
+        text-decoration: none;
+        color: black;
+        font-size: 14px;
+        padding-block: 15px;
+        padding-inline: 20px;
+    }
+
+    .track-container a:hover {
+        color: var(--primariy-color);
+    }
+
+    .track-container a:first-child {
+        border-inline: var(--border-color);
+    }
+
+    .track-container a:nth-child(2) {
+        border-right: var(--border-color);
+    }
+
+    @media (max-width:950px) {
+        .header-container2 {
+            display: none;
+        }
+
+    }
+
+
+
+
+    /* header 3*/
+
+    .header-container3 {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 5%;
+        padding-block: 20px;
+        gap: 20px;
+    }
+
+    .header-logo-container img {
+        width: 200px;
+    }
+
+    .header-menu-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+        width: 50%;
+    }
+
+    .category-container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 14px 22px;
+        border-radius: 7px;
+        background: var(--header-bg-color);
+        padding-right: 5%;
+    }
+
+    .category-container:hover {
+        box-shadow: 0 0 10px rgba(19, 19, 19, 0.226);
+    }
+
+    .category-container span {
+        font-size: 20px;
+        color: var(--primariy-color);
+    }
+
+    .category-container a {
+        color: black;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
+    .search-container {
+        display: flex;
+        align-items: center;
+        position: relative;
+        justify-content: center;
+
+    }
+
+    .search-container input {
+        padding: 15px 40px;
+        border: 1px solid green;
+        border-radius: 7px;
+        font-size: 15px;
+        background: var(--header-bg-color);
+        width: clamp(200px, 30vw, 400px);
+    }
+
+    .search-container input:focus {
+        box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.507);
+        border: 1px solid green;
+        outline: none;
+    }
+
+
+    .search-menu {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .search-btn {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        padding: 12px 20px;
+        transform: translateY(-50%);
+        border: none;
+        background: #629D23;
+        color: white;
+        border-radius: 7px;
+    }
+
+    .search-btn:hover {
+        background: #63bd04;
+        box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
+    .header-icons-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .header-icons-container div:last-child {
+        display: none;
+    }
+
+    .header-icons-container div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 13px 20px;
+        border: var(--border-color);
+        border-radius: 7px;
+        box-shadow: 0px 0px 10px rgba(128, 128, 128, 0.247);
+    }
+
+    .header-icons-container div:hover {
+        box-shadow: 0 0 10px rgba(19, 19, 19, 0.226);
+    }
+
+    .header-icons-container div span {
+        font-size: 20px;
+        color: var(--primariy-color);
+    }
+
+    .header-icons-container div p {
+        font-size: 15px;
+    }
+
+
+    @media (max-width:1385px) {
+        .category-container {
+            display: none;
+        }
+
+        .header-icons-container div:nth-child(2) {
+            display: none;
+        }
+    }
+
+    @media (max-width:950px) {
+        .header-menu-container {
+            display: none;
+        }
+    }
+
+    @media (max-width:600px) {
+
+
+        .header-container3 {
+
+            padding-block: 10px;
+        }
+
+        .header-logo-container img {
+            width: 150px;
+        }
+
+
+        .header-icons-container div span {
+            font-size: 17px;
+        }
+
+        .header-icons-container div p {
+            font-size: 13px;
+        }
+
+        .header-icons-container div {
+            padding: 10px 15px;
+
+        }
+
+    }
+
+    @media (max-width:450px) {
+        .header-icons-container div {
+            padding: 5px 5px;
+
+        }
+
+        .header-icons-container div p {
+            display: none;
+        }
+
+    }
+
+    /*  header container4*/
+
+    .header-container4 {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 5%;
+        background: var(--header-bg-color);
+    }
+
+    .menubar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-btns {
+        display: flex;
+        align-items: center;
+    }
+
+    .open-btn {
+        display: none;
+        font-size: 25px;
+    }
+
+    .close-btn {
+        display: none;
+        font-size: 25px;
+    }
+
+    .close-btn2 {
+        display: none;
+        font-size: 25px;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 20px;
+    }
+
+    .nav-links li {
+        list-style: none;
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        font-size: 16px;
+        color: black;
+        padding: 5px 10px;
+        transition: 0.5s ease;
+    }
+
+    .nav-links li a:hover {
+        background: var(--primariy-color);
+        color: white;
+        border-radius: 7px;
+    }
+
+    .nav-links .active {
+        background: var(--primariy-color);
+        color: white;
+        border-radius: 7px;
+
+    }
+
+
+    .trinding-container {
+        display: flex;
+        justify-content: flex-end;
+
+    }
+
+
+    .trend-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        padding: 20px 60px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .trend-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        border-top: 25px solid #629D24;
+        border-left: 40px solid transparent;
+    }
+
+
+
+    .trend-container a {
+        text-decoration: none;
+        font-size: 16px;
+        color: black;
+    }
+
+    .trend-container a:hover {
+        color: var(--primariy-color);
+    }
+
+    .offer-container {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        background: #629D24;
+        padding: 20px 20px;
+    }
+
+    .offer-container p {
+        font-size: 15px;
+        color: rgb(255, 255, 255);
+    }
+
+    .offer-container a {
+        text-decoration: none;
+        background: white;
+        padding: 3px 20px;
+        border-radius: 20px;
+        font-size: 14px;
+        color: green;
+        transition: 0.5s ease;
+    }
+
+    .offer-container a:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgb(0, 255, 0);
+    }
+
+    @media (max-width:1150px) {
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            flex-direction: column;
+            top: 0;
+            left: 0;
+            background: white;
+            height: 100vh;
+            width: 320px;
+            align-items: flex-start;
+            z-index: 1000;
+            justify-content: flex-start;
+            padding: 60px 40px;
+        }
+
+        .nav-btns {
+            display: flex;
+        }
+
+        .open-btn {
+            display: block;
+        }
+
+        .close-btn {
+            display: none;
+            z-index: 10001;
+            position: absolute;
+            top: 0;
+            left: 240px;
+            padding: 15px 40px;
+        }
+
+        .close-btn2 {
+            display: none;
+            z-index: 10001;
+            position: absolute;
+            top: 0;
+            left: 240px;
+            padding: 15px 40px;
+        }
+    }
+
+    @media (max-width:650px) {
+        .header-icons-container div:last-child {
+            display: flex;
+        }
+
+        .trinding-container {
+            display: none;
+        }
+
+        .open-btn {
+            display: none;
+        }
+
+        .header-container3 {
+            border-bottom: var(--border-color);
+        }
+    }
+
+    /*footer*/
+
+    .footer-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: #1A1A1A;
+
+    }
+
+    .footer-section-top {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 60px 30px;
+        gap: 20px;
+    }
+
+    .footer1 {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .footer-logo img {
+        width: 200px;
+    }
+
+    .footer1 .footer-logo {
+        margin-bottom: 20px;
+    }
+
+    .footer1 p {
+        font-size: 15px;
+        line-height: 1.5;
+        max-width: 300px;
+        margin-bottom: 20px;
+        color: rgb(133, 133, 133);
+        ;
+    }
+
+    .subscribe-container {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .subscribe-container input {
+        padding: 15px 20px;
+        width: 100%;
+        border-radius: 6px;
+        border: none;
+        background: #639d2436;
+        color: white;
+        transition: 0.5s ease;
+    }
+
+    .subscribe-container input:focus {
+        border: 1px solid var(--primariy-color);
+        outline: none;
+        box-shadow: 0 0 20px rgba(0, 252, 0, 0.185);
+    }
+
+    .subscribe-container input::placeholder {
+        color: gray;
+    }
+
+    .subscribe {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px 20px;
+        border-radius: 5px;
+        background: #629D24;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        transition: all .35s ease;
+    }
+
+    /* Hover */
+    .subscribe:hover {
+        background: #78be2c;
+        transform: translateY(-50%) translateY(-3px);
+        box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
+    .sotial-icons {
+        display: flex;
+        gap: 20px;
+    }
+
+    .sotial-icons a {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(98, 157, 36, .25);
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all .4s ease;
+    }
+
+    .sotial-icons a i {
+        font-size: 26px;
+        color: #629D24;
+        transition: all .4s ease;
+    }
+
+    /* Hover */
+    .sotial-icons a:hover {
+        background: #629D24;
+        border-color: #629D24;
+        transform: translateY(-8px) scale(1.08);
+        box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
+    .sotial-icons a:hover i {
+        color: #fff;
+        transform: rotate(360deg);
+    }
+
+    .footer2 h2,
+    .footer3 h2,
+    .footer4 h2 {
+        margin-bottom: 20px;
+        font-size: 25px;
+        color: white;
+
+    }
+
+    .store-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .store-links a {
+        text-decoration: none;
+        font-size: 15px;
+        color: rgb(133, 133, 133);
+    }
+
+    .store-links a:hover {
+        color: var(--primariy-color);
+    }
+
+    .footer-details {
+        display: flex;
+        gap: 15px;
+    }
+
+    .footer-details span {
+        font-size: 30px;
+        color: var(--primariy-color);
+    }
+
+    .footer-details div p {
+        font-size: 15px;
+        margin-bottom: 4px;
+        color: rgb(133, 133, 133);
+        ;
+    }
+
+    .footer-details div p:last-child:hover {
+        color: var(--primariy-color);
+    }
+
+    .footer-section-bottom {
+        display: flex;
+        justify-content: space-around;
+        border-top: var(--border-color);
+        padding: 30px 30px;
+        align-items: center;
+    }
+
+    .footer-section-bottom p {
+        font-size: 15px;
+        color: rgb(133, 133, 133);
+        ;
+    }
+
+    .footer-section-bottom div {
+        display: flex;
+        gap: 10px;
+    }
+
+
+    .footer-section-bottom div a {
+        text-decoration: none;
+        font-size: 15px;
+        color: rgb(133, 133, 133);
+    }
+
+    .footer-section-bottom div a:hover {
+        color: var(--primariy-color);
+    }
+
+    @media (max-width:1100px) {
+        .footer-section-top {
+            grid-template-columns: repeat(2, minmax(200px, 1fr));
+        }
+
+    }
+
+    @media (max-width:575px) {
+        .footer-section-top {
+            grid-template-columns: repeat(1, minmax(200px, 1fr));
+        }
+
+        .footer1 {
+            width: 100%;
+        }
+
+        .footer-section-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+
+    }
+
+
+    /*added css*/
+
+    
+    :root {
+        --green-deep: #1F3D17;
+        --green-main: #629D24;
+        --green-soft: #E7EFDB;
+        --cream: #FAF8F2;
+        --clay: #C9622B;
+        --ink: #1B1B16;
+    }
+
+    h1, h2, h3 {
+        font-weight: 600;
+        line-height: 1.15;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* ---------- Section number tag ---------- */
+    .sec-num {
+        position: absolute;
+        top: 28px;
+        right: 7%;
+        font-style: italic;
+        font-size: 14px;
+        letter-spacing: 2px;
+        z-index: 2;
+    }
+
+    .sec-num span {
+        font-size: 11px;
+        letter-spacing: 3px;
+        margin-left: 6px;
+        opacity: 0.7;
+        font-style: normal;
+        font-family: "DM Sans", sans-serif;
+    }
+
+    @media (max-width: 600px) {
+        .sec-num span {
+            display: none;
+        }
+
+        .sec-num {
+            right: 6%;
+            top: 18px;
+        }
+    }
+
+    /* ════════════════════════════════════════════
+       SECTION 1 — HERO BANNER
+    ════════════════════════════════════════════ */
+    .contact-hero {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+    }
+
+        .eyebrow {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .contact-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+
+    .contact-hero:hover img {
+      transform: scale(1);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26, 58, 8, .82) 0%, rgba(98, 157, 35, .45) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .hero-overlay .eyebrow {
+      color: #a8d572;
+    }
+
+    .hero-overlay h1 {
+      font-size: clamp(30px, 5vw, 58px);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero-overlay h1 em {
+      font-style: italic;
+      color: #c5f079;
+    }
+
+    .hero-overlay p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, .82);
+      max-width: 500px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+
+
+    /* ---------- Section 2: Origin Story (asymmetric) ---------- */
+    .origin-section {
+        position: relative;
+        padding: 110px 7%;
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 60px;
+        align-items: center;
+    }
+
+    .origin-image-stack {
+        position: relative;
+        height: 480px;
+    }
+
+    .origin-image-stack .img-a {
+        position: absolute;
+        width: 75%;
+        height: 75%;
+        top: 0;
+        left: 0;
+        border-radius: 6px;
+        box-shadow: 0 30px 60px rgba(31, 61, 23, 0.25);
+    }
+
+    .origin-image-stack .img-b {
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        bottom: 0;
+        right: 0;
+        border: 8px solid var(--cream);
+        border-radius: 6px;
+        box-shadow: 0 20px 40px rgba(31, 61, 23, 0.3);
+    }
+
+    .origin-section .sec-num {
+        color: var(--green-main);
+    }
+
+    .origin-content .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-size: 15px;
+        color: var(--green-main);
+        margin-bottom: 18px;
+        display: block;
+    }
+
+    .origin-content h2 {
+        font-size: clamp(28px, 3.5vw, 42px);
+        margin-bottom: 24px;
+        color: var(--green-deep);
+    }
+
+    .origin-content p {
+        font-size: 16px;
+        line-height: 1.9;
+        color: #4A4A40;
+        margin-bottom: 18px;
+        max-width: 560px;
+    }
+
+    .origin-signature {
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-size: 20px;
+        color: var(--clay);
+        margin-top: 20px;
+    }
+
+    @media (max-width: 900px) {
+        .origin-section {
+            grid-template-columns: 1fr;
+        }
+
+        .origin-image-stack {
+            height: 360px;
+            margin-bottom: 20px;
+        }
+    }
+
+    /* ---------- Section 3: Harvest Calendar (process strip) ---------- */
+   .harvest-section {
+    background: #f8fbf5;
+    padding: 90px 6%;
+}
+
+.harvest-header {
+    max-width: 700px;
+    margin: 0 auto 60px;
+    text-align: center;
+}
+
+.harvest-header span {
     display: inline-block;
-    background: #eaf3de;
-    color: #3b6d11;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 700;
-    padding: 5px 16px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-    border: 1px solid #c0dd97
-  }
-
-  .sec-title {
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--text-primary);
-    line-height: 1.22;
-    margin-bottom: 8px
-  }
-
-  .sec-sub {
-    font-size: 15px;
-    color: var(--text-secondary);
-    line-height: 1.7;
-    margin-bottom: 36px
-  }
-
-  .btn-g {
-    background: #4a8f0d;
-    color: #fff;
-    border: none;
-    border-radius: 28px;
-    padding: 13px 30px;
-    font-size: 15px;
-    font-weight: 700;
-    cursor: pointer
-  }
-
-  .btn-o {
-    background: transparent;
-    color: #4a8f0d;
-    border: 1.5px solid #4a8f0d;
-    border-radius: 28px;
-    padding: 12px 28px;
+    color: #69a51d;
+    padding: 8px 18px;
+    border-radius: 30px;
     font-size: 15px;
     font-weight: 600;
-    cursor: pointer
-  }
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
 
-  .divider {
-    width: 48px;
-    height: 4px;
-    background: #4a8f0d;
-    border-radius: 2px;
-    margin-bottom: 20px
-  }
-/* =========================
-   S1 HERO
-========================= */
+.harvest-header h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    color: #1f2937;
+    line-height: 1.3;
+    font-weight: 700;
+}
 
-.s1 {
+.harvest-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+}
+
+.harvest-card {
     position: relative;
-    border-radius: 20px;
+    background: #fff;
+    border: 1px solid #e7ece5;
+    border-radius: 18px;
+    padding: 34px 28px;
+    transition: .35s ease;
     overflow: hidden;
-    min-height: 400px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.05);
+}
+
+.harvest-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 5px;
+    background: #69a51d;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: .35s;
+}
+
+.harvest-card:hover::before {
+    transform: scaleX(1);
+}
+
+.harvest-card:hover {
+    transform: translateY(-10px);
+    border-color: #69a51d;
+    box-shadow: 0 18px 40px rgba(105,165,29,.18);
+}
+
+.harvest-mark {
+    display: inline-block;
+    background: #eef8e8;
+    color: #69a51d;
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.harvest-card h3 {
+    font-size: 22px;
+    color: #1f2937;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.harvest-card p {
+    font-size: 15px;
+    line-height: 1.8;
+    color: #6b7280;
+}
+
+/* Tablet */
+
+@media (max-width:900px) {
+
+    .harvest-strip {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width:540px) {
+
+    .harvest-section{
+        padding:70px 20px;
+    }
+
+    .harvest-strip {
+        grid-template-columns:1fr;
+        gap:18px;
+    }
+
+    .harvest-card{
+        padding:28px 22px;
+    }
+
+}
+
+    /* ---------- Section 4: People of the Farm Gate (team) ---------- */
+   .gate-section {
+    background: #f8fbf5;
+    padding: 100px 6%;
+}
+
+.gate-header {
     display: flex;
-    align-items: center;
-    margin-bottom: 60px;
-    padding: 50px 0;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 55px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #e5ece2;
 }
 
-.s1-bg {
-    position: absolute;
-    inset: 0;
-    background: url('https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=1200&q=80') center center/cover no-repeat;
-}
-
-.s1-ov {
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 35, 5, 0.72);
-}
-
-.s1-content {
-    position: relative;
-    z-index: 2;
-    padding: 0 64px;
-    max-width: 580px;
-}
-
-.s1-content .chip {
-    background: rgba(183, 244, 122, 0.18);
-    color: #b7f47a;
-    border-color: rgba(183, 244, 122, 0.3);
-}
-
-.s1-content h1 {
-    font-size: 40px;
-    font-weight: 800;
-    color: #fff;
-    line-height: 1.2;
+.gate-header span {
+    display: inline-block;
+    color: #69a51d;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
     margin-bottom: 16px;
 }
 
-.s1-content p {
-    font-size: 16px;
-    color: rgba(255,255,255,.72);
-    line-height: 1.75;
-    margin-bottom: 28px;
+.gate-header h2 {
+    font-size: clamp(30px, 4vw, 44px);
+    color: #222;
+    line-height: 1.3;
+    font-weight: 700;
 }
 
-.s1-btns {
-    display: flex;
-    gap: 14px;
-    flex-wrap: wrap;
-}
-
-.s1-btns .b2 {
-    background: rgba(255,255,255,.12);
-    color: #fff;
-    border: 1.5px solid rgba(255,255,255,.28);
-    border-radius: 28px;
-    padding: 12px 26px;
+.gate-header p {
+    max-width: 380px;
     font-size: 15px;
-    font-weight: 600;
-    cursor: pointer;
+    line-height: 1.8;
+    color: #6b7280;
 }
 
-.s1-img-panel {
-    position: absolute;
-    right: 60px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 200px;
-    height: 240px;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 3px solid rgba(255,255,255,.18);
-    z-index: 2;
-}
-
-.s1-img-panel img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.s1-badge {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(10,35,5,.7);
-    padding: 12px;
-    text-align: center;
-}
-
-.s1-badge span {
-    display: block;
-    font-size: 18px;
-    font-weight: 700;
-    color: #b7f47a;
-}
-
-.s1-badge p {
-    font-size: 11px;
-    color: rgba(255,255,255,.7);
-    margin-top: 2px;
-}
-
-
-/* =========================
-      TABLET
-========================= */
-
-@media (max-width:991px){
-
-    .s1{
-        min-height:auto;
-        padding:60px 0 40px;
-    }
-
-    .s1-content{
-        max-width:100%;
-        padding:0 40px;
-    }
-
-    .s1-content h1{
-        font-size:34px;
-    }
-
-    .s1-img-panel{
-        position:relative;
-        right:auto;
-        top:auto;
-        transform:none;
-        margin:35px auto 0;
-        width:220px;
-        height:260px;
-    }
-
-}
-
-
-/* =========================
-      MOBILE
-========================= */
-
-@media (max-width:768px){
-
-    .s1{
-        text-align:center;
-        padding:50px 20px 35px;
-        border-radius:16px;
-    }
-
-    .s1-content{
-        padding:0;
-        max-width:100%;
-    }
-
-    .s1-content h1{
-        font-size:30px;
-        line-height:1.3;
-    }
-
-    .s1-content p{
-        font-size:15px;
-        line-height:1.7;
-    }
-
-    .s1-btns{
-        justify-content:center;
-        gap:12px;
-    }
-
-    .s1-btns button{
-        width:220px;
-    }
-
-    .s1-img-panel{
-        width:190px;
-        height:230px;
-        margin:30px auto 0;
-    }
-
-}
-
-
-/* =========================
-    SMALL MOBILE
-========================= */
-
-@media (max-width:480px){
-
-    .s1{
-        padding:40px 18px 30px;
-    }
-
-    .s1-content h1{
-        font-size:26px;
-    }
-
-    .s1-content p{
-        font-size:14px;
-    }
-
-    .s1-btns{
-        flex-direction:column;
-        align-items:center;
-    }
-
-    .s1-btns button{
-        width:100%;
-        max-width:280px;
-    }
-
-    .s1-img-panel{
-        width:170px;
-        height:205px;
-    }
-
-    .s1-badge span{
-        font-size:16px;
-    }
-
-}
-  /* S2 STORY */
-  .s2 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-    margin-bottom: 64px
-  }
-
-  .s2-imgs {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: 12px;
-    height: 380px
-  }
-
-  .s2-imgs img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px
-  }
-
-  .s2-imgs img:first-child {
-    grid-row: span 2;
-    border-radius: 14px
-  }
-
-  .s2-text .milestones {
-    display: flex;
-    gap: 28px;
-    margin-top: 28px;
-    padding-top: 24px;
-    border-top: 0.5px solid var(--border)
-  }
-
-  .milestone span {
-    display: block;
-    font-size: 26px;
-    font-weight: 800;
-    color: #4a8f0d
-  }
-
-  .milestone p {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-top: 2px
-  }
-
-  /* S3 VALUES */
-  .s3 {
-    margin-bottom: 64px;
-    text-align: center
-  }
-
-  .values-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
-    text-align: left
-  }
-
-  .val-card {
-    border-radius: 16px;
-    border: 0.5px solid var(--border);
-    background: var(--surface-2);
-    padding: 28px 24px;
-    transition: border-color 0.2s
-  }
-
-  .val-card:hover {
-    border-color: #97c459
-  }
-
-  .val-icon {
-    width: 52px;
-    height: 52px;
-    border-radius: 14px;
-    background: #eaf3de;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 18px
-  }
-
-  .val-card h3 {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 8px
-  }
-
-  .val-card p {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.65
-  }
-
-  /* S4 TIMELINE */
-  .s4 {
-    margin-bottom: 64px
-  }
-
-  .timeline {
-    position: relative;
-    padding-left: 32px
-  }
-
-  .timeline::before {
-    content: '';
-    position: absolute;
-    left: 10px;
-    top: 8px;
-    bottom: 8px;
-    width: 2px;
-    background: #c0dd97;
-    border-radius: 1px
-  }
-
-  .tl-item {
-    position: relative;
-    margin-bottom: 32px
-  }
-
-  .tl-dot {
-    position: absolute;
-    left: -32px;
-    top: 4px;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #4a8f0d;
-    border: 3px solid #eaf3de;
-    display: flex;
-    align-items: center;
-    justify-content: center
-  }
-
-  .tl-dot-inner {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: #fff
-  }
-
-  .tl-year {
-    font-size: 12px;
-    font-weight: 700;
-    color: #4a8f0d;
-    letter-spacing: 1px;
-    margin-bottom: 4px
-  }
-
-  .tl-title {
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 6px
-  }
-
-  .tl-desc {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.65
-  }
-
-  .tl-img {
-    width: 100%;
-    height: 140px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-top: 12px
-  }
-
-  .s4-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start
-  }
-
-  .s4-right img {
-    width: 100%;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 16px
-  }
-
-  /* S5 TEAM */
-  .s5 {
-    margin-bottom: 64px
-  }
-
-  .team-grid {
+.gate-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 18px
-  }
+    gap: 24px;
+}
 
-  .team-card {
-    border-radius: 16px;
-    border: 0.5px solid var(--border);
-    background: var(--surface-2);
+.gate-card {
+    background: #fff;
+    border: 1px solid #e7ece5;
+    border-radius: 18px;
     overflow: hidden;
     text-align: center;
-    transition: border-color 0.2s
-  }
+    padding-bottom: 25px;
+    transition: .35s ease;
+    box-shadow: 0 8px 24px rgba(0,0,0,.05);
+}
 
-  .team-card:hover {
-    border-color: #97c459
-  }
+.gate-card:hover {
+    transform: translateY(-10px);
+    border-color: #69a51d;
+    box-shadow: 0 18px 40px rgba(105,165,29,.18);
+}
 
-  .team-card img {
+.gate-photo {
+    height: 260px;
+    overflow: hidden;
+    margin-bottom: 22px;
+}
+
+.gate-photo img {
     width: 100%;
-    aspect-ratio: 1;
+    height: 100%;
     object-fit: cover;
-    object-position: top
-  }
+    transition: .45s;
+}
 
-  .team-info {
-    padding: 16px 14px
-  }
+.gate-card:hover .gate-photo img {
+    transform: scale(1.08);
+}
 
-  .team-name {
-    font-size: 15px;
+.gate-card h3 {
+    font-size: 20px;
+    color: #222;
+    margin-bottom: 1px;
     font-weight: 700;
-    color: var(--text-primary);
-    margin-bottom: 3px
-  }
+}
 
-  .team-role {
-    font-size: 12px;
-    color: #4a8f0d;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.7px;
-    margin-bottom: 8px
-  }
-
-  .team-bio {
-    font-size: 12px;
-    color: var(--text-secondary);
-    line-height: 1.55
-  }
-
-  .team-socials {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 12px
-  }
-
-  .s-link {
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    background: #eaf3de;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    border: 0.5px solid #c0dd97
-  }
-
-  /* S6 CTA */
-  .s6 {
+.gate-card span {
+    display: inline-block;
+    color: #69a51d;
+    padding: 6px 14px;
     border-radius: 20px;
-    overflow: hidden;
-    position: relative;
-    height: 280px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: 8px
-  }
+    font-size: 13px;
+    font-weight: 600;
+    font-style: normal;
+    font-family: inherit;
+}
 
-  .s6-bg {
-    position: absolute;
-    inset: 0;
-    background: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200&q=80') center/cover no-repeat
-  }
+/* Tablet */
 
-  .s6-ov {
-    position: absolute;
-    inset: 0;
-    background: rgba(10, 40, 5, 0.78)
-  }
+@media (max-width:1000px) {
 
-  .s6-content {
-    position: relative;
-    padding: 0 40px
-  }
+    .gate-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
 
-  .s6-content .chip {
-    background: rgba(183, 244, 122, 0.15);
-    color: #b7f47a;
-    border-color: rgba(183, 244, 122, 0.25)
-  }
+}
 
-  .s6-content h2 {
-    font-size: 30px;
-    font-weight: 800;
-    color: #fff;
-    line-height: 1.22;
-    margin-bottom: 12px
-  }
+/* Mobile */
 
-  .s6-content p {
-    font-size: 15px;
-    color: rgba(255, 255, 255, 0.68);
-    margin-bottom: 26px
-  }
+@media (max-width:540px) {
 
-  .s6-btns {
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-    flex-wrap: wrap
-  }
+    .gate-section {
+        padding: 70px 20px;
+    }
 
-  .s6-btns .b2 {
-    background: rgba(255, 255, 255, 0.12);
-    color: #fff;
-    border: 1.5px solid rgba(255, 255, 255, 0.28);
-    border-radius: 28px;
-    padding: 12px 26px;
-    font-size: 15px;
-    cursor: pointer
-  }
+    .gate-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .gate-photo {
+        height: 300px;
+    }
+
+}
+
+    /* ---------- Section 5: What Grows Here (values, soil ledger style) ---------- */
+    .ledger-section {
+        position: relative;
+        background: var(--green-deep);
+        color: var(--cream);
+        padding: 110px 7%;
+    }
+
+    .ledger-section .sec-num {
+        color: #B7D98C;
+    }
+
+    .ledger-top {
+        max-width: 600px;
+        margin-bottom: 64px;
+    }
+
+    .ledger-top span {
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-size: 13px;
+        color: #B7D98C;
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    .ledger-top h2 {
+        font-size: clamp(28px, 3.5vw, 40px);
+        color: var(--cream);
+    }
+
+    .ledger-rows {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ledger-row {
+        display: grid;
+        grid-template-columns: 90px 1fr 1.4fr;
+        gap: 30px;
+        padding: 30px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.18);
+        align-items: center;
+    }
+
+    .ledger-row:last-child {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .ledger-row .ledger-num {
+        font-family: "Fraunces", serif;
+        font-style: italic;
+        font-size: 28px;
+        color: #B7D98C;
+    }
+
+    .ledger-row h3 {
+        font-size: 21px;
+        color: var(--cream);
+    }
+
+    .ledger-row p {
+        font-size: 15px;
+        line-height: 1.7;
+        color: #C9D6B8;
+    }
+
+    @media (max-width: 700px) {
+        .ledger-row {
+            grid-template-columns: 1fr;
+            gap: 10px;
+        }
+    }
+
+    /* ---------- Section 6: Visit the Stall (CTA) ---------- */
+    .stall-section {
+        position: relative;
+        padding: 130px 7%;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .stall-section .stall-bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+
+    .stall-section .stall-bg img {
+        filter: brightness(0.45) saturate(1.1);
+    }
+
+    .stall-content {
+        position: relative;
+        z-index: 1;
+        max-width: 620px;
+        margin: 0 auto;
+        color: var(--cream);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 26px;
+    }
+
+    .stall-section .sec-num {
+        color: #B7D98C;
+        z-index: 2;
+    }
+
+    .stall-content span {
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-size: 13px;
+        color: #B7D98C;
+    }
+
+    .stall-content h2 {
+        font-size: clamp(30px, 4.5vw, 48px);
+        color: var(--cream);
+    }
+
+    .stall-content p {
+        font-size: 16px;
+        line-height: 1.8;
+        color: #E3E8D6;
+    }
+
+    .stall-btn {
+        margin-top: 10px;
+        padding: 16px 36px;
+        border-radius: 30px;
+        border: none;
+        background: var(--green-main);
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: background 0.25s ease;
+    }
+
+    .stall-btn:hover {
+        background: #527e1c;
+    }
+
+    .why-stackly{
+    width:90%;
+    margin:90px auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+    align-items:center;
+}
+
+.why-tag{
+    display:inline-block;
+    padding:8px 18px;
+    color:#63a51f;
+    border-radius:30px;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:1px;
+    margin-bottom:20px;
+}
+
+.why-left h2{
+    font-size:46px;
+    line-height:1.2;
+    color:#222;
+    margin-bottom:20px;
+}
+
+.why-left p{
+    color:#666;
+    line-height:1.9;
+    margin-bottom:35px;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.why-card{
+    background:#fff;
+    border:1px solid #ececec;
+    border-radius:18px;
+    padding:28px;
+    transition:.35s;
+}
+
+.why-card:hover{
+    border-color:#69a51d;
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+}
+
+.why-card h3{
+    color:#69a51d;
+    font-size:34px;
+    margin-bottom:8px;
+}
+
+.why-card span{
+    color:#555;
+    font-size:15px;
+}
+
+.why-right{
+    position:relative;
+}
+
+.why-right img{
+    width:100%;
+    display:block;
+    border-radius:24px;
+}
+
+.floating-box{
+    position:absolute;
+    bottom:35px;
+    left:-30px;
+    background:#69a51d;
+    color:#fff;
+    padding:22px 28px;
+    border-radius:18px;
+    max-width:260px;
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
+
+.floating-box h4{
+    margin-bottom:8px;
+    font-size:22px;
+}
+
+.floating-box p{
+    font-size:14px;
+    line-height:1.6;
+}
+
+@media(max-width:992px){
+
+    .why-stackly{
+        grid-template-columns:1fr;
+    }
+
+    .why-left h2{
+        font-size:36px;
+    }
+
+    .floating-box{
+        left:20px;
+    }
+
+}
+
+@media(max-width:576px){
+
+    .why-stackly{
+        width:92%;
+        margin:70px auto;
+    }
+
+    .why-grid{
+        grid-template-columns:1fr;
+    }
+
+    .why-left h2{
+        font-size:30px;
+    }
+
+    .floating-box{
+        position:static;
+        margin-top:20px;
+        max-width:100%;
+    }
+
+}
 </style>
 
+<body>
 
-  <!-- S1: ABOUT HERO -->
-  <div class="s1">
-    <div class="s1-bg"></div>
-    <div class="s1-ov"></div>
-    <div class="s1-content">
-      <div class="chip">Our story</div>
-      <h1>We're More Than<br>Just a Grocery S tore</h1>
-      <p>Stackly was born from a simple belief — everyone deserves fresh, honest, and affordable food at their doorstep.
-        No shortcuts. No compromises.</p>
-      <div class="s1-btns">
-        <button class="btn-g">Explore our story</button>
-        <button class="b2">Meet the team</button>
-      </div>
-    </div>
-    <div class="s1-img-panel">
-      <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&q=80" alt="Fresh produce">
-      <div class="s1-badge">
-        <span>2014</span>
-        <p>Founded with a dream</p>
-      </div>
-    </div>
-  </div>
+    <header class="header-section">
 
-  <!-- S2: OUR STORY -->
-  <div class="s2">
-    <div class="s2-imgs">
-      <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?w=600&q=80" alt="Farm">
-      <img src="https://images.unsplash.com/photo-1506617564039-2f3b650b7010?w=400&q=80" alt="Market">
-      <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=400&q=80" alt="Grocery">
-    </div>
-    <div class="s2-text">
-      <div class="chip">Who we are</div>
-      <div class="divider"></div>
-      <div class="sec-title">A family-rooted business, built on trust</div>
-      <div class="sec-sub">Started in a small neighbourhood market in 2014, Stackly grew from a single store to a
-        city-wide organic grocery network. We partner directly with 80+ local farms to bring you produce that's
-        harvested the same morning it lands in your cart.</div>
-      <p style="font-size:14px;color:var(--text-secondary);line-height:1.75">We believe food is personal. That's why
-        every product on Stackly is hand-picked by our quality team — not algorithms.</p>
-      <div class="s2-text milestones">
-        <div class="milestone"><span>80+</span>
-          <p>Farm partners</p>
+        <div class="header-container">
+            <p>Welcome to our Stackly Grocery Store!</p>
+            <div class="header-link">
+                <a href="404.html">Need help?</a>
+                <a href="404.html">order-tracking</a>
+            </div>
         </div>
-        <div class="milestone"><span>120K</span>
-          <p>Happy customers</p>
-        </div>
-        <div class="milestone"><span>11</span>
-          <p>Years of trust</p>
-        </div>
-        <div class="milestone"><span>99%</span>
-          <p>Organic certified</p>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- S3: VALUES -->
-  <div class="s3">
-    <div class="chip">What drives us</div>
-    <div class="sec-title">Our core values</div>
-    <div class="sec-sub">Every decision we make comes back to these three principles.</div>
-    <div class="values-grid">
-      <div class="val-card">
-        <div class="val-icon">
-          <i class="ti ti-leaf" style="font-size:24px;color:#3b6d11" aria-hidden="true"></i>
-        </div>
-        <h3>Farm-first sourcing</h3>
-        <p>We go directly to farmers — cutting out middlemen so your produce is fresher and farmers are paid fairly.
-          Every supplier is vetted in person.</p>
-      </div>
-      <div class="val-card">
-        <div class="val-icon">
-          <i class="ti ti-shield-check" style="font-size:24px;color:#3b6d11" aria-hidden="true"></i>
-        </div>
-        <h3>Radical transparency</h3>
-        <p>Every product shows its farm origin, harvest date, and certifications. No hidden ingredients. No misleading
-          labels. Just honest food.</p>
-      </div>
-      <div class="val-card">
-        <div class="val-icon">
-          <i class="ti ti-heart" style="font-size:24px;color:#3b6d11" aria-hidden="true"></i>
-        </div>
-        <h3>Community first</h3>
-        <p>A portion of every order supports local food banks and sustainable farming programs in underserved areas
-          across the region.</p>
-      </div>
-      <div class="val-card">
-        <div class="val-icon">
-          <i class="ti ti-recycle" style="font-size:24px;color:#3b6d11" aria-hidden="true"></i>
-        </div>
-        <h3>Zero-waste packaging</h3>
-        <p>100% compostable delivery packaging since 2020. We've eliminated over 4 tonnes of single-use plastic from our
-          supply chain.</p>
-      </div>
-      <div class="val-card">
-        <div class="val-icon">
-          <i class="ti ti-clock" style="font-size:24px;color:#3b6d11" aria-hidden="true"></i>
-        </div>
-        <h3>Speed without sacrifice</h3>
-        <p>Fast delivery shouldn't mean stale produce. Our cold-chain logistics ensures your groceries stay fresh from
-          harvest to doorstep.</p>
-      </div>
-      <div class="val-card">
-        <div class="val-icon">
-          <i class="ti ti-star" style="font-size:24px;color:#3b6d11" aria-hidden="true"></i>
-        </div>
-        <h3>Uncompromising quality</h3>
-        <p>Every batch passes a 7-point quality check before dispatch. If it doesn't meet our standards, it goes back —
-          not to you.</p>
-      </div>
-    </div>
-  </div>
+        <div class="header-container2">
+            <div class="accout-contaner">
+                <a href="404.html">About</a>
+                <a href="404.html">My account</a>
+                <a href="404.html">wishlist</a>
+            </div>
 
-  <!-- S4: JOURNEY TIMELINE -->
-  <div class="s4">
-    <div class="chip">How we got here</div>
-    <div class="sec-title">Our journey</div>
-    <div class="sec-sub">From a corner stall to your doorstep — a decade of growing together.</div>
-    <div class="s4-grid">
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-dot">
-            <div class="tl-dot-inner"></div>
-          </div>
-          <div class="tl-year">2014</div>
-          <div class="tl-title">The first stall</div>
-          <div class="tl-desc">Thomas and Priya Nair opened a small organic stall at the Riverside Farmers Market with
-            just 12 products and a handwritten price board.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">
-            <div class="tl-dot-inner"></div>
-          </div>
-          <div class="tl-year">2017</div>
-          <div class="tl-title">First physical store</div>
-          <div class="tl-desc">Demand outgrew the stall. Stackly opened its first brick-and-mortar store on Green Lane,
-            stocking over 400 organic products.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">
-            <div class="tl-dot-inner"></div>
-          </div>
-          <div class="tl-year">2020</div>
-          <div class="tl-title">Online store launch</div>
-          <div class="tl-desc">During the pandemic, we rapidly built stackly.com and introduced same-day delivery —
-            reaching 10,000 customers in the first 3 months.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">
-            <div class="tl-dot-inner"></div>
-          </div>
-          <div class="tl-year">2023</div>
-          <div class="tl-title">80+ farm network</div>
-          <div class="tl-desc">Signed direct partnerships with 80 farms across five states, guaranteeing fair trade
-            pricing and zero middlemen in our supply chain.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot">
-            <div class="tl-dot-inner"></div>
-          </div>
-          <div class="tl-year">Today</div>
-          <div class="tl-title">120,000 households served</div>
-          <div class="tl-desc">Stackly now delivers to over 120,000 households with a 60-minute delivery guarantee and
-            an NPS score of 78.</div>
-        </div>
-      </div>
-      <div class="s4-right">
-        <img src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?w=600&q=80" alt="Stackly market">
-      </div>
-    </div>
-  </div>
+            <div class="deliver-container">
+                <p>We deliver to Your Order Everyday form 7:00 to 22:00 </p>
+            </div>
 
-  <!-- S5: TEAM -->
-  <div class="s5">
-    <div class="chip">The people behind it</div>
-    <div class="sec-title">Meet our team</div>
-    <div class="sec-sub">A passionate group of food lovers, farmers, and technologists.</div>
-    <div class="team-grid">
-      <div class="team-card">
-        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80" alt="Thomas Nair">
-        <div class="team-info">
-          <div class="team-name">Thomas Nair</div>
-          <div class="team-role">Co-founder and CEO</div>
-          <div class="team-bio">Former farm manager turned entrepreneur. Believes great food is a right, not a luxury.
-          </div>
-          <div class="team-socials">
-            <div class="s-link"><i class="ti ti-brand-linkedin" style="font-size:15px;color:#3b6d11"
-                aria-hidden="true"></i></div>
-            <div class="s-link"><i class="ti ti-mail" style="font-size:15px;color:#3b6d11" aria-hidden="true"></i></div>
-          </div>
+            <div class="track-container">
+                <a href="404.html">English</a>
+                <a href="404.html">USD</a>
+                <a href="404.html">Track Order</a>
+            </div>
         </div>
-      </div>
-      <div class="team-card">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80" alt="Priya Nair">
-        <div class="team-info">
-          <div class="team-name">Priya Nair</div>
-          <div class="team-role">Co-founder and COO</div>
-          <div class="team-bio">Supply chain expert who built Stackly's farm-direct network from the ground up.</div>
-          <div class="team-socials">
-            <div class="s-link"><i class="ti ti-brand-linkedin" style="font-size:15px;color:#3b6d11"
-                aria-hidden="true"></i></div>
-            <div class="s-link"><i class="ti ti-mail" style="font-size:15px;color:#3b6d11" aria-hidden="true"></i></div>
-          </div>
-        </div>
-      </div>
-      <div class="team-card">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80" alt="Arjun Mehta">
-        <div class="team-info">
-          <div class="team-name">Arjun Mehta</div>
-          <div class="team-role">Head of technology</div>
-          <div class="team-bio">Built the platform that powers 60-minute delivery across five cities.</div>
-          <div class="team-socials">
-            <div class="s-link"><i class="ti ti-brand-linkedin" style="font-size:15px;color:#3b6d11"
-                aria-hidden="true"></i></div>
-            <div class="s-link"><i class="ti ti-brand-github" style="font-size:15px;color:#3b6d11"
-                aria-hidden="true"></i></div>
-          </div>
-        </div>
-      </div>
-      <div class="team-card">
-        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80" alt="Leila Hassan">
-        <div class="team-info">
-          <div class="team-name">Leila Hassan</div>
-          <div class="team-role">Quality director</div>
-          <div class="team-bio">Former food scientist who designed Stackly's 7-point freshness certification process.
-          </div>
-          <div class="team-socials">
-            <div class="s-link"><i class="ti ti-brand-linkedin" style="font-size:15px;color:#3b6d11"
-                aria-hidden="true"></i></div>
-            <div class="s-link"><i class="ti ti-mail" style="font-size:15px;color:#3b6d11" aria-hidden="true"></i></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- S6: CTA BANNER -->
-  <div class="s6">
-    <div class="s6-bg"></div>
-    <div class="s6-ov"></div>
-    <div class="s6-content">
-      <div class="chip">Join the Stackly family</div>
-      <h2>Fresh groceries, honest prices,<br>delivered to your door</h2>
-      <p>Start your first order today and taste the Stackly difference.</p>
-      <div class="s6-btns">
-        <button class="btn-g">Shop now</button>
-        <button class="b2">Contact us</button>
-      </div>
-    </div>
+        <div class="header-container3">
+            <div class="header-logo-container">
+                <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+            </div>
+
+            <div class="header-menu-container">
+
+                <div class="category-container errorpage">
+                    <span class="material-symbols-outlined">filter_list</span>
+                    <a href="404.html">Categories</a>
+                </div>
+
+                <div class="search-container">
+                    <span class="material-symbols-outlined search-menu">search</span>
+                    <input type="search" placeholder="Search For Products">
+                    <button class="search-btn errorpage">Search</button>
+                </div>
+
+            </div>
+
+            <div class="header-icons-container">
+
+                <div class="login-btn">
+                    <span class="material-symbols-outlined">person</span>
+                    <P>Login</P>
+                </div>
+
+                <div class="errorpage">
+                    <span class="material-symbols-outlined">favorite</span>
+                    <p>Wishlist</p>
+
+                </div>
+
+                <div class="errorpage">
+                    <span class="material-symbols-outlined">add_shopping_cart</span>
+                    <p>Cart</p>
+                </div>
+
+
+                <div>
+                    <span class="material-symbols-outlined open-btn2">menu</span>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="header-container4">
+
+            <div class="menubar">
+
+                <div class="nav-btns">
+                    <span class="material-symbols-outlined open-btn">menu</span>
+                    <span class="material-symbols-outlined close-btn">close</span>
+                    <span class="material-symbols-outlined close-btn2">close</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html" >Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="fresh.html">Fresh Grocery</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+
+            <div class="trinding-container">
+                <div class="trend-container">
+                    <a href="404.html">Trending Products</a>
+                </div>
+
+                <div class="offer-container">
+                    <p>Get 30% Discont Now</p><a href="404.html">Sale</a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+
+      <!-- ════════════════════════════════════════════
+     SECTION 1 — HERO BANNER
+════════════════════════════════════════════ -->
+<section class="contact-hero">
+  <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1400&h=600&fit=crop"
+    alt="Fresh grocery store" />
+
+  <div class="hero-overlay">
+
+    <p class="eyebrow">Who We Are</p>
+
+<h1>Bringing Freshness<br>To Every Home</h1>
+
+<p>
+  We source the finest fruits, vegetables, dairy products, and daily
+  essentials from trusted farms and suppliers, ensuring every order
+  delivers freshness, quality, and value to your family.
+</p>
+
   </div>
+</section>
+       <!-- 2. Origin Story -->
+    <section class="origin-section">
+        <div class="origin-image-stack">
+            <img class="img-a"
+                src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=900&auto=format&fit=crop"
+                alt="Farmer holding fresh produce">
+            <img class="img-b"
+                src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?q=80&w=600&auto=format&fit=crop"
+                alt="Wooden crate of tomatoes">
+        </div>
+        <div class="origin-content">
+            <span class="eyebrow">How It Started</span>
+            <h2>A Sunday market table, nine years ago</h2>
+            <p>Stackly's founders set up a single folding table at a weekend market, selling whatever the
+                week's harvest allowed. There was no plan beyond honesty: sell what is ripe, say where it came
+                from, and never let a vegetable sit longer than it has to.</p>
+            <p>That table is now a small warehouse and a fleet of delivery bikes, but the rule has not changed.
+                Every item on Stackly still passes through hands that know the farm it left.</p>
+            <p class="origin-signature">"Short routes, ripe produce, no shortcuts."</p>
+        </div>
+    </section>
+
+        <!-- 3. Harvest Calendar / Process -->
+    <section class="harvest-section">
+    
+        <div class="harvest-header">
+            <span>From Field to Basket</span>
+            <h2>How an order reaches your table</h2>
+        </div>
+        <div class="harvest-strip">
+            <div class="harvest-card">
+                <span class="harvest-mark">Dawn</span>
+                <h3>Picked</h3>
+                <p>Growers harvest only what the day's orders call for, keeping fields producing on a steady
+                    rhythm.</p>
+            </div>
+            <div class="harvest-card">
+                <span class="harvest-mark">Morning</span>
+                <h3>Sorted</h3>
+                <p>Produce is checked by hand for ripeness and quality before it ever reaches a crate.</p>
+            </div>
+            <div class="harvest-card">
+                <span class="harvest-mark">Midday</span>
+                <h3>Packed</h3>
+                <p>Orders are packed in reusable crates, organized by neighborhood route.</p>
+            </div>
+            <div class="harvest-card">
+                <span class="harvest-mark">Evening</span>
+                <h3>Delivered</h3>
+                <p>Bikes and small vans carry baskets the last mile, usually within hours of picking.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-stackly">
+    <div class="why-left">
+
+        <span class="why-tag">WHY STACKLY</span>
+
+        <h2>Your Trusted Grocery Partner For Everyday Living</h2>
+
+        <p>
+            Every order at Stackly is carefully packed with fresh produce,
+            quality pantry essentials, dairy products, and household items
+            sourced from trusted suppliers. We make grocery shopping faster,
+            fresher, and more convenient for every home.
+        </p>
+
+        <div class="why-grid">
+
+            <div class="why-card">
+                <h3>5000+</h3>
+                <span>Products Available</span>
+            </div>
+
+            <div class="why-card">
+                <h3>100+</h3>
+                <span>Trusted Farm Partners</span>
+            </div>
+
+            <div class="why-card">
+                <h3>25K+</h3>
+                <span>Happy Families</span>
+            </div>
+
+            <div class="why-card">
+                <h3>24/7</h3>
+                <span>Customer Support</span>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="why-right">
+
+        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&h=700&fit=crop"
+            alt="Fresh Grocery">
+
+        <div class="floating-box">
+            <h4>100% Fresh</h4>
+            <p>Farm-picked vegetables delivered every day.</p>
+        </div>
+
+    </div>
+</section>
+
+
+
+    <!-- 4. Team -->
+    <section class="gate-section">
+        <div class="gate-header">
+            <div>
+                <span>The People</span>
+                <h2>Faces behind the farm gate</h2>
+            </div>
+            <p>A small team of growers, packers, and route riders who treat every crate like it's headed to
+                their own kitchen.</p>
+        </div>
+        <div class="gate-grid">
+            <div class="gate-card">
+                <div class="gate-photo">
+                    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=600&auto=format&fit=crop"
+                        alt="Portrait of a farm grower">
+                </div>
+                <h3>Maya Linden</h3>
+                <span>Head Grower</span>
+            </div>
+            <div class="gate-card">
+                <div class="gate-photo">
+                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=600&auto=format&fit=crop"
+                        alt="Portrait of a packing lead">
+                </div>
+                <h3>Owen Frey</h3>
+                <span>Packing Lead</span>
+            </div>
+            <div class="gate-card">
+                <div class="gate-photo">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?q=80&w=600&auto=format&fit=crop"
+                        alt="Portrait of a route rider">
+                </div>
+                <h3>Priya Nair</h3>
+                <span>Route Rider</span>
+            </div>
+            <div class="gate-card">
+                <div class="gate-photo">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=600&auto=format&fit=crop"
+                        alt="Portrait of a quality checker">
+                </div>
+                <h3>Daniel Cho</h3>
+                <span>Quality Checker</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Values / Ledger -->
+    <section class="ledger-section">
+        <div class="ledger-top">
+            <span>What Grows Here</span>
+            <h2>The standards we don't bend on</h2>
+        </div>
+        <div class="ledger-rows">
+            <div class="ledger-row">
+                <span class="ledger-num">01</span>
+                <h3>Source Transparency</h3>
+                <p>Every product page names the farm it came from, not just a region or a brand.</p>
+            </div>
+            <div class="ledger-row">
+                <span class="ledger-num">02</span>
+                <h3>Fair Pay to Growers</h3>
+                <p>Farms are paid a fixed share of every sale, agreed before the season starts, not negotiated
+                    after harvest.</p>
+            </div>
+            <div class="ledger-row">
+                <span class="ledger-num">03</span>
+                <h3>Low-Waste Packing</h3>
+                <p>Crates are reused on every route, and unsold produce goes to neighborhood food programs the
+                    same day.</p>
+            </div>
+            <div class="ledger-row">
+                <span class="ledger-num">04</span>
+                <h3>Same-Day Picking</h3>
+                <p>Nothing sits in cold storage longer than overnight before it reaches a doorstep.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. CTA -->
+    <section class="stall-section">
+        <div class="stall-bg">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1600&auto=format&fit=crop"
+                alt="Outdoor produce stall at dusk">
+        </div>
+        <div class="stall-content">
+            <span>Come Say Hello</span>
+            <h2>Visit our stall this weekend</h2>
+            <p>Taste the week's harvest, meet the growers, and see exactly where your next basket is coming
+                from.</p>
+            <button class="stall-btn">Find a Stall Near You</button>
+        </div>
+    </section>
+
+    <footer class="footer-section">
+
+        <div class="footer-section-top">
+            <div class="footer1">
+                <div class="footer-logo">
+                    <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+                </div>
+
+                <p>What's Inside:New Arrivals, Exclusive sales,News @ Mores</p>
+
+                <div class="subscribe-container">
+                    <input type="email" placeholder="Subscribe" id="footer-email">
+                    <button type="submit" class="subscribe">Subscribe</button>
+                </div>
+
+                <div class="sotial-icons">
+                    <a href="404.html"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="404.html"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+
+            </div>
+
+            <div class="footer2">
+                <h2>Our Stores</h2>
+
+                <div class="store-links">
+                    <a href="">Delivery Information</a>
+                    <a href="">Support Center</a>
+                    <a href="">Privacy Policy</a>
+                    <a href="">Terms @ Conditions</a>
+                    <a href="">Cookies Policy</a>
+                </div>
+            </div>
+
+            <div class="footer3">
+                <h2>Our Stores</h2>
+
+                <div class="store-links">
+                    <a href="">Home</a>
+                    <a href="">About</a>
+                    <a href="">Fresh grocery</a>
+                    <a href="">Shop</a>
+                    <a href="">Contact Us</a>
+                </div>
+            </div>
+
+            <div class="footer4">
+
+                <h2>Need Help?</h2>
+
+                <div class="store-links">
+                    <div class=" footer-details">
+                        <span class="material-symbols-outlined">location_on</span>
+                        <div>
+                            <p>258 Daniel Street, 2589 Phones Line </p>
+                            <p>Berlin,Germany</p>
+                        </div>
+                    </div>
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">mail</span>
+                        <div>
+                            <p>258 Daniel Street, 2589 Phones Line </p>
+                            <p>admin@gmail.com</p>
+                        </div>
+                    </div>
+
+                    <div class="footer-details">
+                        <span class="material-symbols-outlined">call</span>
+                        <div>
+                            <p>Live Chat Chat With an Experts</p>
+                            <p>+91 0987654321</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-section-bottom">
+            <p>@2026 Stackly.All Rights Reserved</p>
+            <div>
+                <a href="404.html">Privacy Policy</a>
+                <a href="404.html">Terms & conditions</a>
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+        let navlink = document.querySelector(".nav-links")
+        let openbtn1 = document.querySelector(".open-btn")
+        let openbtn2 = document.querySelector('.open-btn2')
+        let closebtn = document.querySelector(".close-btn")
+        let closebtn2 = document.querySelector(".close-btn2")
+
+        openbtn1.addEventListener("click", () => {
+            navlink.style.display = "flex"
+            closebtn.style.display = "block"
+            closebtn2.style.display = "none"
+            openbtn1.style.display = "none"
+            openbtn2.style.display = "none"
+
+        })
+
+        closebtn.addEventListener("click", () => {
+            navlink.style.display = "none"
+            closebtn.style.display = "none"
+            openbtn1.style.display = "block"
+            closebtn2.style.display = "none"
+            openbtn2.style.display = "none"
+        })
+
+        openbtn2.addEventListener("click", () => {
+            navlink.style.display = "flex"
+            closebtn2.style.display = "block"
+            closebtn.style.display = "none"
+            openbtn1.style.display = "none"
+            openbtn2.style.display = "block"
+        })
+
+        closebtn2.addEventListener("click", () => {
+            navlink.style.display = "none"
+            closebtn.style.display = "none"
+            openbtn1.style.display = "none"
+            closebtn2.style.display = "none"
+            openbtn2.style.display = "block"
+        })
+
+
+
+        window.addEventListener("resize", () => {
+            if (window.innerWidth > 1150) {
+                navlink.style.display = "flex"
+                closebtn.style.display = "none"
+                closebtn2.style.display = "none"
+                openbtn1.style.display = "none"
+                openbtn2.style.display = "none"
+
+            }
+
+            else if (window.innerWidth < 1150 && window.innerWidth > 650) {
+
+                navlink.style.display = "none"
+                closebtn.style.display = "none"
+                closebtn2.style.display = "none"
+                openbtn1.style.display = "block"
+                openbtn2.style.display = "none"
+
+            }
+
+
+            else if (window.innerWidth < 650) {
+                navlink.style.display = "none"
+                closebtn.style.display = "none"
+                closebtn2.style.display = "none"
+                openbtn1.style.display = "none"
+                openbtn2.style.display = "block"
+
+            }
+
+        })
+
+
+        //login 
+
+        let loginbtn = document.querySelector(".login-btn")
+        loginbtn.addEventListener("click", () => {
+            window.location.href = "login.html"
+        })
+
+        //404 page
+
+        let errorpage = document.querySelectorAll(".errorpage")
+        errorpage.forEach((error) => {
+            error.addEventListener("click", () => {
+                window.location.href = "404.html"
+            })
+        })
+
+        //footer js
+
+        const footeremail=document.querySelector("#footer-email")
+        const subscribebtn=document.querySelector(".subscribe")
+
+        subscribebtn.addEventListener("click",()=>{
+
+            let emailpattern=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if(footeremail.value.trim()==""){
+                  alert("enter Your Email")
+            footeremail.focus()
+            return;
+            }
+          
+
+            if(!emailpattern.test(footeremail.value.trim())){
+                alert("pleae enter valid email")
+                footeremail.focus()
+                return;
+            }
+
+            alert("Subscribe Successfully!")
+
+            footeremail.value=""
+        })
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -786,7 +786,7 @@
 
     /* ─── SHARED HELPERS ─── */
     .eyebrow {
-      font-size: 11px;
+      font-size: 16px;
       font-weight: 700;
       letter-spacing: 2.5px;
       text-transform: uppercase;
@@ -802,145 +802,6 @@
 
     .sec-pad {
       padding: 56px 6%;
-    }
-
-    /* ════════════════════════════════════════════
-       SECTION 1 — FULL-WIDTH HERO SPLIT
-    ════════════════════════════════════════════ */
-    .fresh-hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 520px;
-    }
-
-    .hero-left {
-      background: linear-gradient(145deg, #1d4208 0%, #3a7012 50%, #629D23 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 60px 7%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-left::after {
-      content: "";
-      position: absolute;
-      bottom: -80px;
-      right: -80px;
-      width: 260px;
-      height: 260px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, .06);
-    }
-
-    .hero-left .eyebrow {
-      color: #a8d572;
-      margin-bottom: 12px;
-    }
-
-    .hero-left h1 {
-      font-size: clamp(28px, 4vw, 52px);
-      color: #fff;
-      line-height: 1.15;
-      margin-bottom: 18px;
-    }
-
-    .hero-left h1 em {
-      font-style: italic;
-      color: #c5f079;
-    }
-
-    .hero-left p {
-      color: rgba(255, 255, 255, .8);
-      font-size: 15px;
-      line-height: 1.7;
-      margin-bottom: 32px;
-      max-width: 380px;
-    }
-
-    .hero-pills {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 32px;
-    }
-
-    .pill {
-      padding: 6px 16px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      background: rgba(255, 255, 255, .15);
-      color: #fff;
-      border: 1px solid rgba(255, 255, 255, .25);
-    }
-
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 13px 28px;
-      border-radius: 30px;
-      background: #fff;
-      color: var(--green-dark);
-      font-weight: 700;
-      font-size: 14px;
-      border: none;
-      cursor: pointer;
-      width: fit-content;
-      transition: transform .2s;
-    }
-
-    .hero-cta:hover {
-      transform: translateX(4px);
-    }
-
-    .hero-right {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-right img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .hero-badge {
-      position: absolute;
-      top: 28px;
-      right: 28px;
-      width: 88px;
-      height: 88px;
-      border-radius: 50%;
-      background: var(--green);
-      color: #fff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.2;
-      border: 3px solid #fff;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, .2);
-    }
-
-    .hero-badge strong {
-      font-size: 22px;
-      display: block;
-    }
-
-    @media(max-width:768px) {
-      .fresh-hero {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-right {
-        height: 260px;
-      }
     }
 
     /* ════════════════════════════════════════════
@@ -1092,7 +953,7 @@
     }
 
     .view-all {
-      font-size: 13px;
+      font-size: 15px;
       color: var(--green);
       font-weight: 600;
     }
@@ -1330,7 +1191,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       color: var(--green);
     }
@@ -1366,6 +1227,7 @@
     }
 
     .timeline-section .eyebrow {
+      margin-bottom: 20px;
       text-align: center;
     }
 
@@ -1591,6 +1453,85 @@
         height: 200px;
       }
     }
+
+    /*newly added*/
+
+     /* ════════════════════════════════════════════
+       SECTION 1 — HERO BANNER
+    ════════════════════════════════════════════ */
+    .contact-hero {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+    }
+
+    .contact-hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.04);
+      transition: transform 8s ease;
+    }
+
+    .contact-hero:hover img {
+      transform: scale(1);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(26, 58, 8, .82) 0%, rgba(98, 157, 35, .45) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .hero-overlay .eyebrow {
+      color: #a8d572;
+    }
+
+    .hero-overlay h1 {
+      font-size: clamp(30px, 5vw, 58px);
+      color: #fff;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero-overlay h1 em {
+      font-style: italic;
+      color: #c5f079;
+    }
+
+    .hero-overlay p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, .82);
+      max-width: 500px;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+
+    .hero-scroll-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 30px;
+      background: #fff;
+      color: var(--green-dark);
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      transition: transform .2s;
+    }
+
+    .hero-scroll-cta:hover {
+      transform: translateY(3px);
+    }
+
   </style>
 </head>
 
@@ -1702,27 +1643,29 @@
     </div>
 
   </header>
-  <!-- ════════════════════════════════════════════
-     SECTION 1 — HERO SPLIT
+
+
+  
+      <!-- ════════════════════════════════════════════
+     SECTION 1 — HERO BANNER
 ════════════════════════════════════════════ -->
-  <section class="fresh-hero">
-    <div class="hero-left">
-      <p class="eyebrow">Fresh From The Farm</p>
-      <h1>The Freshest<br>Groceries,<br>Every Single Day</h1>
-      <p>Harvested at peak ripeness and delivered to your door within 24 hours. No compromises on quality.</p>
-      <div class="hero-pills">
-        <span class="pill">Pesticide-Free</span>
-        <span class="pill">Direct From Farms</span>
-        <span class="pill">No Preservatives</span>
-      </div>
-      <button class="hero-cta">Shop Fresh Now &rarr;</button>
-    </div>
-    <div class="hero-right">
-      <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=900&h=600&fit=crop"
-        alt="Fresh vegetables and fruits" />
-      <div class="hero-badge"><strong>30%</strong> OFF Today Only</div>
-    </div>
-  </section>
+<section class="contact-hero">
+  <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1400&h=600&fit=crop"
+    alt="Fresh grocery store" />
+
+  <div class="hero-overlay">
+
+    <p class="eyebrow">Fresh Stackly Grocery</p>
+
+    <h1>Fresh Groceries,<br>Trusted Every Day</h1>
+
+    <p>
+      At Stackly Grocery, we bring farm-fresh fruits, vegetables,
+      dairy, and everyday essentials straight to your doorstep.
+    </p>
+
+  </div>
+</section>
 
   <!-- ════════════════════════════════════════════
      SECTION 2 — FRESHNESS PROMISE BAND
