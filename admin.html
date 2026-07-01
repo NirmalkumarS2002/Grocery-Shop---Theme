@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stackly Organic Farms Dashboard</title>
+    <title>Stackly Grocery Store Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
@@ -19,7 +19,7 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #f0f7f0;
+            background: #f4f8ec;
             display: flex;
             min-height: 100vh;
             overflow-x: hidden;
@@ -28,7 +28,7 @@
         /* ===== SIDEBAR ===== */
         .sidebar {
             width: 260px;
-            background: linear-gradient(180deg, #1a5c28, #0d3d18);
+            background: linear-gradient(180deg, #4c7a17, #2f4c0d);
             padding: 20px;
             transition: 0.3s;
             flex-shrink: 0;
@@ -61,7 +61,7 @@
         .logo-icon {
             width: 38px;
             height: 38px;
-            background: #3d9e3d;
+            background: #83c22b;
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -78,7 +78,7 @@
         }
 
         .logo-sub {
-            color: #a5d6a7;
+            color: #c5e07f;
             font-size: 10px;
             font-weight: 400;
             margin-top: -3px;
@@ -107,7 +107,7 @@
             padding: 12px 14px;
             border-radius: 10px;
             text-decoration: none;
-            color: #b2d8b2;
+            color: #c3dd9a;
             transition: 0.25s;
             font-size: 13.5px;
             cursor: pointer;
@@ -120,19 +120,19 @@
 
         .menu li a:hover,
         .menu li.active a {
-            background: rgba(61, 158, 61, 0.25);
+            background: rgba(131, 194, 43, 0.25);
             color: #ffffff;
             font-weight: 600;
         }
 
         .menu li.active a {
-            background: #3d9e3d;
+            background: #83c22b;
             color: #ffffff;
-            box-shadow: 0 4px 15px rgba(61, 158, 61, 0.4);
+            box-shadow: 0 4px 15px rgba(131, 194, 43, 0.4);
         }
 
         .menu-divider {
-            color: #5a8a5a;
+            color: #8fae5a;
             font-size: 10px;
             font-weight: 600;
             letter-spacing: 1.2px;
@@ -149,7 +149,7 @@
         .topbar {
             height: 68px;
             background: #ffffff;
-            border-bottom: 1px solid #e0f0e0;
+            border-bottom: 1px solid #e6f0d8;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -157,7 +157,7 @@
             position: sticky;
             top: 0;
             z-index: 10;
-            box-shadow: 0 2px 10px rgba(26, 92, 40, 0.06);
+            box-shadow: 0 2px 10px rgba(76, 122, 23, 0.06);
         }
 
         .topbar-left {
@@ -168,13 +168,13 @@
 
         .menu-btn {
             display: none;
-            color: #1a6b2e;
+            color: #4c7a17;
             font-size: 22px;
             cursor: pointer;
         }
 
         .topbar h2 {
-            color: #1a2e1a;
+            color: #263417;
             font-size: 17px;
             font-weight: 600;
         }
@@ -190,21 +190,21 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #1a2e1a;
+            color: #263417;
         }
 
         .avatar {
             width: 42px;
             height: 42px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #2e7d32, #66bb6a);
+            background: linear-gradient(135deg, #5a8f1f, #9ccc3c);
             color: #fff;
             font-weight: 700;
             font-size: 17px;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+            box-shadow: 0 4px 12px rgba(90, 143, 31, 0.3);
         }
 
         /* ===== CONTENT ===== */
@@ -228,7 +228,7 @@
             background: #ffffff;
             border-radius: 16px;
             padding: 18px 20px;
-            border: 1px solid #e0f0e0;
+            border: 1px solid #e6f0d8;
             display: flex;
             align-items: center;
             gap: 14px;
@@ -237,7 +237,7 @@
 
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(26, 92, 40, 0.1);
+            box-shadow: 0 8px 20px rgba(76, 122, 23, 0.1);
         }
 
         .card-icon {
@@ -252,13 +252,13 @@
         }
 
         .ci-green {
-            background: #e8f5e9;
-            color: #2e7d32;
+            background: #eef7df;
+            color: #5a8f1f;
         }
 
         .ci-lime {
-            background: #f1f8e9;
-            color: #558b2f;
+            background: #f3f9e4;
+            color: #7cb82c;
         }
 
         .ci-teal {
@@ -282,13 +282,13 @@
         }
 
         .card h2 {
-            color: #1a2e1a;
+            color: #263417;
             margin-bottom: 3px;
             font-size: 22px;
         }
 
         .card p {
-            color: #5a7a5a;
+            color: #6a8447;
             font-size: 12.5px;
         }
 
@@ -297,7 +297,7 @@
             background: #ffffff;
             border-radius: 16px;
             padding: 20px;
-            border: 1px solid #e0f0e0;
+            border: 1px solid #e6f0d8;
             overflow: auto;
             margin-bottom: 18px;
         }
@@ -312,12 +312,12 @@
         }
 
         .table-header h2 {
-            color: #1a2e1a;
+            color: #263417;
             font-size: 15px;
         }
 
         .btn-green {
-            background: linear-gradient(135deg, #2e7d32, #43a047);
+            background: linear-gradient(135deg, #5a8f1f, #8bc34a);
             color: white;
             border: none;
             padding: 10px 18px;
@@ -326,24 +326,24 @@
             font-size: 13px;
             cursor: pointer;
             transition: 0.25s;
-            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+            box-shadow: 0 4px 12px rgba(90, 143, 31, 0.3);
             font-family: 'Poppins', sans-serif;
         }
 
         .btn-green:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(46, 125, 50, 0.4);
+            box-shadow: 0 8px 20px rgba(90, 143, 31, 0.4);
         }
 
         .btn-outline {
-            border: 1.5px solid #43a047;
+            border: 1.5px solid #8bc34a;
             background: transparent;
             padding: 8px 14px;
             border-radius: 10px;
             font-weight: 500;
             cursor: pointer;
             font-size: 12.5px;
-            color: #2e7d32;
+            color: #5a8f1f;
             font-family: 'Poppins', sans-serif;
         }
 
@@ -356,20 +356,20 @@
         table th {
             text-align: left;
             padding: 11px 12px;
-            color: #2e7d32;
+            color: #5a8f1f;
             font-size: 12px;
-            border-bottom: 2px solid #e8f5e9;
+            border-bottom: 2px solid #eef7df;
         }
 
         table td {
             padding: 12px;
-            border-top: 1px solid #f1f8f1;
-            color: #3a5a3a;
+            border-top: 1px solid #f4f9ec;
+            color: #46592f;
             font-size: 12.5px;
         }
 
         table tr:hover td {
-            background: #f9fdf9;
+            background: #fafdf5;
         }
 
         /* ===== STATUS BADGES ===== */
@@ -381,8 +381,8 @@
         }
 
         .s-active {
-            background: #e8f5e9;
-            color: #2e7d32;
+            background: #eef7df;
+            color: #5a8f1f;
         }
 
         .s-pending {
@@ -407,14 +407,14 @@
 
         /* ===== PAGE HEADER ===== */
         .page-title {
-            color: #1a2e1a;
+            color: #263417;
             font-size: 21px;
             font-weight: 700;
             margin-bottom: 4px;
         }
 
         .page-sub {
-            color: #7a9a7a;
+            color: #85a15c;
             font-size: 13px;
             margin-bottom: 20px;
         }
@@ -432,11 +432,11 @@
             background: #ffffff;
             border-radius: 14px;
             padding: 20px;
-            border: 1px solid #e0f0e0;
+            border: 1px solid #e6f0d8;
         }
 
         .info-box h3 {
-            color: #2e7d32;
+            color: #5a8f1f;
             font-size: 13.5px;
             margin-bottom: 14px;
             display: flex;
@@ -449,7 +449,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 9px 0;
-            border-bottom: 1px solid #f1f8f1;
+            border-bottom: 1px solid #f4f9ec;
         }
 
         .info-row:last-child {
@@ -457,22 +457,22 @@
         }
 
         .info-label {
-            color: #7a9a7a;
+            color: #85a15c;
             font-size: 12.5px;
         }
 
         .info-value {
-            color: #2a4a2a;
+            color: #37502b;
             font-size: 12.5px;
             font-weight: 500;
         }
 
         /* ===== CLIENT CARDS ===== */
         .client-card {
-            background: #f9fdf9;
+            background: #fafdf5;
             border-radius: 12px;
             padding: 14px 16px;
-            border: 1px solid #e0f0e0;
+            border: 1px solid #e6f0d8;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -483,7 +483,7 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #2e7d32, #66bb6a);
+            background: linear-gradient(135deg, #5a8f1f, #9ccc3c);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -494,13 +494,13 @@
         }
 
         .client-name {
-            color: #1a2e1a;
+            color: #263417;
             font-size: 14px;
             font-weight: 500;
         }
 
         .client-case {
-            color: #7a9a7a;
+            color: #85a15c;
             font-size: 11.5px;
             margin-top: 2px;
         }
@@ -518,16 +518,16 @@
             background: #ffffff;
             border-radius: 14px;
             padding: 20px;
-            border: 1px solid #e0f0e0;
+            border: 1px solid #e6f0d8;
             margin-bottom: 16px;
         }
 
         .setting-section h3 {
-            color: #2e7d32;
+            color: #5a8f1f;
             font-size: 14px;
             margin-bottom: 14px;
             padding-bottom: 10px;
-            border-bottom: 1px solid #e8f5e9;
+            border-bottom: 1px solid #eef7df;
         }
 
         .setting-row {
@@ -535,7 +535,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 11px 0;
-            border-bottom: 1px solid #f1f8f1;
+            border-bottom: 1px solid #f4f9ec;
         }
 
         .setting-row:last-child {
@@ -543,12 +543,12 @@
         }
 
         .setting-label {
-            color: #1a2e1a;
+            color: #263417;
             font-size: 13.5px;
         }
 
         .setting-desc {
-            color: #7a9a7a;
+            color: #85a15c;
             font-size: 11.5px;
             margin-top: 2px;
         }
@@ -565,7 +565,7 @@
         }
 
         .toggle.on {
-            background: #2e7d32;
+            background: #5a8f1f;
         }
 
         .toggle::after {
@@ -585,11 +585,11 @@
         }
 
         .input-field {
-            background: #f0f7f0;
-            border: 1.5px solid #c8e6c9;
+            background: #f4f8ec;
+            border: 1.5px solid #d9ecb2;
             border-radius: 10px;
             padding: 10px 14px;
-            color: #2a4a2a;
+            color: #37502b;
             font-size: 13px;
             font-family: 'Poppins', sans-serif;
             outline: none;
@@ -599,7 +599,7 @@
         }
 
         .input-field:focus {
-            border-color: #43a047;
+            border-color: #8bc34a;
             background: #fff;
         }
 
@@ -614,15 +614,15 @@
             transform: translateY(-70%);
             cursor: pointer;
             font-size: 20px;
-            color: #7a9a7a;
+            color: #85a15c;
         }
 
         /* ===== MEETING / DELIVERY CARDS ===== */
         .meeting-card {
-            background: #f9fdf9;
+            background: #fafdf5;
             border-radius: 14px;
             padding: 16px;
-            border: 1px solid #e0f0e0;
+            border: 1px solid #e6f0d8;
             margin-bottom: 12px;
             display: flex;
             gap: 16px;
@@ -630,7 +630,7 @@
         }
 
         .meeting-date {
-            background: #e8f5e9;
+            background: #eef7df;
             border-radius: 10px;
             padding: 10px 14px;
             text-align: center;
@@ -638,27 +638,27 @@
         }
 
         .meeting-day {
-            color: #2e7d32;
+            color: #5a8f1f;
             font-size: 22px;
             font-weight: 700;
             line-height: 1;
         }
 
         .meeting-month {
-            color: #558b2f;
+            color: #7cb82c;
             font-size: 11px;
             margin-top: 2px;
             font-weight: 600;
         }
 
         .meeting-title {
-            color: #1a2e1a;
+            color: #263417;
             font-size: 14px;
             font-weight: 500;
         }
 
         .meeting-meta {
-            color: #7a9a7a;
+            color: #85a15c;
             font-size: 11.5px;
             margin-top: 5px;
             display: flex;
@@ -668,15 +668,15 @@
 
         /* ===== REPORT / PROGRESS ===== */
         .report-card {
-            background: #f9fdf9;
+            background: #fafdf5;
             border-radius: 12px;
             padding: 14px 16px;
-            border: 1px solid #e0f0e0;
+            border: 1px solid #e6f0d8;
             margin-bottom: 12px;
         }
 
         .report-title {
-            color: #1a2e1a;
+            color: #263417;
             font-size: 13.5px;
             font-weight: 500;
             margin-bottom: 6px;
@@ -686,25 +686,25 @@
             border-radius: 20px;
             height: 8px;
             margin: 6px 0 4px;
-            background: #e8f5e9;
+            background: #eef7df;
         }
 
         .progress-fill {
             height: 100%;
             border-radius: 20px;
-            background: linear-gradient(90deg, #2e7d32, #66bb6a);
+            background: linear-gradient(90deg, #5a8f1f, #9ccc3c);
         }
 
         .progress-label {
             display: flex;
             justify-content: space-between;
-            color: #7a9a7a;
+            color: #85a15c;
             font-size: 11.5px;
         }
 
         /* ===== ORGANIC HERO BANNER ===== */
         .hero-banner {
-            background: linear-gradient(135deg, #1a5c28 0%, #2e7d32 40%, #43a047 100%);
+            background: linear-gradient(135deg, #4c7a17 0%, #5a8f1f 40%, #8bc34a 100%);
             border-radius: 16px;
             padding: 24px 28px;
             margin-bottom: 18px;
@@ -731,7 +731,7 @@
         }
 
         .hero-sub {
-            color: #a5d6a7;
+            color: #dcf0b4;
             font-size: 13px;
         }
 
@@ -821,8 +821,8 @@ input[type="password"]::-ms-clear{
         <div class="menu-divider">Main</div>
         <ul class="menu">
             <li class="active" data-page="dashboard"><a><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
-            <li data-page="clients"><a><i class="fa-solid fa-store"></i> Buyers & Partners</a></li>
-            <li data-page="projects"><a><i class="fa-solid fa-boxes-stacked"></i> Crop Inventory</a></li>
+            <li data-page="clients"><a><i class="fa-solid fa-store"></i> Customers</a></li>
+            <li data-page="projects"><a><i class="fa-solid fa-boxes-stacked"></i> Product Inventory</a></li>
             <li data-page="meetings"><a><i class="fa-solid fa-truck"></i> Orders & Deliveries</a></li>
             <li data-page="reports"><a><i class="fa-solid fa-chart-pie"></i> Sales & Analytics</a></li>
             <div class="menu-divider">Account</div>
@@ -844,7 +844,7 @@ input[type="password"]::-ms-clear{
                     <div class="avatar" id="avatarEl">A</div>
                     <div>
                         <h4 id="adminEmail" style="font-size:13px;font-weight:600;">admin@stackly.com</h4>
-                        <p style="color:#7a9a7a;font-size:11px;">Store Administrator</p>
+                        <p style="color:#85a15c;font-size:11px;">Store Administrator</p>
                     </div>
                 </div>
             </div>
@@ -1482,27 +1482,27 @@ input[type="password"]::-ms-clear{
 
             <div class="info-row">
                 <span class="info-label">📄 Stock_Report_July.pdf</span>
-                <span class="info-value errorpage" style="color:#43a047;font-size:12px;cursor:pointer;">View</span>
+                <span class="info-value errorpage" style="color:#8bc34a;font-size:12px;cursor:pointer;">View</span>
             </div>
 
             <div class="info-row">
                 <span class="info-label">📄 Low_Stock_Report.pdf</span>
-                <span class="info-value errorpage" style="color:#43a047;font-size:12px;cursor:pointer;">View</span>
+                <span class="info-value errorpage" style="color:#8bc34a;font-size:12px;cursor:pointer;">View</span>
             </div>
 
             <div class="info-row">
                 <span class="info-label">📄 Expiry_Report.pdf</span>
-                <span class="info-value errorpage" style="color:#43a047;font-size:12px;cursor:pointer;">View</span>
+                <span class="info-value errorpage" style="color:#8bc34a;font-size:12px;cursor:pointer;">View</span>
             </div>
 
             <div class="info-row">
                 <span class="info-label">📄 Product_Audit.pdf</span>
-                <span class="info-value errorpage" style="color:#43a047;font-size:12px;cursor:pointer;">View</span>
+                <span class="info-value errorpage" style="color:#8bc34a;font-size:12px;cursor:pointer;">View</span>
             </div>
 
             <div class="info-row">
                 <span class="info-label">📄 Warehouse_Report.pdf</span>
-                <span class="info-value errorpage" style="color:#43a047;font-size:12px;cursor:pointer;">View</span>
+                <span class="info-value errorpage" style="color:#8bc34a;font-size:12px;cursor:pointer;">View</span>
             </div>
 
         </div>
@@ -1630,8 +1630,8 @@ input[type="password"]::-ms-clear{
 
             <div style="margin-bottom:14px;">
                 <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-                    <span style="color:#2a4a2a;font-size:13px;">Rahul Sharma</span>
-                    <span style="color:#2e7d32;font-size:13px;">182 Orders • 94%</span>
+                    <span style="color:#37502b;font-size:13px;">Rahul Sharma</span>
+                    <span style="color:#5a8f1f;font-size:13px;">182 Orders • 94%</span>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width:94%"></div>
@@ -1640,8 +1640,8 @@ input[type="password"]::-ms-clear{
 
             <div style="margin-bottom:14px;">
                 <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-                    <span style="color:#2a4a2a;font-size:13px;">Priya Nair</span>
-                    <span style="color:#2e7d32;font-size:13px;">156 Orders • 86%</span>
+                    <span style="color:#37502b;font-size:13px;">Priya Nair</span>
+                    <span style="color:#5a8f1f;font-size:13px;">156 Orders • 86%</span>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width:86%"></div>
@@ -1650,8 +1650,8 @@ input[type="password"]::-ms-clear{
 
             <div style="margin-bottom:14px;">
                 <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
-                    <span style="color:#2a4a2a;font-size:13px;">Karthik Raj</span>
-                    <span style="color:#2e7d32;font-size:13px;">124 Orders • 72%</span>
+                    <span style="color:#37502b;font-size:13px;">Karthik Raj</span>
+                    <span style="color:#5a8f1f;font-size:13px;">124 Orders • 72%</span>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" style="width:72%"></div>
@@ -1660,12 +1660,12 @@ input[type="password"]::-ms-clear{
 
             <div class="info-row" style="margin-top:12px;">
                 <span class="info-label">Monthly Target</span>
-                <span class="info-value" style="color:#2e7d32;">₹20L</span>
+                <span class="info-value" style="color:#5a8f1f;">₹20L</span>
             </div>
 
             <div class="info-row">
                 <span class="info-label">Achieved</span>
-                <span class="info-value" style="color:#43a047;">₹18.6L (93%)</span>
+                <span class="info-value" style="color:#8bc34a;">₹18.6L (93%)</span>
             </div>
 
             <div class="info-row">
@@ -1687,13 +1687,13 @@ input[type="password"]::-ms-clear{
                 <div>
                     <div class="setting-section">
                         <h3><i class="fa-solid fa-store"></i> Store Profile</h3>
-                        <label style="color:#3a5a3a;font-size:12px;">Company Name</label>
+                        <label style="color:#46592f;font-size:12px;">Company Name</label>
                         <input class="input-field" value="Stackly Grocery Shop">
-                        <label style="color:#3a5a3a;font-size:12px;">Email Address</label>
+                        <label style="color:#46592f;font-size:12px;">Email Address</label>
                         <input class="input-field" value="admin@stackly.com">
-                        <label style="color:#3a5a3a;font-size:12px;">Contact Number</label>
+                        <label style="color:#46592f;font-size:12px;">Contact Number</label>
                         <input class="input-field" value="+91 98765 43210">
-                        <label style="color:#3a5a3a;font-size:12px;">Store Address</label>
+                        <label style="color:#46592f;font-size:12px;">Store Address</label>
                         <input class="input-field" value="12 Ksp Street, Madurai - 625001">
                         <button class="btn-green"
                             style="width:100%;padding:12px;border-radius:12px;margin-top:4px;">Save Changes</button>
@@ -1701,12 +1701,12 @@ input[type="password"]::-ms-clear{
 
                     <div class="setting-section">
                         <h3><i class="fa-solid fa-lock"></i> Security Settings</h3>
-                        <label style="color:#3a5a3a;font-size:12px;">Current Password</label>
+                        <label style="color:#46592f;font-size:12px;">Current Password</label>
                         <div class="passbox">
                             <input class="input-field" type="password" placeholder="Enter Current Password">
                             <span class="material-symbols-outlined pass-icon">visibility_off</span>
                         </div>
-                        <label style="color:#3a5a3a;font-size:12px;">New Password</label>
+                        <label style="color:#46592f;font-size:12px;">New Password</label>
                         <div class="passbox">
                             <input class="input-field" type="password" placeholder="Enter New Password">
                             <span class="material-symbols-outlined pass-icon">visibility_off</span>
