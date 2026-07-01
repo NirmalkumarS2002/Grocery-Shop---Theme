@@ -1342,6 +1342,230 @@
     .hero-scroll-cta:hover {
       transform: translateY(3px);
     }
+
+     /*footer*/
+
+    .footer-section {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: #1A1A1A;
+
+    }
+
+    .footer-section-top {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        padding: 60px 30px;
+        gap: 20px;
+    }
+
+    .footer1 {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+    }
+
+    .footer-logo img {
+        width: 200px;
+    }
+
+    .footer1 .footer-logo {
+        margin-bottom: 20px;
+    }
+
+    .footer1 p {
+        font-size: 15px;
+        line-height: 1.5;
+        max-width: 300px;
+        margin-bottom: 20px;
+        color: rgb(133, 133, 133);
+        ;
+    }
+
+    .subscribe-container {
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    .subscribe-container input {
+        padding: 15px 20px;
+        width: 100%;
+        border-radius: 6px;
+        border: none;
+        background: #639d2436;
+        color: white;
+        transition: 0.5s ease;
+    }
+
+    .subscribe-container input:focus {
+        border: 1px solid var(--primariy-color);
+        outline: none;
+        box-shadow: 0 0 20px rgba(0, 252, 0, 0.185);
+    }
+
+    .subscribe-container input::placeholder {
+        color: gray;
+    }
+
+    .subscribe {
+        position: absolute;
+        right: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        padding: 10px 20px;
+        border-radius: 5px;
+        background: #629D24;
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        transition: all .35s ease;
+    }
+
+    /* Hover */
+    .subscribe:hover {
+        background: #78be2c;
+        transform: translateY(-50%) translateY(-3px);
+        box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
+    .sotial-icons {
+        display: flex;
+        gap: 20px;
+    }
+
+    .sotial-icons a {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(98, 157, 36, .25);
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all .4s ease;
+    }
+
+    .sotial-icons a i {
+        font-size: 26px;
+        color: #629D24;
+        transition: all .4s ease;
+    }
+
+    /* Hover */
+    .sotial-icons a:hover {
+        background: #629D24;
+        border-color: #629D24;
+        transform: translateY(-8px) scale(1.08);
+        box-shadow: 0 10px 25px rgba(98, 157, 36, .45);
+    }
+
+    .sotial-icons a:hover i {
+        color: #fff;
+        transform: rotate(360deg);
+    }
+
+    .footer2 h2,
+    .footer3 h2,
+    .footer4 h2 {
+        margin-bottom: 20px;
+        font-size: 25px;
+        color: white;
+
+    }
+
+    .store-links {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .store-links a {
+        text-decoration: none;
+        font-size: 15px;
+        color: rgb(133, 133, 133);
+    }
+
+    .store-links a:hover {
+        color: var(--primariy-color);
+    }
+
+    .footer-details {
+        display: flex;
+        gap: 15px;
+    }
+
+    .footer-details span {
+        font-size: 30px;
+        color: var(--primariy-color);
+    }
+
+    .footer-details div p {
+        font-size: 15px;
+        margin-bottom: 4px;
+        color: rgb(133, 133, 133);
+        ;
+    }
+
+    .footer-details div p:last-child:hover {
+        color: var(--primariy-color);
+    }
+
+    .footer-section-bottom {
+        display: flex;
+        justify-content: space-around;
+        border-top: var(--border-color);
+        padding: 30px 30px;
+        align-items: center;
+    }
+
+    .footer-section-bottom p {
+        font-size: 15px;
+        color: rgb(133, 133, 133);
+        ;
+    }
+
+    .footer-section-bottom div {
+        display: flex;
+        gap: 10px;
+    }
+
+
+    .footer-section-bottom div a {
+        text-decoration: none;
+        font-size: 15px;
+        color: rgb(133, 133, 133);
+    }
+
+    .footer-section-bottom div a:hover {
+        color: var(--primariy-color);
+    }
+
+    @media (max-width:1100px) {
+        .footer-section-top {
+            grid-template-columns: repeat(2, minmax(200px, 1fr));
+        }
+
+    }
+
+    @media (max-width:575px) {
+        .footer-section-top {
+            grid-template-columns: repeat(1, minmax(200px, 1fr));
+        }
+
+        .footer1 {
+            width: 100%;
+        }
+
+        .footer-section-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+
+    }
+
   </style>
 </head>
 
@@ -1460,7 +1684,7 @@
      SECTION 1 — HERO BANNER
 ════════════════════════════════════════════ -->
   <section class="contact-hero">
-    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1400&h=600&fit=crop"
+    <img src="./src/abouthero!.webp"
       alt="Fresh grocery store" />
 
     <div class="hero-overlay">
@@ -1484,7 +1708,7 @@
     <div class="promise-inner">
       <div class="promise-item">
         <div class="promise-icon">
-          <img src="https://images.unsplash.com/photo-1546548970-71785318a17b?w=60&h=60&fit=crop"
+          <img src="./src/about4.webp"
             alt="Harvested daily" />
         </div>
         <div>
@@ -1494,7 +1718,7 @@
       </div>
       <div class="promise-item">
         <div class="promise-icon">
-          <img src="https://images.unsplash.com/photo-1609557927087-f9cf8e88de18?w=60&h=60&fit=crop" alt="Cold chain" />
+          <img src="./src/about4.webp" alt="Cold chain" />
         </div>
         <div>
           <h4>Cold-Chain Delivery</h4>
@@ -1503,7 +1727,7 @@
       </div>
       <div class="promise-item">
         <div class="promise-icon">
-          <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=60&h=60&fit=crop"
+          <img src="./src/about4.webp"
             alt="Certified organic" />
         </div>
         <div>
@@ -1513,7 +1737,7 @@
       </div>
       <div class="promise-item">
         <div class="promise-icon">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=60&h=60&fit=crop"
+          <img src="./src/about4.webp"
             alt="Freshness guarantee" />
         </div>
         <div>
@@ -1549,7 +1773,7 @@
       <div class="p-card" data-cat="fruit">
         <span class="p-tag">Organic</span>
         <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=400&h=320&fit=crop"
+        <img class="p-img" src="./src/grocery1.webp"
           alt="Apples" />
         <div class="p-body">
           <p class="p-meta">Fruit &bull; 1 kg</p>
@@ -1564,7 +1788,7 @@
       <div class="p-card" data-cat="veg">
         <span class="p-tag sale">Sale</span>
         <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=400&h=320&fit=crop"
+        <img class="p-img" src="./src/grocery2.webp"
           alt="Potatoes" />
         <div class="p-body">
           <p class="p-meta">Vegetable &bull; 2 kg</p>
@@ -1579,7 +1803,7 @@
       <div class="p-card" data-cat="herb">
         <span class="p-tag new">New</span>
         <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=400&h=320&fit=crop"
+        <img class="p-img" src="./src/grocery3.webp"
           alt="Basil" />
         <div class="p-body">
           <p class="p-meta">Herb &bull; 50 g bunch</p>
@@ -1594,7 +1818,7 @@
       <div class="p-card" data-cat="fruit">
         <span class="p-tag">Organic</span>
         <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1615485291234-9d694218aeb3?w=400&h=320&fit=crop"
+        <img class="p-img" src="./src/grocery4.webp"
           alt="Mango" />
         <div class="p-body">
           <p class="p-meta">Fruit &bull; Per piece</p>
@@ -1608,7 +1832,7 @@
 
       <div class="p-card" data-cat="veg">
         <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1573246123716-6b1782bfc499?w=400&h=320&fit=crop"
+        <img class="p-img" src="./src/grocery5.webp"
           alt="Broccoli" />
         <div class="p-body">
           <p class="p-meta">Vegetable &bull; 1 head</p>
@@ -1622,7 +1846,7 @@
 
       <div class="p-card" data-cat="herb">
         <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1591261730799-ee4e6c2d16d7?w=400&h=320&fit=crop"
+        <img class="p-img" src="./src/grocery6.webp"
           alt="Rosemary" />
         <div class="p-body">
           <p class="p-meta">Herb &bull; 30 g</p>
@@ -1637,7 +1861,7 @@
       <div class="p-card" data-cat="fruit">
         <span class="p-tag sale">-25%</span>
         <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400&h=320&fit=crop"
+        <img class="p-img" src="./src/grocery7.webp"
           alt="Strawberries" />
         <div class="p-body">
           <p class="p-meta">Fruit &bull; 400 g punnet</p>
@@ -1652,7 +1876,7 @@
       <div class="p-card" data-cat="veg">
         <span class="p-tag">Organic</span>
         <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1448907503123-67254d59ca4f?w=400&h=320&fit=crop"
+        <img class="p-img" src="./src/grocery8.webp"
           alt="Spinach" />
         <div class="p-body">
           <p class="p-meta">Vegetable &bull; 200 g bag</p>
@@ -1663,126 +1887,116 @@
           </div>
         </div>
       </div>
+<div class="p-card" data-cat="dairy">
+  <span class="p-tag">Best Seller</span>
+  <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+  <img class="p-img" src="./src/grocery9.webp" alt="Milk">
+  <div class="p-body">
+    <p class="p-meta">Dairy • 1 L</p>
+    <p class="p-name">Fresh Cow Milk</p>
+    <div class="p-foot">
+      <p class="p-price">$2.49 <s>$2.99</s></p>
+      <button class="p-add">+</button>
+    </div>
+  </div>
+</div>
 
-      <div class="p-card" data-cat="fruit">
-        <span class="p-tag">Organic</span>
-        <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=400&h=320&fit=crop"
-          alt="Apples" />
-        <div class="p-body">
-          <p class="p-meta">Fruit &bull; 1 kg</p>
-          <p class="p-name">Gala Apples</p>
-          <div class="p-foot">
-            <p class="p-price">$3.29 <s>$4.49</s></p>
-            <button class="p-add">+</button>
-          </div>
-        </div>
-      </div>
+<div class="p-card" data-cat="bakery">
+  <span class="p-tag new">Fresh</span>
+  <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+  <img class="p-img" src="./src/grocery10.webp" alt="Bread">
+  <div class="p-body">
+    <p class="p-meta">Bakery • 500 g</p>
+    <p class="p-name">Whole Wheat Bread</p>
+    <div class="p-foot">
+      <p class="p-price">$3.29</p>
+      <button class="p-add">+</button>
+    </div>
+  </div>
+</div>
 
-      <div class="p-card" data-cat="veg">
-        <span class="p-tag sale">Sale</span>
-        <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1518977956812-cd3dbadaaf31?w=400&h=320&fit=crop"
-          alt="Potatoes" />
-        <div class="p-body">
-          <p class="p-meta">Vegetable &bull; 2 kg</p>
-          <p class="p-name">Russet Potatoes</p>
-          <div class="p-foot">
-            <p class="p-price">$2.49</p>
-            <button class="p-add">+</button>
-          </div>
-        </div>
-      </div>
+<div class="p-card" data-cat="beverage">
+  <span class="p-tag sale">Sale</span>
+  <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+  <img class="p-img" src="./src/grocery11.webp" alt="Orange Juice">
+  <div class="p-body">
+    <p class="p-meta">Beverage • 1 L</p>
+    <p class="p-name">Orange Juice</p>
+    <div class="p-foot">
+      <p class="p-price">$4.49 <s>$5.29</s></p>
+      <button class="p-add">+</button>
+    </div>
+  </div>
+</div>
 
-      <div class="p-card" data-cat="herb">
-        <span class="p-tag new">New</span>
-        <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=400&h=320&fit=crop"
-          alt="Basil" />
-        <div class="p-body">
-          <p class="p-meta">Herb &bull; 50 g bunch</p>
-          <p class="p-name">Fresh Basil</p>
-          <div class="p-foot">
-            <p class="p-price">$1.49</p>
-            <button class="p-add">+</button>
-          </div>
-        </div>
-      </div>
+<div class="p-card" data-cat="snacks">
+  <span class="p-tag">Popular</span>
+  <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+  <img class="p-img" src="./src/grocery12.webp" alt="Potato Chips">
+  <div class="p-body">
+    <p class="p-meta">Snacks • 150 g</p>
+    <p class="p-name">Potato Chips</p>
+    <div class="p-foot">
+      <p class="p-price">$2.99</p>
+      <button class="p-add">+</button>
+    </div>
+  </div>
+</div>
 
-      <div class="p-card" data-cat="fruit">
-        <span class="p-tag">Organic</span>
-        <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1615485291234-9d694218aeb3?w=400&h=320&fit=crop"
-          alt="Mango" />
-        <div class="p-body">
-          <p class="p-meta">Fruit &bull; Per piece</p>
-          <p class="p-name">Alphonso Mango</p>
-          <div class="p-foot">
-            <p class="p-price">$2.19 <s>$2.99</s></p>
-            <button class="p-add">+</button>
-          </div>
-        </div>
-      </div>
+<div class="p-card" data-cat="pantry">
+  <span class="p-tag">Premium</span>
+  <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+  <img class="p-img" src="./src/grocery13.webp" alt="Rice">
+  <div class="p-body">
+    <p class="p-meta">Grains • 5 kg</p>
+    <p class="p-name">Premium Basmati Rice</p>
+    <div class="p-foot">
+      <p class="p-price">$14.99 <s>$17.99</s></p>
+      <button class="p-add">+</button>
+    </div>
+  </div>
+</div>
 
-      <div class="p-card" data-cat="veg">
-        <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1573246123716-6b1782bfc499?w=400&h=320&fit=crop"
-          alt="Broccoli" />
-        <div class="p-body">
-          <p class="p-meta">Vegetable &bull; 1 head</p>
-          <p class="p-name">Broccoli Crown</p>
-          <div class="p-foot">
-            <p class="p-price">$1.89</p>
-            <button class="p-add">+</button>
-          </div>
-        </div>
-      </div>
+<div class="p-card" data-cat="pantry">
+  <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+  <img class="p-img" src="./src/grocery14.webp" alt="Cooking Oil">
+  <div class="p-body">
+    <p class="p-meta">Cooking • 1 L</p>
+    <p class="p-name">Sunflower Oil</p>
+    <div class="p-foot">
+      <p class="p-price">$6.49</p>
+      <button class="p-add">+</button>
+    </div>
+  </div>
+</div>
 
-      <div class="p-card" data-cat="herb">
-        <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1591261730799-ee4e6c2d16d7?w=400&h=320&fit=crop"
-          alt="Rosemary" />
-        <div class="p-body">
-          <p class="p-meta">Herb &bull; 30 g</p>
-          <p class="p-name">Fresh Rosemary</p>
-          <div class="p-foot">
-            <p class="p-price">$1.29</p>
-            <button class="p-add">+</button>
-          </div>
-        </div>
-      </div>
+<div class="p-card" data-cat="breakfast">
+  <span class="p-tag new">Healthy</span>
+  <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+  <img class="p-img" src="./src/grocery15.webp" alt="Corn Flakes">
+  <div class="p-body">
+    <p class="p-meta">Breakfast • 500 g</p>
+    <p class="p-name">Corn Flakes</p>
+    <div class="p-foot">
+      <p class="p-price">$5.29</p>
+      <button class="p-add">+</button>
+    </div>
+  </div>
+</div>
 
-      <div class="p-card" data-cat="fruit">
-        <span class="p-tag sale">-25%</span>
-        <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?w=400&h=320&fit=crop"
-          alt="Strawberries" />
-        <div class="p-body">
-          <p class="p-meta">Fruit &bull; 400 g punnet</p>
-          <p class="p-name">Strawberries</p>
-          <div class="p-foot">
-            <p class="p-price">$3.74 <s>$4.99</s></p>
-            <button class="p-add">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="p-card" data-cat="veg">
-        <span class="p-tag">Organic</span>
-        <span class="wl" onclick="toggleWl(this)">&#9825;</span>
-        <img class="p-img" src="https://images.unsplash.com/photo-1448907503123-67254d59ca4f?w=400&h=320&fit=crop"
-          alt="Spinach" />
-        <div class="p-body">
-          <p class="p-meta">Vegetable &bull; 200 g bag</p>
-          <p class="p-name">Baby Spinach</p>
-          <div class="p-foot">
-            <p class="p-price">$2.29 <s>$3.09</s></p>
-            <button class="p-add">+</button>
-          </div>
-        </div>
-      </div>
-
-
+<div class="p-card" data-cat="household">
+  <span class="p-tag sale">-15%</span>
+  <span class="wl" onclick="toggleWl(this)">&#9825;</span>
+  <img class="p-img" src="./src/grocery17.webp" alt="Detergent">
+  <div class="p-body">
+    <p class="p-meta">Household • 2 kg</p>
+    <p class="p-name">Laundry Detergent</p>
+    <div class="p-foot">
+      <p class="p-price">$9.99 <s>$11.99</s></p>
+      <button class="p-add">+</button>
+    </div>
+  </div>
+</div>
     </div>
   </section>
 
@@ -1792,10 +2006,10 @@
   <section class="farm-section">
     <div class="farm-inner">
       <div class="farm-gallery">
-        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600&h=600&fit=crop" alt="Farm field" />
-        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=400&h=296&fit=crop"
+        <img src="./src/grocery19.webp" alt="Farm field" />
+        <img src="./src/grocery20.webp"
           alt="Picking produce" />
-        <img src="https://images.unsplash.com/photo-1523741543316-beb7fc7023d8?w=400&h=296&fit=crop"
+        <img src="./src/grocery21.webp"
           alt="Fresh harvest" />
       </div>
       <div class="farm-copy">
@@ -1833,7 +2047,7 @@
     <div class="timeline">
       <div class="tl-step">
         <div class="tl-dot">
-          <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=160&h=160&fit=crop" alt="Farm" />
+          <img src="./src/grocery25.webp" alt="Farm" />
         </div>
         <span class="tl-num">1</span>
         <h4>Harvested Fresh</h4>
@@ -1841,7 +2055,7 @@
       </div>
       <div class="tl-step">
         <div class="tl-dot">
-          <img src="https://images.unsplash.com/photo-1588964895597-cfccd6e2dbf9?w=160&h=160&fit=crop" alt="Sorting" />
+          <img src="./src/cat7.webp" alt="Sorting" />
         </div>
         <span class="tl-num">2</span>
         <h4>Quality Checked</h4>
@@ -1849,7 +2063,7 @@
       </div>
       <div class="tl-step">
         <div class="tl-dot">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=160&h=160&fit=crop" alt="Packed" />
+          <img src="./src/about4.webp" alt="Packed" />
         </div>
         <span class="tl-num">3</span>
         <h4>Packed Carefully</h4>
@@ -1857,7 +2071,7 @@
       </div>
       <div class="tl-step">
         <div class="tl-dot">
-          <img src="https://images.unsplash.com/photo-1609557927087-f9cf8e88de18?w=160&h=160&fit=crop"
+          <img src="./src/abt26.webp"
             alt="Delivered" />
         </div>
         <span class="tl-num">4</span>
@@ -1876,7 +2090,7 @@
     <div class="mosaic-grid" style="margin-top:28px;">
 
       <div class="mosaic-card">
-        <img src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=700&h=600&fit=crop"
+        <img src="./src/cat1.webp"
           alt="Summer fruits" />
         <div class="mosaic-overlay">
           <p class="tag">Peak Season</p>
@@ -1887,7 +2101,7 @@
       </div>
 
       <div class="mosaic-card">
-        <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&h=340&fit=crop"
+        <img src="./src/abt2.webp"
           alt="Leafy greens" />
         <div class="mosaic-overlay">
           <p class="tag">Fresh Today</p>
@@ -1898,7 +2112,7 @@
       </div>
 
       <div class="mosaic-card">
-        <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?w=500&h=340&fit=crop"
+        <img src="./src/item2.webp"
           alt="Citrus fruits" />
         <div class="mosaic-overlay">
           <p class="tag">30% Off</p>
@@ -1909,7 +2123,7 @@
       </div>
 
       <div class="mosaic-card">
-        <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&h=340&fit=crop"
+        <img src="./src/item3.webp"
           alt="Root vegetables" />
         <div class="mosaic-overlay">
           <p class="tag">Farm Pick</p>
@@ -1920,7 +2134,7 @@
       </div>
 
       <div class="mosaic-card">
-        <img src="https://images.unsplash.com/photo-1606787503004-3d85e7f18d14?w=500&h=340&fit=crop"
+        <img src="./src/item1.webp"
           alt="Herbs bundle" />
         <div class="mosaic-overlay">
           <p class="tag">New Arrival</p>
