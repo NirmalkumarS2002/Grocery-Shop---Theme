@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stackly Admin Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"/>
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --bg:#0D1117; --sidebar:#161B22; --card:#1C2230; --card2:#212839;
+      --border:rgba(255,255,255,0.07); --green:#629D23; --green2:#7DBB2C;
+      --green-glow:rgba(98,157,35,0.18); --text:#E6EDF3; --muted:#8B949E;
+      --red:#F85149; --amber:#E3B341; --blue:#58A6FF; --purple:#BC8CFF;
+      --font-main:'Space Grotesk',sans-serif; --font-body:'DM Sans',sans-serif;
+      --sidebar-w:240px; --header-h:60px;
+    }
+    body { font-family:var(--font-body); background:var(--bg); color:var(--text); display:flex; min-height:100vh; overflow-x:hidden; }
+
+    /* ── SIDEBAR ── */
+    .sidebar { width:var(--sidebar-w); background:var(--sidebar); border-right:1px solid var(--border); display:flex; flex-direction:column; position:fixed; top:0; left:0; bottom:0; z-index:100; transition:transform .28s ease; overflow-y:auto; }
+    .sidebar::-webkit-scrollbar { width:3px; } .sidebar::-webkit-scrollbar-thumb { background:var(--border); }
+    .sidebar-logo { padding:20px 20px 16px; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:10px; flex-shrink:0; }
+    .logo-icon { width:34px; height:34px; background:var(--green); border-radius:8px; display:grid; place-items:center; font-size:18px; }
+    .logo-text { font-family:var(--font-main); font-size:18px; font-weight:700; letter-spacing:-.3px; }
+    .logo-text span { color:var(--green2); }
+    .sidebar-label { font-size:10px; font-weight:600; letter-spacing:1.4px; text-transform:uppercase; color:var(--muted); padding:18px 20px 6px; }
+    .nav-item { display:flex; align-items:center; gap:12px; padding:10px 20px; margin:1px 10px; border-radius:8px; cursor:pointer; transition:background .15s,color .15s; font-size:14px; font-weight:500; color:var(--muted); text-decoration:none; border:1px solid transparent; }
+    .nav-item:hover { background:rgba(255,255,255,0.04); color:var(--text); }
+    .nav-item.active { background:var(--green-glow); color:var(--green2); border-color:rgba(98,157,35,0.22); }
+    .nav-item .material-symbols-outlined { font-size:18px; }
+    .nav-badge { margin-left:auto; background:var(--red); color:#fff; font-size:10px; font-weight:700; padding:1px 6px; border-radius:20px; }
+    .nav-badge.green { background:var(--green); }
+    .nav-badge.amber { background:var(--amber); color:#000; }
+    .sidebar-bottom { margin-top:auto; border-top:1px solid var(--border); padding:14px 10px; flex-shrink:0; }
+    .admin-card { display:flex; align-items:center; gap:10px; padding:10px; border-radius:8px; cursor:pointer; transition:background .15s; }
+    .admin-card:hover { background:rgba(255,255,255,0.05); }
+    .admin-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--green),#3a6b10); display:grid; place-items:center; font-size:13px; font-weight:700; flex-shrink:0; }
+    .admin-info { flex:1; overflow:hidden; }
+    .admin-name { font-size:13px; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+    .admin-role { font-size:11px; color:var(--muted); }
+
+    /* ── MAIN ── */
+    .main { margin-left:var(--sidebar-w); flex:1; display:flex; flex-direction:column; min-height:100vh; }
+    .topbar { height:var(--header-h); background:var(--sidebar); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 24px; gap:16px; position:sticky; top:0; z-index:50; }
+    .topbar-title { font-family:var(--font-main); font-size:17px; font-weight:700; }
+    .topbar-search { flex:1; max-width:360px; margin-left:20px; position:relative; }
+    .topbar-search input { width:100%; background:var(--card); border:1px solid var(--border); border-radius:8px; padding:8px 14px 8px 36px; color:var(--text); font-size:13px; font-family:var(--font-body); outline:none; transition:border .15s; }
+    .topbar-search input:focus { border-color:var(--green); }
+    .topbar-search input::placeholder { color:var(--muted); }
+    .topbar-search .material-symbols-outlined { position:absolute; left:10px; top:50%; transform:translateY(-50%); font-size:16px; color:var(--muted); }
+    .topbar-actions { margin-left:auto; display:flex; align-items:center; gap:10px; }
+    .icon-btn { width:36px; height:36px; background:var(--card); border:1px solid var(--border); border-radius:8px; display:grid; place-items:center; cursor:pointer; position:relative; transition:background .15s; }
+    .icon-btn:hover { background:var(--card2); }
+    .icon-btn .material-symbols-outlined { font-size:18px; color:var(--muted); }
+    .notif-dot { position:absolute; top:6px; right:6px; width:7px; height:7px; background:var(--red); border-radius:50%; border:1.5px solid var(--sidebar); }
+    .topbar-avatar { width:36px; height:36px; border-radius:50%; background:linear-gradient(135deg,var(--green),#3a6b10); display:grid; place-items:center; font-size:13px; font-weight:700; cursor:pointer; border:2px solid var(--green); }
+    .menu-toggle { display:none; width:36px; height:36px; background:var(--card); border:1px solid var(--border); border-radius:8px; place-items:center; cursor:pointer; flex-shrink:0; }
+    .menu-toggle .material-symbols-outlined { font-size:18px; color:var(--muted); }
+    .overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:90; }
+
+    /* ── PAGE SECTIONS ── */
+    .page { display:none; padding:24px; flex:1; }
+    .page.active { display:block; }
+    .page-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px; gap:12px; flex-wrap:wrap; }
+    .page-header h1 { font-family:var(--font-main); font-size:22px; font-weight:700; }
+    .page-header p { font-size:13px; color:var(--muted); margin-top:3px; }
+    .btn-primary { display:inline-flex; align-items:center; gap:6px; background:var(--green); color:#fff; border:none; padding:9px 18px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:background .15s,box-shadow .15s; font-family:var(--font-body); }
+    .btn-primary:hover { background:var(--green2); box-shadow:0 0 18px rgba(98,157,35,0.4); }
+    .btn-primary .material-symbols-outlined { font-size:16px; }
+    .btn-outline { display:inline-flex; align-items:center; gap:6px; background:transparent; color:var(--muted); border:1px solid var(--border); padding:8px 16px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer; transition:all .15s; font-family:var(--font-body); }
+    .btn-outline:hover { border-color:var(--green); color:var(--green2); }
+    .btn-outline .material-symbols-outlined { font-size:16px; }
+
+    /* ── CARDS ── */
+    .card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; }
+    .card-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; gap:10px; flex-wrap:wrap; }
+    .card-title { font-family:var(--font-main); font-size:15px; font-weight:700; }
+    .card-subtitle { font-size:12px; color:var(--muted); margin-top:2px; }
+
+    /* ── STATS GRID ── */
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:24px; }
+    .stat-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; position:relative; overflow:hidden; transition:border-color .2s,transform .15s; }
+    .stat-card:hover { border-color:rgba(98,157,35,0.4); transform:translateY(-2px); }
+    .stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--accent-color,var(--green)); }
+    .stat-icon { width:40px; height:40px; background:var(--accent-bg,var(--green-glow)); border-radius:10px; display:grid; place-items:center; margin-bottom:14px; }
+    .stat-icon .material-symbols-outlined { font-size:20px; color:var(--accent-color,var(--green2)); }
+    .stat-value { font-family:var(--font-main); font-size:26px; font-weight:700; line-height:1; margin-bottom:4px; }
+    .stat-label { font-size:12px; color:var(--muted); margin-bottom:12px; }
+    .stat-trend { display:flex; align-items:center; gap:4px; font-size:12px; font-weight:600; }
+    .stat-trend.up { color:#3FB950; } .stat-trend.down { color:var(--red); }
+    .stat-trend .material-symbols-outlined { font-size:14px; }
+
+    /* ── TABLE ── */
+    .table-wrap { overflow-x:auto; }
+    table { width:100%; border-collapse:collapse; min-width:520px; }
+    thead tr th { text-align:left; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); padding:0 8px 12px 0; border-bottom:1px solid var(--border); }
+    tbody tr td { padding:11px 8px 11px 0; font-size:13px; border-bottom:1px solid var(--border); vertical-align:middle; }
+    tbody tr:last-child td { border-bottom:none; }
+    tbody tr { transition:background .1s; cursor:pointer; }
+    tbody tr:hover td { background:rgba(255,255,255,0.015); }
+    .order-id { font-family:var(--font-main); font-size:12px; color:var(--muted); }
+    .badge { display:inline-flex; align-items:center; gap:3px; padding:3px 8px; border-radius:20px; font-size:11px; font-weight:600; white-space:nowrap; }
+    .badge.delivered { background:rgba(63,185,80,.15); color:#3FB950; }
+    .badge.pending   { background:rgba(227,179,65,.15); color:var(--amber); }
+    .badge.cancelled { background:rgba(248,81,73,.15);  color:var(--red); }
+    .badge.shipped   { background:rgba(88,166,255,.15); color:var(--blue); }
+    .badge.active-b  { background:rgba(98,157,35,.2);   color:var(--green2); }
+    .badge.inactive  { background:rgba(139,148,158,.15);color:var(--muted); }
+    .badge.low       { background:rgba(248,81,73,.15);  color:var(--red); }
+    .badge.promo     { background:rgba(188,140,255,.15);color:var(--purple); }
+
+    /* ── GRID HELPERS ── */
+    .two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px; }
+    .three-col { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:24px; }
+    .mid-grid { display:grid; grid-template-columns:1fr 320px; gap:16px; margin-bottom:24px; }
+
+    /* ── BAR CHART ── */
+    .chart-area { height:200px; }
+    .bar-chart { display:flex; align-items:flex-end; gap:8px; height:100%; padding-top:20px; }
+    .bar-group { flex:1; display:flex; flex-direction:column; align-items:center; gap:6px; height:100%; justify-content:flex-end; }
+    .bar { width:100%; border-radius:4px 4px 0 0; transition:opacity .2s; cursor:pointer; }
+    .bar:hover { opacity:.85; }
+    .bar.primary { background:linear-gradient(180deg,var(--green2),var(--green)); }
+    .bar.secondary { background:rgba(98,157,35,0.2); }
+    .bar-label { font-size:10px; color:var(--muted); }
+    .chart-tabs { display:flex; gap:4px; }
+    .chart-tab { padding:5px 12px; border-radius:6px; font-size:12px; font-weight:600; cursor:pointer; border:none; background:transparent; color:var(--muted); font-family:var(--font-body); transition:all .15s; }
+    .chart-tab.active { background:var(--green-glow); color:var(--green2); }
+
+    /* ── PROGRESS BAR ── */
+    .progress-bar { height:4px; background:var(--card2); border-radius:2px; overflow:hidden; }
+    .progress-fill { height:100%; background:linear-gradient(90deg,var(--green),var(--green2)); border-radius:2px; }
+
+    /* ── PRODUCT GRID ── */
+    .product-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px; margin-bottom:24px; }
+    .product-card { background:var(--card); border:1px solid var(--border); border-radius:12px; overflow:hidden; transition:border-color .2s,transform .15s; cursor:pointer; }
+    .product-card:hover { border-color:rgba(98,157,35,0.4); transform:translateY(-2px); }
+    .product-card img { width:100%; height:140px; object-fit:cover; display:block; }
+    .product-card-body { padding:14px; }
+    .product-name { font-size:14px; font-weight:600; margin-bottom:4px; }
+    .product-cat { font-size:11px; color:var(--muted); margin-bottom:10px; }
+    .product-footer { display:flex; justify-content:space-between; align-items:center; }
+    .product-price { font-family:var(--font-main); font-size:15px; font-weight:700; color:var(--green2); }
+    .product-stock { font-size:11px; }
+
+    /* ── CUSTOMER ROW ── */
+    .customer-avatar { width:32px; height:32px; border-radius:50%; background:linear-gradient(135deg,var(--green),#3a6b10); display:inline-grid; place-items:center; font-size:12px; font-weight:700; flex-shrink:0; }
+    .customer-info { display:flex; align-items:center; gap:8px; }
+    .customer-name { font-size:13px; font-weight:600; }
+    .customer-email { font-size:11px; color:var(--muted); }
+
+    /* ── DELIVERY CARDS ── */
+    .delivery-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; display:flex; gap:14px; align-items:center; transition:border-color .2s; }
+    .delivery-card:hover { border-color:rgba(98,157,35,0.3); }
+    .delivery-icon { width:44px; height:44px; border-radius:10px; display:grid; place-items:center; font-size:22px; flex-shrink:0; }
+    .delivery-info { flex:1; }
+    .delivery-id { font-family:var(--font-main); font-size:12px; color:var(--muted); }
+    .delivery-name { font-size:14px; font-weight:600; margin-bottom:2px; }
+    .delivery-addr { font-size:12px; color:var(--muted); }
+    .delivery-time { font-size:12px; font-weight:600; color:var(--amber); text-align:right; white-space:nowrap; }
+
+    /* ── SETTINGS ── */
+    .settings-row { display:flex; align-items:center; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--border); gap:16px; }
+    .settings-row:last-child { border-bottom:none; }
+    .settings-label { font-size:14px; font-weight:600; }
+    .settings-desc { font-size:12px; color:var(--muted); margin-top:2px; }
+    .toggle { width:42px; height:22px; background:var(--card2); border-radius:11px; position:relative; cursor:pointer; transition:background .2s; flex-shrink:0; border:none; }
+    .toggle.on { background:var(--green); }
+    .toggle::after { content:''; position:absolute; top:3px; left:3px; width:16px; height:16px; background:#fff; border-radius:50%; transition:left .2s; }
+    .toggle.on::after { left:23px; }
+    .settings-input { background:var(--card2); border:1px solid var(--border); border-radius:8px; padding:8px 14px; color:var(--text); font-size:13px; font-family:var(--font-body); outline:none; width:220px; transition:border .15s; }
+    .settings-input:focus { border-color:var(--green); }
+
+    /* ── TIMELINE ── */
+    .timeline { position:relative; padding-left:24px; }
+    .timeline::before { content:''; position:absolute; left:7px; top:0; bottom:0; width:1px; background:var(--border); }
+    .tl-item { position:relative; margin-bottom:20px; }
+    .tl-dot { position:absolute; left:-24px; top:4px; width:14px; height:14px; border-radius:50%; border:2px solid var(--green); background:var(--green-glow); }
+    .tl-time { font-size:11px; color:var(--muted); margin-bottom:3px; }
+    .tl-text { font-size:13px; font-weight:500; }
+    .tl-sub  { font-size:12px; color:var(--muted); margin-top:1px; }
+
+    /* ── PROMO CARD ── */
+    .promo-card { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px; display:flex; align-items:center; gap:14px; transition:border-color .2s,transform .15s; cursor:pointer; }
+    .promo-card:hover { border-color:rgba(188,140,255,.3); transform:translateY(-2px); }
+    .promo-tag { width:48px; height:48px; border-radius:10px; background:rgba(188,140,255,.15); display:grid; place-items:center; font-size:22px; flex-shrink:0; }
+    .promo-title { font-size:14px; font-weight:700; margin-bottom:3px; }
+    .promo-detail { font-size:12px; color:var(--muted); }
+    .promo-disc { font-family:var(--font-main); font-size:22px; font-weight:700; color:var(--purple); margin-left:auto; flex-shrink:0; }
+
+    /* ── RESPONSIVE ── */
+    @media(max-width:1100px){ .stats-grid{grid-template-columns:repeat(2,1fr);} .mid-grid{grid-template-columns:1fr;} }
+    @media(max-width:900px){ .two-col{grid-template-columns:1fr;} .three-col{grid-template-columns:1fr 1fr;} }
+    @media(max-width:768px){ .sidebar{transform:translateX(-100%);} .sidebar.open{transform:translateX(0);} .main{margin-left:0;} .menu-toggle{display:grid;} .overlay.show{display:block;} .topbar-search{display:none;} }
+    @media(max-width:560px){ .stats-grid{grid-template-columns:1fr 1fr;} .stat-value{font-size:20px;} .three-col{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-logo">
+        <img src="./src/logo.webp" alt="Stackly Logo" class="logo-img">
+        <div class="logo-text">
+            Stack<span>ly</span>
+        </div>
+    </div>
+
+    <span class="sidebar-label">Main Menu</span>
+
+    <a class="nav-item active" data-page="dashboard" href="#">
+        <span class="material-symbols-outlined">dashboard</span>
+        Dashboard
+    </a>
+
+    <a class="nav-item" data-page="orders" href="#">
+        <span class="material-symbols-outlined">receipt_long</span>
+        Orders
+        <span class="nav-badge">18</span>
+    </a>
+
+    <a class="nav-item" data-page="products" href="#">
+        <span class="material-symbols-outlined">shopping_basket</span>
+        Products
+    </a>
+
+    <a class="nav-item" data-page="categories" href="#">
+        <span class="material-symbols-outlined">category</span>
+        Categories
+    </a>
+
+    <a class="nav-item" data-page="inventory" href="#">
+        <span class="material-symbols-outlined">inventory_2</span>
+        Inventory
+    </a>
+
+    <a class="nav-item" data-page="customers" href="#">
+        <span class="material-symbols-outlined">groups</span>
+        Customers
+    </a>
+
+    <a class="nav-item" data-page="reviews" href="#">
+        <span class="material-symbols-outlined">reviews</span>
+        Reviews
+    </a>
+
+    <a class="nav-item" data-page="offers" href="#">
+        <span class="material-symbols-outlined">local_offer</span>
+        Offers
+    </a>
+
+    <a class="nav-item" data-page="analytics" href="#">
+        <span class="material-symbols-outlined">monitoring</span>
+        Analytics
+    </a>
+
+    <a class="nav-item" data-page="delivery" href="#">
+        <span class="material-symbols-outlined">local_shipping</span>
+        Delivery
+    </a>
+
+    <a class="nav-item" data-page="settings" href="#">
+        <span class="material-symbols-outlined">settings</span>
+        Settings
+    </a>
+
+    <div class="sidebar-bottom">
+
+        <div class="admin-card">
+
+            <div class="admin-avatar">
+                <span class="material-symbols-outlined">person</span>
+            </div>
+
+            <div class="admin-info">
+                <div class="admin-name">Nirmal Kumar</div>
+                <div class="admin-role">Grocery Admin</div>
+            </div>
+
+            <span class="material-symbols-outlined more-icon">
+                more_vert
+            </span>
+
+        </div>
+
+    </div>
+
+</aside>
+
+<div class="overlay" id="overlay" onclick="closeSidebar()"></div>
+
+<!-- MAIN -->
+<div class="main">
+  <div class="topbar">
+    <div class="menu-toggle" onclick="toggleSidebar()">
+      <span class="material-symbols-outlined">menu</span>
+    </div>
+    <div class="topbar-title" id="topbar-title">Dashboard</div>
+    <div class="topbar-search">
+      <span class="material-symbols-outlined">search</span>
+      <input type="search" placeholder="Search orders, products..."/>
+    </div>
+    <div class="topbar-actions">
+      <div class="icon-btn"><span class="material-symbols-outlined">notifications</span><span class="notif-dot"></span></div>
+      <div class="icon-btn"><span class="material-symbols-outlined">calendar_month</span></div>
+      <div class="topbar-avatar">AK</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PAGE 1: DASHBOARD                         -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="page active" id="page-dashboard">
+    <div class="page-header">
+      <div><h1>Good morning, Arun 👋</h1><p>Tuesday, 30 June 2026 · Here's what's happening in your store today</p></div>
+      <button class="btn-primary"><span class="material-symbols-outlined">add</span> Add Product</button>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card" style="--accent-color:#3FB950;--accent-bg:rgba(63,185,80,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">payments</span></div>
+        <div class="stat-value">₹84,230</div>
+        <div class="stat-label">Total Revenue Today</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> +14.2% from yesterday</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#58A6FF;--accent-bg:rgba(88,166,255,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">shopping_bag</span></div>
+        <div class="stat-value">348</div>
+        <div class="stat-label">Orders Placed Today</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> +8.6% from yesterday</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#E3B341;--accent-bg:rgba(227,179,65,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">groups</span></div>
+        <div class="stat-value">1,204</div>
+        <div class="stat-label">Active Customers</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> +3.1% this week</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#F85149;--accent-bg:rgba(248,81,73,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">inventory_2</span></div>
+        <div class="stat-value">17</div>
+        <div class="stat-label">Low Stock Alerts</div>
+        <div class="stat-trend down"><span class="material-symbols-outlined">trending_down</span> 5 critical items</div>
+      </div>
+    </div>
+
+    <!-- Mid grid: chart + categories -->
+    <div class="mid-grid">
+      <div class="card">
+        <div class="card-header">
+          <div><div class="card-title">Revenue Overview 📈</div><div class="card-subtitle">This week vs last week</div></div>
+          <div class="chart-tabs">
+            <button class="chart-tab active">Week</button>
+            <button class="chart-tab">Month</button>
+            <button class="chart-tab">Year</button>
+          </div>
+        </div>
+        <div class="chart-area">
+          <div class="bar-chart">
+            <div class="bar-group"><div class="bar secondary" style="height:55%"></div><div class="bar primary" style="height:68%"></div><div class="bar-label">Mon</div></div>
+            <div class="bar-group"><div class="bar secondary" style="height:40%"></div><div class="bar primary" style="height:52%"></div><div class="bar-label">Tue</div></div>
+            <div class="bar-group"><div class="bar secondary" style="height:70%"></div><div class="bar primary" style="height:85%"></div><div class="bar-label">Wed</div></div>
+            <div class="bar-group"><div class="bar secondary" style="height:60%"></div><div class="bar primary" style="height:74%"></div><div class="bar-label">Thu</div></div>
+            <div class="bar-group"><div class="bar secondary" style="height:80%"></div><div class="bar primary" style="height:95%"></div><div class="bar-label">Fri</div></div>
+            <div class="bar-group"><div class="bar secondary" style="height:90%"></div><div class="bar primary" style="height:100%"></div><div class="bar-label">Sat</div></div>
+            <div class="bar-group"><div class="bar secondary" style="height:65%"></div><div class="bar primary" style="height:78%"></div><div class="bar-label">Sun</div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:16px;margin-top:16px;">
+          <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)"><span style="width:10px;height:10px;border-radius:2px;background:var(--green);display:inline-block"></span> This Week</span>
+          <span style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)"><span style="width:10px;height:10px;border-radius:2px;background:rgba(98,157,35,0.25);display:inline-block"></span> Last Week</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Top Categories 🏆</div><div class="card-subtitle">By sales this month</div></div></div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;align-items:center;gap:12px;"><div style="font-size:22px">🥦</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Vegetables</div><div class="progress-bar"><div class="progress-fill" style="width:82%"></div></div></div><div style="font-size:12px;font-weight:700;color:var(--green2)">82%</div></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="font-size:22px">🍎</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Fruits</div><div class="progress-bar"><div class="progress-fill" style="width:65%"></div></div></div><div style="font-size:12px;font-weight:700;color:var(--green2)">65%</div></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="font-size:22px">🥛</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Dairy</div><div class="progress-bar"><div class="progress-fill" style="width:54%"></div></div></div><div style="font-size:12px;font-weight:700;color:var(--green2)">54%</div></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="font-size:22px">🌾</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Grains</div><div class="progress-bar"><div class="progress-fill" style="width:43%"></div></div></div><div style="font-size:12px;font-weight:700;color:var(--green2)">43%</div></div>
+          <div style="display:flex;align-items:center;gap:12px;"><div style="font-size:22px">🧴</div><div style="flex:1"><div style="font-size:13px;font-weight:600;margin-bottom:4px">Personal Care</div><div class="progress-bar"><div class="progress-fill" style="width:28%"></div></div></div><div style="font-size:12px;font-weight:700;color:var(--green2)">28%</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom grid: recent orders + low stock -->
+    <div class="two-col">
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Recent Orders 🛒</div><div class="card-subtitle">Last 6 transactions</div></div><button class="btn-primary" style="padding:7px 14px;font-size:12px">View All</button></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Order</th><th>Customer</th><th>Amount</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><span class="order-id">#STK-1048</span></td><td>Priya S.</td><td>₹1,240</td><td><span class="badge delivered">✓ Delivered</span></td></tr>
+            <tr><td><span class="order-id">#STK-1047</span></td><td>Rajan M.</td><td>₹860</td><td><span class="badge shipped">⬆ Shipped</span></td></tr>
+            <tr><td><span class="order-id">#STK-1046</span></td><td>Kavitha L.</td><td>₹2,105</td><td><span class="badge pending">⏳ Pending</span></td></tr>
+            <tr><td><span class="order-id">#STK-1045</span></td><td>Dinesh P.</td><td>₹430</td><td><span class="badge delivered">✓ Delivered</span></td></tr>
+            <tr><td><span class="order-id">#STK-1044</span></td><td>Meena R.</td><td>₹695</td><td><span class="badge cancelled">✕ Cancelled</span></td></tr>
+            <tr><td><span class="order-id">#STK-1043</span></td><td>Suresh K.</td><td>₹1,580</td><td><span class="badge shipped">⬆ Shipped</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Low Stock Alerts 🚨</div><div class="card-subtitle">Items needing restock</div></div></div>
+        <div style="display:flex;flex-direction:column;gap:2px;">
+          <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border)"><img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=80&h=80&fit=crop" style="width:40px;height:40px;border-radius:8px;object-fit:cover"/><div style="flex:1"><div style="font-size:13px;font-weight:600">Fresh Tomatoes</div><div style="font-size:11px;color:var(--muted)">🥦 Vegetables</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:var(--red)">4 kg</div><button style="margin-top:2px;background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.25);color:var(--red);border-radius:5px;font-size:10px;padding:2px 7px;cursor:pointer;font-weight:600">Restock</button></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border)"><img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=80&h=80&fit=crop" style="width:40px;height:40px;border-radius:8px;object-fit:cover"/><div style="flex:1"><div style="font-size:13px;font-weight:600">Full Cream Milk</div><div style="font-size:11px;color:var(--muted)">🥛 Dairy</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:var(--red)">6 L</div><button style="margin-top:2px;background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.25);color:var(--red);border-radius:5px;font-size:10px;padding:2px 7px;cursor:pointer;font-weight:600">Restock</button></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border)"><img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=80&h=80&fit=crop" style="width:40px;height:40px;border-radius:8px;object-fit:cover"/><div style="flex:1"><div style="font-size:13px;font-weight:600">Basmati Rice</div><div style="font-size:11px;color:var(--muted)">🌾 Grains</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:var(--red)">12 kg</div><button style="margin-top:2px;background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.25);color:var(--red);border-radius:5px;font-size:10px;padding:2px 7px;cursor:pointer;font-weight:600">Restock</button></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--border)"><img src="https://images.unsplash.com/photo-1587735243475-37c8ef3c0688?w=80&h=80&fit=crop" style="width:40px;height:40px;border-radius:8px;object-fit:cover"/><div style="flex:1"><div style="font-size:13px;font-weight:600">Red Onions</div><div style="font-size:11px;color:var(--muted)">🥦 Vegetables</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:var(--red)">3 kg</div><button style="margin-top:2px;background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.25);color:var(--red);border-radius:5px;font-size:10px;padding:2px 7px;cursor:pointer;font-weight:600">Restock</button></div></div>
+          <div style="display:flex;align-items:center;gap:12px;padding:9px 0"><img src="https://images.unsplash.com/photo-1602495431452-8a8e3e3b7978?w=80&h=80&fit=crop" style="width:40px;height:40px;border-radius:8px;object-fit:cover"/><div style="flex:1"><div style="font-size:13px;font-weight:600">Bananas</div><div style="font-size:11px;color:var(--muted)">🍎 Fruits</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:700;color:var(--red)">9</div><button style="margin-top:2px;background:rgba(248,81,73,.1);border:1px solid rgba(248,81,73,.25);color:var(--red);border-radius:5px;font-size:10px;padding:2px 7px;cursor:pointer;font-weight:600">Restock</button></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PAGE 2: ORDERS                            -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="page" id="page-orders">
+    <div class="page-header">
+      <div><h1>Orders 🛒</h1><p>Manage and track all customer orders</p></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn-outline"><span class="material-symbols-outlined">filter_list</span> Filter</button>
+        <button class="btn-outline"><span class="material-symbols-outlined">download</span> Export</button>
+        <button class="btn-primary"><span class="material-symbols-outlined">add</span> New Order</button>
+      </div>
+    </div>
+
+    <!-- Order Stats -->
+    <div class="stats-grid" style="margin-bottom:24px">
+      <div class="stat-card" style="--accent-color:#3FB950;--accent-bg:rgba(63,185,80,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">task_alt</span></div>
+        <div class="stat-value">234</div><div class="stat-label">Delivered Today</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> +12% vs yesterday</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#58A6FF;--accent-bg:rgba(88,166,255,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">local_shipping</span></div>
+        <div class="stat-value">87</div><div class="stat-label">Out for Delivery</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> 6 dispatched now</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#E3B341;--accent-bg:rgba(227,179,65,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">pending</span></div>
+        <div class="stat-value">27</div><div class="stat-label">Pending Approval</div>
+        <div class="stat-trend down"><span class="material-symbols-outlined">trending_down</span> Action needed</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#F85149;--accent-bg:rgba(248,81,73,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">cancel</span></div>
+        <div class="stat-value">8</div><div class="stat-label">Cancelled Today</div>
+        <div class="stat-trend down"><span class="material-symbols-outlined">trending_down</span> 2.3% cancel rate</div>
+      </div>
+    </div>
+
+    <!-- Orders Table -->
+    <div class="card" style="margin-bottom:24px">
+      <div class="card-header">
+        <div><div class="card-title">All Orders</div><div class="card-subtitle">Showing 348 orders today</div></div>
+        <input type="search" class="settings-input" placeholder="🔍  Search order ID or customer..." style="width:240px"/>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Amount</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td><span class="order-id">#STK-1048</span></td><td>Priya Sharma</td><td>🥦 5 items</td><td>₹1,240</td><td style="color:var(--muted);font-size:12px">30 Jun, 9:12 AM</td><td><span class="badge delivered">✓ Delivered</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">View</button></td></tr>
+          <tr><td><span class="order-id">#STK-1047</span></td><td>Rajan M.</td><td>🍎 3 items</td><td>₹860</td><td style="color:var(--muted);font-size:12px">30 Jun, 8:55 AM</td><td><span class="badge shipped">⬆ Shipped</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">Track</button></td></tr>
+          <tr><td><span class="order-id">#STK-1046</span></td><td>Kavitha L.</td><td>🛒 8 items</td><td>₹2,105</td><td style="color:var(--muted);font-size:12px">30 Jun, 8:30 AM</td><td><span class="badge pending">⏳ Pending</span></td><td><button class="btn-primary" style="padding:4px 10px;font-size:11px">Approve</button></td></tr>
+          <tr><td><span class="order-id">#STK-1045</span></td><td>Dinesh P.</td><td>🥛 2 items</td><td>₹430</td><td style="color:var(--muted);font-size:12px">30 Jun, 7:45 AM</td><td><span class="badge delivered">✓ Delivered</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">View</button></td></tr>
+          <tr><td><span class="order-id">#STK-1044</span></td><td>Meena R.</td><td>🌾 4 items</td><td>₹695</td><td style="color:var(--muted);font-size:12px">29 Jun, 11:20 PM</td><td><span class="badge cancelled">✕ Cancelled</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">Refund</button></td></tr>
+          <tr><td><span class="order-id">#STK-1043</span></td><td>Suresh K.</td><td>🥦 6 items</td><td>₹1,580</td><td style="color:var(--muted);font-size:12px">29 Jun, 10:00 PM</td><td><span class="badge shipped">⬆ Shipped</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">Track</button></td></tr>
+          <tr><td><span class="order-id">#STK-1042</span></td><td>Anita V.</td><td>🍎 7 items</td><td>₹3,200</td><td style="color:var(--muted);font-size:12px">29 Jun, 9:10 PM</td><td><span class="badge delivered">✓ Delivered</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">View</button></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+
+    <!-- Delivery Timeline -->
+    <div class="two-col">
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Live Delivery Map 🗺️</div><div class="card-subtitle">5 drivers currently active</div></div></div>
+        <div style="background:var(--card2);border-radius:8px;height:220px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border:1px solid var(--border)">
+          <div style="font-size:40px">🚐</div>
+          <div style="font-size:13px;color:var(--muted)">Live map integration placeholder</div>
+          <button class="btn-primary" style="font-size:12px;padding:7px 16px;margin-top:4px">Connect Map API</button>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;">
+          <div class="delivery-card" style="flex:1;min-width:180px">
+            <div class="delivery-icon" style="background:rgba(63,185,80,.1)">🚗</div>
+            <div class="delivery-info"><div class="delivery-id">#DEL-001</div><div class="delivery-name">Kumar – 3 drops</div><div class="delivery-addr">Anna Nagar → Velachery</div></div>
+            <div class="delivery-time">ETA 12 min</div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Order Activity 📋</div><div class="card-subtitle">Real-time updates</div></div></div>
+        <div class="timeline">
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">9:18 AM</div><div class="tl-text">Order #STK-1048 delivered ✅</div><div class="tl-sub">Priya Sharma · ₹1,240</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">9:05 AM</div><div class="tl-text">New order #STK-1049 received 🆕</div><div class="tl-sub">Vinay G. · ₹780</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">8:55 AM</div><div class="tl-text">Order #STK-1047 dispatched 🚐</div><div class="tl-sub">Rajan M. · out for delivery</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">8:30 AM</div><div class="tl-text">Payment confirmed #STK-1046 💳</div><div class="tl-sub">Kavitha L. · ₹2,105</div></div>
+          <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">8:10 AM</div><div class="tl-text">Order #STK-1044 cancelled ❌</div><div class="tl-sub">Meena R. · refund initiated</div></div>
+          <div class="tl-item" style="margin-bottom:0"><div class="tl-dot"></div><div class="tl-time">7:45 AM</div><div class="tl-text">Store opened for the day 🏪</div><div class="tl-sub">First order received at 7:52 AM</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PAGE 3: PRODUCTS                          -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="page" id="page-products">
+    <div class="page-header">
+      <div><h1>Products 🛍️</h1><p>Manage your grocery catalog — 426 products listed</p></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn-outline"><span class="material-symbols-outlined">filter_list</span> Filter</button>
+        <button class="btn-primary"><span class="material-symbols-outlined">add</span> Add Product</button>
+      </div>
+    </div>
+
+    <!-- Product Stats -->
+    <div class="stats-grid" style="margin-bottom:24px">
+      <div class="stat-card" style="--accent-color:#3FB950;--accent-bg:rgba(63,185,80,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">inventory_2</span></div>
+        <div class="stat-value">426</div><div class="stat-label">Total Products</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> 8 added this week</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#58A6FF;--accent-bg:rgba(88,166,255,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">category</span></div>
+        <div class="stat-value">14</div><div class="stat-label">Categories</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> 2 new this month</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#F85149;--accent-bg:rgba(248,81,73,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">warning</span></div>
+        <div class="stat-value">17</div><div class="stat-label">Low Stock</div>
+        <div class="stat-trend down"><span class="material-symbols-outlined">trending_down</span> 5 out of stock</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#E3B341;--accent-bg:rgba(227,179,65,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">star</span></div>
+        <div class="stat-value">4.6 ⭐</div><div class="stat-label">Avg Product Rating</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> from 4.4 last month</div>
+      </div>
+    </div>
+
+    <!-- Category Filter Pills -->
+    <div style="display:flex;gap:8px;margin-bottom:20px;flex-wrap:wrap">
+      <button class="btn-primary" style="padding:6px 16px;font-size:12px">All</button>
+      <button class="btn-outline" style="padding:6px 16px;font-size:12px">🥦 Vegetables</button>
+      <button class="btn-outline" style="padding:6px 16px;font-size:12px">🍎 Fruits</button>
+      <button class="btn-outline" style="padding:6px 16px;font-size:12px">🥛 Dairy</button>
+      <button class="btn-outline" style="padding:6px 16px;font-size:12px">🌾 Grains</button>
+      <button class="btn-outline" style="padding:6px 16px;font-size:12px">🧴 Care</button>
+    </div>
+
+    <!-- Product Cards Grid -->
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=280&fit=crop" alt="Tomatoes"/>
+        <div class="product-card-body">
+          <div class="product-name">Fresh Tomatoes 🍅</div>
+          <div class="product-cat">🥦 Vegetables</div>
+          <div class="product-footer"><div class="product-price">₹40/kg</div><span class="badge low">Low Stock</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400&h=280&fit=crop" alt="Milk"/>
+        <div class="product-card-body">
+          <div class="product-name">Full Cream Milk 🥛</div>
+          <div class="product-cat">🥛 Dairy</div>
+          <div class="product-footer"><div class="product-price">₹65/L</div><span class="badge low">Low Stock</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1602495431452-8a8e3e3b7978?w=400&h=280&fit=crop" alt="Bananas"/>
+        <div class="product-card-body">
+          <div class="product-name">Robusta Bananas 🍌</div>
+          <div class="product-cat">🍎 Fruits</div>
+          <div class="product-footer"><div class="product-price">₹55/doz</div><span class="badge active-b">In Stock</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?w=400&h=280&fit=crop" alt="Rice"/>
+        <div class="product-card-body">
+          <div class="product-name">Basmati Rice 🌾</div>
+          <div class="product-cat">🌾 Grains</div>
+          <div class="product-footer"><div class="product-price">₹120/kg</div><span class="badge low">Low Stock</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1587735243475-37c8ef3c0688?w=400&h=280&fit=crop" alt="Onions"/>
+        <div class="product-card-body">
+          <div class="product-name">Red Onions 🧅</div>
+          <div class="product-cat">🥦 Vegetables</div>
+          <div class="product-footer"><div class="product-price">₹35/kg</div><span class="badge active-b">In Stock</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1501746877-14782df58970?w=400&h=280&fit=crop" alt="Spinach"/>
+        <div class="product-card-body">
+          <div class="product-name">Fresh Spinach 🥬</div>
+          <div class="product-cat">🥦 Vegetables</div>
+          <div class="product-footer"><div class="product-price">₹30/bunch</div><span class="badge active-b">In Stock</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?w=400&h=280&fit=crop" alt="Orange"/>
+        <div class="product-card-body">
+          <div class="product-name">Navel Oranges 🍊</div>
+          <div class="product-cat">🍎 Fruits</div>
+          <div class="product-footer"><div class="product-price">₹80/kg</div><span class="badge active-b">In Stock</span></div>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1559598467-f8b76c8155d0?w=400&h=280&fit=crop" alt="Cheese"/>
+        <div class="product-card-body">
+          <div class="product-name">Cheddar Cheese 🧀</div>
+          <div class="product-cat">🥛 Dairy</div>
+          <div class="product-footer"><div class="product-price">₹340/200g</div><span class="badge active-b">In Stock</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Products Table -->
+    <div class="card">
+      <div class="card-header"><div><div class="card-title">Product Inventory Table 📦</div><div class="card-subtitle">Detailed stock and pricing info</div></div></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>Product</th><th>SKU</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th><th>Action</th></tr></thead>
+        <tbody>
+          <tr><td>🍅 Fresh Tomatoes</td><td><span class="order-id">SKU-VEG-001</span></td><td>Vegetables</td><td>₹40/kg</td><td style="color:var(--red);font-weight:600">4 kg</td><td><span class="badge low">⚠ Low</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">Edit</button></td></tr>
+          <tr><td>🥛 Full Cream Milk</td><td><span class="order-id">SKU-DAI-001</span></td><td>Dairy</td><td>₹65/L</td><td style="color:var(--red);font-weight:600">6 L</td><td><span class="badge low">⚠ Low</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">Edit</button></td></tr>
+          <tr><td>🍌 Bananas</td><td><span class="order-id">SKU-FRU-003</span></td><td>Fruits</td><td>₹55/dz</td><td style="color:#3FB950;font-weight:600">120 dz</td><td><span class="badge active-b">✓ OK</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">Edit</button></td></tr>
+          <tr><td>🌾 Basmati Rice</td><td><span class="order-id">SKU-GRN-001</span></td><td>Grains</td><td>₹120/kg</td><td style="color:var(--red);font-weight:600">12 kg</td><td><span class="badge low">⚠ Low</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">Edit</button></td></tr>
+          <tr><td>🧅 Red Onions</td><td><span class="order-id">SKU-VEG-009</span></td><td>Vegetables</td><td>₹35/kg</td><td style="color:#3FB950;font-weight:600">85 kg</td><td><span class="badge active-b">✓ OK</span></td><td><button class="btn-outline" style="padding:4px 10px;font-size:11px">Edit</button></td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PAGE 4: CUSTOMERS                         -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="page" id="page-customers">
+    <div class="page-header">
+      <div><h1>Customers 👥</h1><p>View and manage your customer base</p></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn-outline"><span class="material-symbols-outlined">download</span> Export</button>
+        <button class="btn-primary"><span class="material-symbols-outlined">person_add</span> Add Customer</button>
+      </div>
+    </div>
+
+    <!-- Customer Stats -->
+    <div class="stats-grid" style="margin-bottom:24px">
+      <div class="stat-card" style="--accent-color:#3FB950;--accent-bg:rgba(63,185,80,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">people</span></div>
+        <div class="stat-value">4,821</div><div class="stat-label">Total Customers</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> +124 this month</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#58A6FF;--accent-bg:rgba(88,166,255,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">person_check</span></div>
+        <div class="stat-value">1,204</div><div class="stat-label">Active This Week</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> 25% active rate</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#BC8CFF;--accent-bg:rgba(188,140,255,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">star</span></div>
+        <div class="stat-value">312</div><div class="stat-label">Premium Members 👑</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> +28 this month</div>
+      </div>
+      <div class="stat-card" style="--accent-color:#E3B341;--accent-bg:rgba(227,179,65,.12)">
+        <div class="stat-icon"><span class="material-symbols-outlined">payments</span></div>
+        <div class="stat-value">₹2,480</div><div class="stat-label">Avg Order Value</div>
+        <div class="stat-trend up"><span class="material-symbols-outlined">trending_up</span> +₹180 this month</div>
+      </div>
+    </div>
+
+    <!-- Customers Table + Top Customers -->
+    <div class="two-col" style="margin-bottom:24px">
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">All Customers</div><div class="card-subtitle">4,821 registered users</div></div><input type="search" class="settings-input" placeholder="🔍  Search name or email..." style="width:200px"/></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Customer</th><th>Orders</th><th>Spent</th><th>Joined</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><div class="customer-info"><div class="customer-avatar">PS</div><div><div class="customer-name">Priya Sharma</div><div class="customer-email">priya@gmail.com</div></div></div></td><td>48</td><td>₹58,400</td><td style="color:var(--muted);font-size:12px">Jan 2024</td><td><span class="badge active-b">Active</span></td></tr>
+            <tr><td><div class="customer-info"><div class="customer-avatar" style="background:linear-gradient(135deg,#58A6FF,#1a5fa8)">RM</div><div><div class="customer-name">Rajan M.</div><div class="customer-email">rajan@gmail.com</div></div></div></td><td>32</td><td>₹34,200</td><td style="color:var(--muted);font-size:12px">Mar 2024</td><td><span class="badge active-b">Active</span></td></tr>
+            <tr><td><div class="customer-info"><div class="customer-avatar" style="background:linear-gradient(135deg,#BC8CFF,#7a4fbf)">KL</div><div><div class="customer-name">Kavitha L.</div><div class="customer-email">kavitha@yahoo.com</div></div></div></td><td>67</td><td>₹82,150</td><td style="color:var(--muted);font-size:12px">Oct 2023</td><td><span class="badge promo">👑 Premium</span></td></tr>
+            <tr><td><div class="customer-info"><div class="customer-avatar" style="background:linear-gradient(135deg,#E3B341,#9a6f0a)">DP</div><div><div class="customer-name">Dinesh P.</div><div class="customer-email">dinesh@gmail.com</div></div></div></td><td>14</td><td>₹12,600</td><td style="color:var(--muted);font-size:12px">May 2025</td><td><span class="badge active-b">Active</span></td></tr>
+            <tr><td><div class="customer-info"><div class="customer-avatar" style="background:linear-gradient(135deg,#F85149,#8b1710)">MR</div><div><div class="customer-name">Meena R.</div><div class="customer-email">meena@hotmail.com</div></div></div></td><td>6</td><td>₹4,200</td><td style="color:var(--muted);font-size:12px">Feb 2026</td><td><span class="badge inactive">Inactive</span></td></tr>
+            <tr><td><div class="customer-info"><div class="customer-avatar" style="background:linear-gradient(135deg,#3FB950,#1a6b22)">SK</div><div><div class="customer-name">Suresh K.</div><div class="customer-email">suresh@gmail.com</div></div></div></td><td>89</td><td>₹1,04,300</td><td style="color:var(--muted);font-size:12px">Jun 2023</td><td><span class="badge promo">👑 Premium</span></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">Top Spenders 🏅</div><div class="card-subtitle">Lifetime value ranking</div></div></div>
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:20px;width:28px;text-align:center">🥇</div>
+            <div class="customer-avatar" style="background:linear-gradient(135deg,#3FB950,#1a6b22)">SK</div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:600">Suresh K.</div><div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:100%"></div></div></div>
+            <div style="font-size:13px;font-weight:700;color:var(--green2)">₹1,04,300</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:20px;width:28px;text-align:center">🥈</div>
+            <div class="customer-avatar" style="background:linear-gradient(135deg,#BC8CFF,#7a4fbf)">KL</div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:600">Kavitha L.</div><div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:79%"></div></div></div>
+            <div style="font-size:13px;font-weight:700;color:var(--green2)">₹82,150</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:20px;width:28px;text-align:center">🥉</div>
+            <div class="customer-avatar">PS</div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:600">Priya S.</div><div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:56%"></div></div></div>
+            <div style="font-size:13px;font-weight:700;color:var(--green2)">₹58,400</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:20px;width:28px;text-align:center">4️⃣</div>
+            <div class="customer-avatar" style="background:linear-gradient(135deg,#58A6FF,#1a5fa8)">RM</div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:600">Rajan M.</div><div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:33%"></div></div></div>
+            <div style="font-size:13px;font-weight:700;color:var(--green2)">₹34,200</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:12px;">
+            <div style="font-size:20px;width:28px;text-align:center">5️⃣</div>
+            <div class="customer-avatar" style="background:linear-gradient(135deg,#E3B341,#9a6f0a)">DP</div>
+            <div style="flex:1"><div style="font-size:13px;font-weight:600">Dinesh P.</div><div class="progress-bar" style="margin-top:4px"><div class="progress-fill" style="width:12%"></div></div></div>
+            <div style="font-size:13px;font-weight:700;color:var(--green2)">₹12,600</div>
+          </div>
+        </div>
+
+        <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+          <div class="card-title" style="margin-bottom:14px">Customer Growth 📈</div>
+          <div class="bar-chart" style="height:100px">
+            <div class="bar-group"><div class="bar primary" style="height:40%"></div><div class="bar-label">Jan</div></div>
+            <div class="bar-group"><div class="bar primary" style="height:55%"></div><div class="bar-label">Feb</div></div>
+            <div class="bar-group"><div class="bar primary" style="height:48%"></div><div class="bar-label">Mar</div></div>
+            <div class="bar-group"><div class="bar primary" style="height:70%"></div><div class="bar-label">Apr</div></div>
+            <div class="bar-group"><div class="bar primary" style="height:65%"></div><div class="bar-label">May</div></div>
+            <div class="bar-group"><div class="bar primary" style="height:100%"></div><div class="bar-label">Jun</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Promo Offers for customers -->
+    <div class="card">
+      <div class="card-header"><div><div class="card-title">Active Promotions for Customers 🎁</div><div class="card-subtitle">3 campaigns running</div></div><button class="btn-primary" style="padding:7px 14px;font-size:12px"><span class="material-symbols-outlined">add</span> New Campaign</button></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;">
+        <div class="promo-card"><div class="promo-tag">🎉</div><div><div class="promo-title">Welcome Offer</div><div class="promo-detail">First order · New users only · Expires 31 Jul</div></div><div class="promo-disc">30% OFF</div></div>
+        <div class="promo-card"><div class="promo-tag">👑</div><div><div class="promo-title">Premium Member Deal</div><div class="promo-detail">Min ₹500 · Premium tier only · Ongoing</div></div><div class="promo-disc">15% OFF</div></div>
+        <div class="promo-card"><div class="promo-tag">🥦</div><div><div class="promo-title">Fresh Veggie Tuesday</div><div class="promo-detail">Vegetables category · Every Tuesday</div></div><div class="promo-disc">20% OFF</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- PAGE 5: SETTINGS                          -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="page" id="page-settings">
+    <div class="page-header">
+      <div><h1>Settings ⚙️</h1><p>Configure your store preferences and account</p></div>
+      <button class="btn-primary"><span class="material-symbols-outlined">save</span> Save Changes</button>
+    </div>
+
+    <div class="two-col">
+      <!-- Store Settings -->
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">🏪 Store Info</div><div class="card-subtitle">Basic store details</div></div></div>
+        <div class="settings-row">
+          <div><div class="settings-label">Store Name</div><div class="settings-desc">Shown on all customer receipts</div></div>
+          <input class="settings-input" value="Stackly Grocery" type="text"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Store Email</div><div class="settings-desc">For customer notifications</div></div>
+          <input class="settings-input" value="store@stackly.in" type="email"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Phone Number</div><div class="settings-desc">Support contact number</div></div>
+          <input class="settings-input" value="+91 98765 43210" type="text"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">City / Location</div><div class="settings-desc">Primary delivery area</div></div>
+          <input class="settings-input" value="Chennai, Tamil Nadu" type="text"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">GST Number</div><div class="settings-desc">Used for tax invoices</div></div>
+          <input class="settings-input" value="33AABCS1234Z1ZT" type="text"/>
+        </div>
+      </div>
+
+      <!-- Notifications -->
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">🔔 Notifications</div><div class="card-subtitle">Control what alerts you receive</div></div></div>
+        <div class="settings-row">
+          <div><div class="settings-label">New Order Alert</div><div class="settings-desc">Ping when a new order arrives</div></div>
+          <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Low Stock Warning</div><div class="settings-desc">Alert when items drop below threshold</div></div>
+          <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Daily Sales Report</div><div class="settings-desc">Receive summary email every night</div></div>
+          <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Customer Reviews</div><div class="settings-desc">Notify when reviews are posted</div></div>
+          <button class="toggle" onclick="this.classList.toggle('on')"></button>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Delivery Delay Alert</div><div class="settings-desc">Warn if delivery exceeds ETA</div></div>
+          <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Promo Expiry Reminder</div><div class="settings-desc">24h before promotions end</div></div>
+          <button class="toggle" onclick="this.classList.toggle('on')"></button>
+        </div>
+      </div>
+
+      <!-- Delivery Settings -->
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">🚐 Delivery Config</div><div class="card-subtitle">Delivery zones and timing</div></div></div>
+        <div class="settings-row">
+          <div><div class="settings-label">Free Delivery Above</div><div class="settings-desc">Cart value for free delivery</div></div>
+          <input class="settings-input" value="₹500" type="text" style="width:120px"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Delivery Fee (below min)</div><div class="settings-desc">Charged when cart is under threshold</div></div>
+          <input class="settings-input" value="₹49" type="text" style="width:120px"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Delivery Hours</div><div class="settings-desc">Store open window</div></div>
+          <input class="settings-input" value="7:00 AM – 10:00 PM" type="text"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Express Delivery (2hr)</div><div class="settings-desc">Enable fast slot booking</div></div>
+          <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Scheduled Delivery</div><div class="settings-desc">Let customers pick delivery slot</div></div>
+          <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+        </div>
+      </div>
+
+      <!-- Admin Account -->
+      <div class="card">
+        <div class="card-header"><div><div class="card-title">👤 Admin Account</div><div class="card-subtitle">Your profile and security</div></div></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)">
+          <div style="width:60px;height:60px;border-radius:50%;background:linear-gradient(135deg,var(--green),#3a6b10);display:grid;place-items:center;font-size:22px;font-weight:700;border:2px solid var(--green)">AK</div>
+          <div><div style="font-size:15px;font-weight:700">Arun Kumar</div><div style="font-size:12px;color:var(--muted)">arun@stackly.in · Store Manager</div></div>
+          <button class="btn-outline" style="margin-left:auto;font-size:12px;padding:6px 14px">Change Photo</button>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Full Name</div></div>
+          <input class="settings-input" value="Arun Kumar" type="text"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Email Address</div></div>
+          <input class="settings-input" value="arun@stackly.in" type="email"/>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Password</div><div class="settings-desc">Last changed 45 days ago</div></div>
+          <button class="btn-outline" style="font-size:12px;padding:7px 14px">Change Password</button>
+        </div>
+        <div class="settings-row">
+          <div><div class="settings-label">Two-Factor Auth 🔐</div><div class="settings-desc">Extra security for your account</div></div>
+          <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+        </div>
+        <div style="margin-top:16px">
+          <button class="btn-outline" style="color:var(--red);border-color:rgba(248,81,73,.3);font-size:13px"><span class="material-symbols-outlined" style="font-size:16px">logout</span> Sign Out</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /main -->
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('overlay');
+
+  function toggleSidebar() { sidebar.classList.toggle('open'); overlay.classList.toggle('show'); }
+  function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('show'); }
+
+  const pageNames = { dashboard:'Dashboard', orders:'Orders', products:'Products', customers:'Customers', settings:'Settings' };
+
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', e => {
+      e.preventDefault();
+      const page = item.dataset.page;
+      if (!page) return;
+
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      item.classList.add('active');
+
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + page).classList.add('active');
+
+      document.getElementById('topbar-title').textContent = pageNames[page];
+      if (window.innerWidth < 768) closeSidebar();
+    });
+  });
+
+  document.querySelectorAll('.chart-tab').forEach(tab => {
+    tab.closest('.chart-tabs')?.querySelectorAll('.chart-tab').forEach(t => {
+      t.addEventListener('click', () => {
+        t.closest('.chart-tabs').querySelectorAll('.chart-tab').forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+      });
+    });
+  });
+</script>
+</body>
+</html>
