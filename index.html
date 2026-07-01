@@ -278,7 +278,7 @@
         color: black;
     }
 
-    .header-icons-container div:hover  p {
+    .header-icons-container div:hover p {
         color: white;
     }
 
@@ -492,6 +492,7 @@
             position: absolute;
             flex-direction: column;
             top: 0;
+            gap: 0px;
             left: 0;
             background: white;
             height: 100vh;
@@ -500,6 +501,31 @@
             z-index: 1000;
             justify-content: flex-start;
             padding: 60px 40px;
+            border: var(--border-color);
+        }
+
+        .nav-links li a:hover {
+            background: transparent;
+            color: white;
+            border-radius: 7px;
+        }
+
+         .nav-links li:hover{
+            background: #629D24;
+            color: white;
+         }
+
+         .nav-links .lactive{
+            background: #629D24;
+            color: white;
+         }
+
+      
+
+        .nav-links li {
+            width: 100%;
+            padding: 10px;
+            border-bottom: var(--border-color)
         }
 
         .nav-btns {
@@ -2515,7 +2541,7 @@
                     <span class="material-symbols-outlined close-btn2">close</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li class="lactive"><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="fresh.html">Fresh Grocery</a></li>
                     <li><a href="shop.html">Shop</a></li>
@@ -2542,10 +2568,11 @@
         <div class="hero-text">
             <p> <span class="material-symbols-outlined">
                     shopping_bag
-                </span>Get up to 30% off on your first $150 purchase.</p>
+                </span>Get up to 30% Discount Now.</p>
             <h1>Don't Miss Out on Our Best <br> Grocery Deals?</h1>
             <p>We have Prepared Special Discounts for you on grocery products. <br> Don't miss these opportunities.</p>
-            <button class="hero-btn errorpage">Shop Now<span class="material-symbols-outlined">arrow_right_alt</span></button>
+            <button class="hero-btn errorpage">Shop Now<span
+                    class="material-symbols-outlined">arrow_right_alt</span></button>
         </div>
 
         <div class="side-btns">

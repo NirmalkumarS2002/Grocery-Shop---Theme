@@ -43,6 +43,7 @@
 
     /* header 1*/
 
+  
     .header-section {
         display: flex;
         width: 100%;
@@ -282,6 +283,8 @@
         color: white;
     }
 
+
+
     .header-icons-container div span {
         font-size: 20px;
         color: var(--primariy-color);
@@ -490,6 +493,7 @@
             position: absolute;
             flex-direction: column;
             top: 0;
+            gap: 0px;
             left: 0;
             background: white;
             height: 100vh;
@@ -498,6 +502,31 @@
             z-index: 1000;
             justify-content: flex-start;
             padding: 60px 40px;
+            border: var(--border-color);
+        }
+
+        .nav-links li a:hover {
+            background: transparent;
+            color: white;
+            border-radius: 7px;
+        }
+
+         .nav-links li:hover{
+            background: #629D24;
+            color: white;
+         }
+
+         .nav-links .lactive{
+            background: #629D24;
+            color: white;
+         }
+
+      
+
+        .nav-links li {
+            width: 100%;
+            padding: 10px;
+            border-bottom: var(--border-color)
         }
 
         .nav-btns {
@@ -1600,8 +1629,8 @@
                     <span class="material-symbols-outlined close-btn2">close</span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html" class="active">About</a></li>
+                    <li ><a href="index.html">Home</a></li>
+                    <li class="lactive"><a href="about.html" class="active">About</a></li>
                     <li><a href="fresh.html">Fresh Grocery</a></li>
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="contact.html">Contact Us</a></li>
