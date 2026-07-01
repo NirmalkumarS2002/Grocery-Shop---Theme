@@ -396,6 +396,17 @@
         gap: 20px;
     }
 
+    
+    .navlogo {
+      display: none;
+      margin-bottom: 20px;
+    }
+
+    .navlogo img {
+      width: 160px;
+    }
+
+
     .nav-links li {
         list-style: none;
     }
@@ -507,6 +518,11 @@
             padding: 60px 40px;
             border: var(--border-color);
         }
+
+         
+    .navlogo {
+      display: block;
+    }
 
         .nav-links li a:hover {
             background: transparent;
@@ -1149,7 +1165,7 @@
             <div class="accout-contaner">
                 <a href="404.html">About</a>
                 <a href="404.html">My account</a>
-                <a href="404.html">wishlist</a>
+                <a href="404.html">Wishlist</a>
             </div>
 
             <div class="deliver-container">
@@ -1221,6 +1237,9 @@
                     <span class="material-symbols-outlined close-btn2">close</span>
                 </div>
                 <ul class="nav-links">
+                     <div class="navlogo">
+            <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+          </div>
                     <li><a href="index.html" >Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="fresh.html">Fresh Grocery</a></li>
@@ -1571,42 +1590,42 @@
     <a href="404.html" class="see-all">See all &rarr;</a>
   </div>
   <div class="organic-scroll">
-    <div class="organic-card">
+    <div class="organic-card errorpage">
       <img src="./src/grocery1.webp" alt="Avocado" />
       <p class="organic-tag">Organic</p>
       <p class="organic-name">Apple</p>
       <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9733; (148)</p>
       <p class="organic-price">$1.99 <span>$2.49</span></p>
     </div>
-    <div class="organic-card">
+    <div class="organic-card errorpage">
       <img src="./src/grocery8.webp"alt="Mango" />
       <p class="organic-tag">Seasonal</p>
       <p class="organic-name">Strawberries</p>
       <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9733; (203)</p>
       <p class="organic-price">$2.49</p>
     </div>
-    <div class="organic-card">
+    <div class="organic-card errorpage">
       <img src="./src/grocery4.webp" alt="Spinach" />
       <p class="organic-tag">Organic</p>
       <p class="organic-name">Baby Spinach</p>
       <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9734; (87)</p>
       <p class="organic-price">$2.29 <span>$3.09</span></p>
     </div>
-    <div class="organic-card">
+    <div class="organic-card errorpage">
       <img src="./src/grocery5.webp" alt="Tomatoes" />
       <p class="organic-tag">Local Farm</p>
       <p class="organic-name">Vine Vegs</p>
       <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9733; (312)</p>
       <p class="organic-price">$1.79</p>
     </div>
-    <div class="organic-card">
+    <div class="organic-card errorpage">
       <img src="./src/grocery2.webp" alt="Grapes" />
       <p class="organic-tag">Organic</p>
       <p class="organic-name">Potatos</p>
       <p class="organic-rating">&#9733;&#9733;&#9733;&#9733;&#9733; (91)</p>
       <p class="organic-price">$4.49 <span>$5.99</span></p>
     </div>
-    <div class="organic-card">
+    <div class="organic-card errorpage">
       <img src="./src/cat9.webp" alt="Carrots" />
       <p class="organic-tag">Farm Fresh</p>
       <p class="organic-name">Weets</p>
@@ -1861,13 +1880,20 @@
   });
 
   //add
-  document.querySelectorAll('.add-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                btn.textContent = '✓';
-                btn.style.background = '#2d7f0a';
-             
-            });
-        });
+
+    document.querySelectorAll('.add-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+
+        if (btn.textContent.trim() === '+') {
+            btn.textContent = '✓';
+            btn.style.background = '#2d7f0a';
+        } else {
+            btn.textContent = '+';
+            btn.style.background = '';
+        }
+
+    });
+});
 </script>
 </body>
 </html>

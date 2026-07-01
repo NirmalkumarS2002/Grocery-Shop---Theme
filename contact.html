@@ -397,6 +397,16 @@
         gap: 20px;
     }
 
+    
+    .navlogo {
+      display: none;
+      margin-bottom: 20px;
+    }
+
+    .navlogo img {
+      width: 160px;
+    }
+
     .nav-links li {
         list-style: none;
     }
@@ -508,6 +518,10 @@
             padding: 60px 40px;
             border: var(--border-color);
         }
+
+            .navlogo {
+      display: block;
+    }
 
         .nav-links li a:hover {
             background: transparent;
@@ -1636,7 +1650,7 @@
       <div class="accout-contaner">
         <a href="404.html">About</a>
         <a href="404.html">My account</a>
-        <a href="404.html">wishlist</a>
+        <a href="404.html">Wishlist</a>
       </div>
 
       <div class="deliver-container">
@@ -1708,6 +1722,9 @@
           <span class="material-symbols-outlined close-btn2">close</span>
         </div>
         <ul class="nav-links">
+             <div class="navlogo">
+            <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+          </div>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="fresh.html">Fresh Grocery</a></li>

@@ -392,6 +392,17 @@
         gap: 20px;
     }
 
+
+    .navlogo {
+        display: none;
+        margin-bottom: 20px;
+    }
+
+    .navlogo img {
+        width: 160px;
+    }
+
+
     .nav-links li {
         list-style: none;
     }
@@ -504,23 +515,28 @@
             border: var(--border-color);
         }
 
+        .navlogo {
+            display: block;
+        }
+
+
         .nav-links li a:hover {
             background: transparent;
             color: white;
             border-radius: 7px;
         }
 
-         .nav-links li:hover{
+        .nav-links li:hover {
             background: #629D24;
             color: white;
-         }
+        }
 
-         .nav-links .lactive{
+        .nav-links .lactive {
             background: #629D24;
             color: white;
-         }
+        }
 
-      
+
 
         .nav-links li {
             width: 100%;
@@ -2469,7 +2485,7 @@
             <div class="accout-contaner">
                 <a href="404.html">About</a>
                 <a href="404.html">My account</a>
-                <a href="404.html">wishlist</a>
+                <a href="404.html">Wishlist</a>
             </div>
 
             <div class="deliver-container">
@@ -2541,6 +2557,9 @@
                     <span class="material-symbols-outlined close-btn2">close</span>
                 </div>
                 <ul class="nav-links">
+                       <div class="navlogo">
+            <a href="index.html"><img src="./src/logo.webp" alt="Company logo"></a>
+          </div>
                     <li class="lactive"><a href="index.html" class="active">Home</a></li>
                     <li><a href="about.html">About</a></li>
                     <li><a href="fresh.html">Fresh Grocery</a></li>
@@ -2593,62 +2612,48 @@
         </div>
         <div class="cat-grid">
             <div class="cat-card">
-                <img class="cat-img" src="./src/cat1.webp"
-                    alt="Fruits">
+                <img class="cat-img" src="./src/cat1.webp" alt="Fruits">
                 <div class="cat-label">Fruits</div>
             </div>
             <div class="cat-card">
-                <img class="cat-img" src="./src/cat2.webp"
-                    alt="Vegetables">
+                <img class="cat-img" src="./src/cat2.webp" alt="Vegetables">
                 <div class="cat-label">Veggies</div>
             </div>
             <div class="cat-card">
-                <img class="cat-img" src="./src/cat3.webp"
-                    alt="Dairy">
+                <img class="cat-img" src="./src/cat3.webp" alt="Dairy">
                 <div class="cat-label">Dairy</div>
             </div>
             <div class="cat-card">
-                <img class="cat-img" src="./src/cat4.webp"
-                    alt="Bakery">
+                <img class="cat-img" src="./src/cat4.webp" alt="Bakery">
                 <div class="cat-label">Bakery</div>
             </div>
             <div class="cat-card">
-                <img class="cat-img" src="./src/cat5.webp"
-                    alt="Beverages">
+                <img class="cat-img" src="./src/cat5.webp" alt="Beverages">
                 <div class="cat-label">Drinks</div>
             </div>
             <div class="cat-card">
-                <img class="cat-img" src="./src/cat6.webp"
-                    alt="Snacks">
+                <img class="cat-img" src="./src/cat6.webp" alt="Snacks">
                 <div class="cat-label">Snacks</div>
             </div>
-         <div class="cat-card">
-    <img class="cat-img"
-        src="./src/cat7.webp"
-        alt="Beverages">
-    <div class="cat-label">Beverages</div>
-</div>
+            <div class="cat-card">
+                <img class="cat-img" src="./src/cat7.webp" alt="Beverages">
+                <div class="cat-label">Beverages</div>
+            </div>
 
-<div class="cat-card">
-    <img class="cat-img"
-        src="./src/cat8.webp"
-        alt="Rice">
-    <div class="cat-label">Rice & Grains</div>
-</div>
+            <div class="cat-card">
+                <img class="cat-img" src="./src/cat8.webp" alt="Rice">
+                <div class="cat-label">Rice & Grains</div>
+            </div>
 
-<div class="cat-card">
-    <img class="cat-img"
-        src="./src/cat9.webp"
-        alt="Frozen Foods">
-    <div class="cat-label">Frozen Foods</div>
-</div>
+            <div class="cat-card">
+                <img class="cat-img" src="./src/cat9.webp" alt="Frozen Foods">
+                <div class="cat-label">Frozen Foods</div>
+            </div>
 
-<div class="cat-card">
-    <img class="cat-img"
-        src="./src/cat10.webp"
-        alt="Household">
-    <div class="cat-label">Household Essentials</div>
-</div>
+            <div class="cat-card">
+                <img class="cat-img" src="./src/cat10.webp" alt="Household">
+                <div class="cat-label">Household Essentials</div>
+            </div>
         </div>
     </div>
 
@@ -2694,7 +2699,7 @@
         <div class="section-label">Limited time</div>
         <div class="section-head">
             <div class="section-title" style="margin-bottom:0">Hot Deals Today</div>
-            <button class="view-all">See all deals →</button>
+            <button class="view-all errorpage">See all deals →</button>
         </div>
         <div class="deals-grid">
             <div class="deal-banner big">
@@ -2760,10 +2765,10 @@
         <div class="products-header">
             <div class="section-title" style="margin-bottom:0">Popular Products</div>
             <div class="tab-pills">
-                <div class="tab-pill active">All</div>
-                <div class="tab-pill">Organic</div>
-                <div class="tab-pill">New</div>
-                <div class="tab-pill">Sale</div>
+                <div class="tab-pill active errorpage">All</div>
+                <div class="tab-pill errorpage">Organic</div>
+                <div class="tab-pill errorpage">New</div>
+                <div class="tab-pill errorpage">Sale</div>
             </div>
         </div>
         <div class="products-grid">
@@ -2848,7 +2853,7 @@
         <div class="section-label">Customer love</div>
         <div class="section-head">
             <div class="section-title" style="margin-bottom:0">Our customers</div>
-            <button class="view-all">Read all reviews →</button>
+            <button class="view-all errorpage">Read all reviews →</button>
         </div>
         <div class="testimonials-grid">
             <div class="testi-card">
@@ -2856,8 +2861,7 @@
                 <div class="testi-text">"The freshest groceries I've ever ordered online. The vegetables looked and
                     tasted like they were just picked that morning. Absolutely love it!"</div>
                 <div class="testi-user">
-                    <img class="testi-avatar"
-                        src="./src/con-avatar.webp" alt="Sarah">
+                    <img class="testi-avatar" src="./src/con-avatar.webp" alt="Sarah">
                     <div>
                         <div class="testi-name">Sarah Mitchell</div>
                         <div class="testi-meta">Regular customer since 2023</div>
@@ -2870,8 +2874,7 @@
                 <div class="testi-text">"Delivered in 45 minutes and everything was perfectly packed. The organic
                     fruits are amazing — my kids actually eat vegetables now!"</div>
                 <div class="testi-user">
-                    <img class="testi-avatar"
-                        src="./src/con-avatar2.webp" alt="James">
+                    <img class="testi-avatar" src="./src/con-avatar2.webp" alt="James">
                     <div>
                         <div class="testi-name">James Okafor</div>
                         <div class="testi-meta">Premium member</div>
@@ -2884,8 +2887,7 @@
                 <div class="testi-text">"Great selection and really competitive prices. The weekly deals save me so
                     much money on groceries. Highly recommend to every family."</div>
                 <div class="testi-user">
-                    <img class="testi-avatar"
-                        src="./src/con-avatar3.webp" alt="Priya">
+                    <img class="testi-avatar" src="./src/con-avatar3.webp" alt="Priya">
                     <div>
                         <div class="testi-name">Priya Sharma</div>
                         <div class="testi-meta">Shopper since 2024</div>
@@ -3164,11 +3166,17 @@
         });
         document.querySelectorAll('.add-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                btn.textContent = '✓';
-                btn.style.background = '#2d7f0a';
+
+                if (btn.textContent.trim() === '+') {
+                    btn.textContent = '✓';
+                    btn.style.background = '#2d7f0a';
+                } else {
+                    btn.textContent = '+';
+                    btn.style.background = '';
+                }
+
             });
         });
-
 
 
 
